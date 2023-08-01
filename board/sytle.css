@@ -33,14 +33,14 @@
 }
 
 .upMain{
-  border:1px solid lpx;
+  /* border:1px solid black; */
   display: flex;
   align-items: center;
   justify-content:space-between
 }
 
 .postName{
-  font-size: 3.5rem;
+  font-size: 3rem;
   color: #FDBD5E;
   font-weight: bold;
 }
@@ -74,9 +74,26 @@
 }
 
 
+.midMain{
+  border: 1px solid black;
+  margin: 3rem 3rem;
+}
 
+.post{
+  padding: 1rem 0.5rem 1rem 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
+.postTitle{
+  font-size: 1.5rem;
+  font-weight: bold;
+}
 
+.postTime{
+  
+}
 
 
 
