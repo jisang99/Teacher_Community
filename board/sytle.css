@@ -1,14 +1,14 @@
 /* nav바 만들어지면 추가하기 */
-.nav{
-  position:relative;
-  width:100%;
-  height:7rem;
+.nav {
+  position: relative;
+  width: 100%;
+  height: 7rem;
   background-color: gray;
 }
 
-.backgroundTitle{
+.backgroundTitle {
   position: relative;
-  width:100%;
+  width: 100%;
   height: 14rem;
   background-image: url("./img/background.png");
   background-repeat: no-repeat;
@@ -19,12 +19,13 @@
   align-items: center;
 }
 
-.title{
+.title {
   color: white;
   font-size: 5rem;
+  font-weight: bold;
 }
 
-.main{
+.main {
   position: relative;
   border: 1px solid black;
   height: 60rem;
@@ -32,73 +33,141 @@
   padding: 1rem;
 }
 
-.upMain{
+.upMain {
   /* border:1px solid black; */
   display: flex;
   align-items: center;
-  justify-content:space-between
+  justify-content: space-between;
 }
 
-.postName{
+.postName {
   font-size: 3rem;
-  color: #FDBD5E;
+  color: #fdbd5e;
   font-weight: bold;
 }
 
-.search{
+.search {
   display: flex;
   align-items: center;
 }
 
 .textBox {
-    width: 500px; /* 너비 조정 */
-    height: 50px; /* 높이 조정 */
-    padding: 10px; /* 내부 여백 조정 */
-    border: 1px solid #ccc; /* 테두리 스타일 지정 */
-    border-radius: 20px; /* 둥근 모서리 */
-    font-size: 16px; /* 글꼴 크기 */
+  width: 500px; /* 너비 조정 */
+  height: 50px; /* 높이 조정 */
+  padding: 10px; /* 내부 여백 조정 */
+  border: 1px solid #ccc; /* 테두리 스타일 지정 */
+  border-radius: 20px; /* 둥근 모서리 */
+  font-size: 16px; /* 글꼴 크기 */
 }
 
-
-.searchButton{
-  width:7rem;
-  height:4rem;
+.searchButton {
+  width: 7rem;
+  height: 4rem;
   border-radius: 10rem;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
-  background-color: #FDBD5E;
+  background-color: #fdbd5e;
   font-size: 2rem;
   margin-left: 1rem;
 }
 
-
-.midMain{
+.midMain {
   border: 1px solid black;
   margin: 3rem 3rem;
 }
 
-.post{
+.post {
   padding: 1rem 0.5rem 1rem 0.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.postTitle{
+.postTitle {
   font-size: 1.5rem;
-  font-weight: bold;
 }
 
-.postTime{
-  
+.postTime {
 }
 
-
-
-.footer{
+.footer {
   position: relative;
   height: 15rem;
   background-color: gray;
+}
+
+/* -------------------------------------------- */
+/* 화면 비율이 16:9 이상인 경우에 미디어쿼리 */
+@media screen and (min-aspect-ratio: 16/9) {
+  .nav {
+    width: 100%;
+    height: 4rem;
+    background-color: red;
+  }
+
+  .backgroundTitle {
+    width: 100%;
+    height: 9rem;
+  }
+
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .main {
+    height: 30rem;
+    width:60rem;
+    margin: 3rem 18rem 3rem 18rem;
+    padding: 1rem;
+  }
+
+  .upMain {
+  }
+
+  .postName {
+    font-size: 1.5rem;
+  }
+
+  .search {
+  }
+
+  .textBox {
+    width: 20rem; /* 너비 조정 */
+    height: 1.5rem; /* 높이 조정 */
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 20px; /* 둥근 모서리 */
+    font-size: 16px; /* 글꼴 크기 */
+  }
+
+  .searchButton {
+    width: 6rem;
+    height: 2.5rem;
+    border-radius: 10rem;
+    font-size: 1.5rem;
+    margin-left: 1rem;
+  }
+
+  .midMain {
+    margin: 3rem 3rem;
+  }
+
+  .post {
+    padding: 1rem 0.5rem 1rem 0.5rem;
+  }
+
+  .postTitle {
+    font-size: 1rem;
+  }
+
+  .postTime {
+    font-size:0.8rem;
+    color: gray;
+  }
+
+  .footer {
+    height: 5rem;
+  }
 }
