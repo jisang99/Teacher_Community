@@ -29,7 +29,6 @@
 .main {
   /* border: 1px solid black; */
   position: relative;
-  height: 60rem;
   margin: 6rem 30rem 6rem 30rem;
   padding: 1rem;
 }
@@ -101,10 +100,40 @@
 }
 
 .downMain {
-  display: flex; /* Flexbox 컨테이너로 설정 */
-  justify-content: center; /* 가로 방향 가운데 정렬 */
-  align-items: center; /* 세로 방향 가운데 정렬 */
+  position:relative;
+  /* border: 1px solid black; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 2rem;
+  height:10rem;
+  padding: 1rem;
 }
+
+.writeWrapper{
+  /* border: 1px solid black; */
+  width:100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.write{
+  position: relative;
+  /* border: 1px solid black; */
+  width:13rem;
+  height:5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5rem;
+  background-color: #19AE4B;
+  font-size: 2rem;
+}
+.writeText{
+  color: white;
+}
+
 
 .numberWrapper {
   width: 30%;
@@ -113,7 +142,8 @@
   align-items: center;
   justify-content: space-around;
   font-size: 2rem;
-  margin-top: 4rem;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
 }
 
 .before {
