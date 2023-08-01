@@ -1,3 +1,4 @@
+/* 작은화면을 위한 css */
 /* nav바 만들어지면 추가하기 */
 .nav {
   position: relative;
@@ -26,8 +27,8 @@
 }
 
 .main {
+  /* border: 1px solid black; */
   position: relative;
-  border: 1px solid black;
   height: 60rem;
   margin: 6rem 30rem 6rem 30rem;
   padding: 1rem;
@@ -52,12 +53,12 @@
 }
 
 .textBox {
-  width: 500px; /* 너비 조정 */
-  height: 50px; /* 높이 조정 */
-  padding: 10px; /* 내부 여백 조정 */
-  border: 1px solid #ccc; /* 테두리 스타일 지정 */
+  width: 30rem; /* 너비 조정 */
+  height: 3rem; /* 높이 조정 */
+  padding: 0.5rem; /* 내부 여백 조정 */
+  border: 1px solid #ccc;
   border-radius: 20px; /* 둥근 모서리 */
-  font-size: 16px; /* 글꼴 크기 */
+  font-size: 2rem; /* 글꼴 크기 */
 }
 
 .searchButton {
@@ -72,24 +73,58 @@
   font-size: 2rem;
   margin-left: 1rem;
 }
+.searchButtonText {
+  color: white;
+}
 
 .midMain {
-  border: 1px solid black;
-  margin: 3rem 3rem;
+  /* border: 1px solid black; */
+  margin-top: 3rem;
+  width: 100%;
 }
 
 .post {
-  padding: 1rem 0.5rem 1rem 0.5rem;
+  padding: 1.5rem 1rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  border-bottom: 1px solid #ccc;
 }
 
 .postTitle {
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 
 .postTime {
+  color: gray;
+  font-size: 1.5rem;
+}
+
+.downMain {
+  display: flex; /* Flexbox 컨테이너로 설정 */
+  justify-content: center; /* 가로 방향 가운데 정렬 */
+  align-items: center; /* 세로 방향 가운데 정렬 */
+}
+
+.numberWrapper {
+  width: 30%;
+  /* border: 1px solid black; */
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 2rem;
+  margin-top: 4rem;
+}
+
+.before {
+  margin-right: 1rem;
+}
+.after {
+  margin-left: 1rem;
+}
+
+.num1 {
+  color: #19ae4b;
 }
 
 .footer {
@@ -118,7 +153,7 @@
 
   .main {
     height: 30rem;
-    width:60rem;
+    width: 60rem;
     margin: 3rem 18rem 3rem 18rem;
     padding: 1rem;
   }
@@ -163,7 +198,7 @@
   }
 
   .postTime {
-    font-size:0.8rem;
+    font-size: 0.8rem;
     color: gray;
   }
 
