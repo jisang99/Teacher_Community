@@ -33,38 +33,14 @@
             <input class="box" type="password" placeholder="비밀번호 확인"/>
             <div class="error-msg"></div>
           </div>
-          <div class="info" id="info__email">
-            <input class="box" id="email-txt" type="text" placeholder="이메일 입력"/>
-            <span>@</span>
-            <input class="box" id="domain-txt" type="text"/>
-            <select class="box" id="domain-list">
-              <option value="type">직접 입력</option>
-              <option value="naver.com">naver.com</option>
-              <option value="google.com">google.com</option>
-              <option value="hanmail.net">hanmail.net</option>
-              <option value="nate.com">nate.com</option>
-              <option value="kakao.com">kakao.com</option>
-            </select>
-          </div>
-          <div class="info" id="info__birth">
-            <div id="birth-flex">
-              <select class="box" id="birth-year">
-                <option disabled selected>출생 연도</option>
-              </select>
-              <select class="box" id="birth-month">
-                <option disabled selected>월</option>
-              </select>
-              <select class="box" id="birth-day">
-                <option disabled selected>일</option>
-              </select>
+          <div class="info" id="info__face">
+            <div id="face-input">
+              <input class="box_face" type="text" placeholder="교원증 등록"/>
+              <button id="face-check">등록하기</button>
             </div>
             <div class="error-msg"></div>
-          </div>
-          <!-- <div id="print-date"></div> -->
-          <div class="info" id="info__mobile">
-            <input class="box" type="text" placeholder="휴대폰 번호 입력 (‘-’ 제외 11자리 입력)"/>
-            <div class="error-msg"></div>
-          </div>
+        </div>
+            
         </section>
         <div id="result-fail"></div>
         <button id="submit">가입하기</button>

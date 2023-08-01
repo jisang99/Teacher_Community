@@ -56,8 +56,56 @@ body {
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.4;
+    
   }
-  
+  /* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
   button {
     background-color: #FDBD5E;
     color: #f8f8f8;
@@ -67,6 +115,7 @@ body {
     font-weight: 400;
     font-family: 'Pretendard-SemiBold';
     transition: .1s;
+    
   }
   
   button:focus-visible {
@@ -74,18 +123,14 @@ body {
     background-color: #FDBD5E;
   }
   
-  /* button:hover {
-    outline: 0px solid;
-    background-color: #005AAC;
-  }
-   */
   .info {
     margin-bottom: 22px;
+    
   }
   
   /* box shape input field */
   .box {
-    width: 100%;
+    width: 18rem;
     height: 3rem;
     box-sizing: border-box;
     padding: 0.3rem 0 0.4rem 1rem;
@@ -94,6 +139,18 @@ body {
     color: #383838;
     font-weight: 400;
     font-family: 'Pretendard-Medium';
+  }
+  .box_face {
+    width: 18rem;
+    height: 3rem;
+    box-sizing: border-box;
+    padding: 0.3rem 0 0.4rem 1rem;
+    border-radius: 0.4rem;
+    border: 0.03rem solid #d9d6d6;
+    color: #383838;
+    font-weight: 400;
+    font-family: 'Pretendard-Medium';
+    background-color: #EEEEEE;
   }
   
   .box::placeholder {
@@ -138,6 +195,7 @@ body {
     margin: auto;
     justify-content: center;
     align-items: center;
+    
   } 
   
   .content {
@@ -156,88 +214,52 @@ body {
     display: inline;
     font-size: 2rem;
     font-weight: 700;
-    margin-bottom: 1rem;
+    margin-top: 2rem;
+    margin-left: 0.3rem;
   }
-  
+  header h3 {
+    margin-top: 1.5rem;
+    margin-bottom: 1.3rem;
+    margin-left: 0.3rem;
+  }
   /* SECTION */
   section {
     margin: 50px 0 25px 0;
   }
-  
-  /* SECTION - ID */
-  .info#info__id #id-input {
-    position: relative;
-  }
-  
   .info#info__id button {
-    position: absolute;
-    width: 90px;
-    height: 40px;
+    position: relative;
+    width: 5rem;
+    height: 2.3rem;
     top: 0;
     bottom: 0;
-    right: 5px;
     margin: auto 0;
+    margin-left: 0.7rem;
+    border-radius: 3px;
+    box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.1);
+    font-size: 0.9rem;
+    
+  }
+  .info#info__face button {
+    position: relative;
+    width: 5rem;
+    height: 2.3rem;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    margin-left: 1.2rem;
     border-radius: 3px;
     box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.1);
     font-size: 0.9rem;
   }
-  
-  /* SECTION - EMAIL */
-  .info#info__email {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-  .info#info__email input {
-    width: 90%;
-  }
-  
-  .info#info__email span {
-    font-size: 1rem;
-    margin: 0 0.1rem;
-  }
-  
-  .info .box#domain-list option {
-    font-size: 1rem;
-    background-color: #ffffff;
-  }
-  
-  /* SECTION - BIRTH */
-  .info#info__birth #birth-flex {
-    display: flex;
-  }
-  
-  .info#info__birth select {
-    margin-left : 1rem;
-    color: #a0a0a0;
-  }
-  
-  .info#info__birth select:first-child {
-    margin-left : 0rem;
-  }
-  
-  .info#info__birth select::-webkit-scrollbar {
-    width: 1rem;
-  }
-  
-  .info#info__birth select::-webkit-scrollbar-thumb {
-    background-color: #DADADA;
-    border-radius: 3px;
-  }
-  
-  .info#info__birth select::-webkit-scrollbar-track {
-    background-color: #ebe9e9;
-    border-radius: 1rem;
-  }
-  
+
   /* SUBMIT */
   button#submit {
-    width: 100%;
+    width: 25rem;;
     height: 3rem;
     border-radius: 0.5rem;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
     font-size: 1rem;
+    
   }
   
   /* RESULT */
@@ -308,6 +330,30 @@ body {
       width: 85vw;
       min-width: 380px;
     }
-  } 
-
+  }
+  #id-input {
+    display: flex; /* 아이디 입력칸과 버튼을 가로로 배열하기 위해 flexbox 사용 */
+    align-items: center; /* 버튼을 수직 중앙 정렬 */
+  }
   
+  .box {
+    flex: 1; /* 입력칸이 늘어나도록 설정 */
+    margin-right: 0.7rem; /* 아이디 입력칸과 버튼 사이 간격 설정 */
+  }
+  #face-input {
+    display: flex; /* 교원증 등록칸과 버튼을 가로로 배열하기 위해 flexbox 사용 */
+    align-items: center; /* 버튼을 수직 중앙 정렬 */
+  }
+  
+  .box {
+    flex: 1; /* 입력칸이 늘어나도록 설정 */
+    margin-right: 0.7rem; /* 교원증 등록칸과 버튼 사이 간격 설정 */
+  }
+  .image-input-wrapper {
+    display: flex; /* 인풋 필드와 버튼을 가로로 배열하기 위해 flexbox 사용 */
+    align-items: center; /* 내용을 수직 중앙 정렬 */
+    background-image: url('경로/이미지파일.png'); /* 사용할 이미지 파일 경로 설정 */
+    background-size: 1rem 1rem; /* 이미지 사이즈 설정 */
+    background-repeat: no-repeat; /* 배경 이미지 반복하지 않도록 설정 */
+    padding-left: 1.3rem; /* 이미지와 인풋 필드 사이 간격 설정 */
+  }

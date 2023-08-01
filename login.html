@@ -13,46 +13,22 @@
             <h1><img src="./logo.png" width="150px"></h1>
             <form action="">
                 <div class="int-area">
-                    <input type="text" name="id" id="id" autocomplete="off" required>
-                    <label for="id">USER NAME</label>
+                    <input class="box" type="text" placeholder="아이디 입력(6~20자)"/>
                 </div>
                 <div class="int-area">
-                    <input type="password" name="pw" id="pw" autocomplete="off" required>
-                    <label for="pw">PASSWORD</label>
+                    <input class="box" type="password" placeholder="비밀번호 입력"/>
                 </div>
                 <div class="btn-area">
                     <button id="btn" type="submit">LOGIN</button>
                 </div>
             </form>
-            <div class="caption">
-                <h6>아직 회원이 아니신가요?</h6>
+            <div class="exist">
+                <span>아직 회원이 아니신가요?</span>
                 <a href="./join.html">회원가입</a>
             </div>
-        </section>
-    
-        <script>       
-            let id = $('#id');
-            let pw = $('#pw');
-            let btn = $('#btn');
-            
-            $(btn).on('click', function() {
-                if($(id).val() == "") {
-                    $(id).next('label').addClass('warning');
-                    setTimeout(function() {
-                        $('label').removeClass('warning');
-                    }, 1500);
-                }
-                else if($(pw).val() == "") {
-                    $(pw).next('label').addClass('warning');
-                    setTimeout(function() {
-                        $('label').removeClass('warning');
-                    }, 1500);
-                }
-            });
-        </script>           
+        </section>   
     </body>
     </html>
-
 </body>
 </html>
 
