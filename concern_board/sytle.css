@@ -182,13 +182,15 @@
   }
 
   .main {
-    height: 30rem;
+    /* border: 1px solid black; */
+    height: 45rem;
     width: 60rem;
     margin: 3rem 18rem 3rem 18rem;
     padding: 1rem;
   }
 
   .upMain {
+    /* border: 1px solid black; */
   }
 
   .postName {
@@ -214,9 +216,12 @@
     font-size: 1.5rem;
     margin-left: 1rem;
   }
+  .searchButtonText {
+}
 
   .midMain {
-    margin: 3rem 3rem;
+    /* border: 1px solid black; */
+    /* margin: 3rem 3rem; */
   }
 
   .post {
@@ -232,7 +237,63 @@
     color: gray;
   }
 
-  .footer {
-    height: 5rem;
-  }
+
+  /* 여기서부터 수정해야됌 */
+.downMain {
+  /* border: 1px solid black; */
+  /* margin-top: 2rem; */
+  height:4.5rem;
+  /* padding: 1rem; */
+}
+
+.writeWrapper{
+  /* border: 1px solid black; */
+  width:100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.write{
+  position: relative;
+  /* border: 1px solid black; */
+  width:6rem;
+  height:3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5rem;
+  background-color: #19AE4B;
+  font-size: 1.4rem;
+}
+.writeText{
+  color: white;
+}
+
+.numberWrapper {
+  width: 30%;
+  /* border: 1px solid black; */
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 1.5rem;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+}
+
+.before {
+  margin-right: 1rem;
+}
+.after {
+  margin-left: 1rem;
+}
+
+.num1 {
+  color: #19ae4b;
+}
+
+.footer {
+  position: relative;
+  height: 10rem;
+  background-color: gray;
+}
 }
