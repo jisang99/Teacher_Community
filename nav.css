@@ -103,6 +103,7 @@ table {
     justify-content: center; /* 수평 가운데 정렬 */
     align-items: center; /* 수직 가운데 정렬 */
     gap: 1.6rem;
+    font-family: 'Pretendard-Light';
 }
 
 ul {
@@ -111,12 +112,14 @@ ul {
     padding: 0;
     display: flex; /* 가로로 항목들을 정렬 */
     align-items: center; /* 수직 가운데 정렬 */
+    
 }
 
 li {
     margin-right: 20px;
     position: relative; /* 상대적 위치 설정 */
-    font-size: 1.6rem;
+    font-size: 1.4rem;
+    
 }
 
 a {
