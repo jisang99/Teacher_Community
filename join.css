@@ -157,10 +157,6 @@ table {
     color: #a0a0a0;
   }
   
-  .box:focus {
-    outline: 0.01rem solid #CBEAFF;
-  }
-  
   /* error msg */
   .info .error-msg {
     position: absolute;
@@ -343,17 +339,4 @@ table {
   #face-input {
     display: flex; /* 교원증 등록칸과 버튼을 가로로 배열하기 위해 flexbox 사용 */
     align-items: center; /* 버튼을 수직 중앙 정렬 */
-  }
-  
-  .box {
-    flex: 1; /* 입력칸이 늘어나도록 설정 */
-    margin-right: 0.7rem; /* 교원증 등록칸과 버튼 사이 간격 설정 */
-  }
-  .image-input-wrapper {
-    display: flex; /* 인풋 필드와 버튼을 가로로 배열하기 위해 flexbox 사용 */
-    align-items: center; /* 내용을 수직 중앙 정렬 */
-    background-image: url('경로/이미지파일.png'); /* 사용할 이미지 파일 경로 설정 */
-    background-size: 1rem 1rem; /* 이미지 사이즈 설정 */
-    background-repeat: no-repeat; /* 배경 이미지 반복하지 않도록 설정 */
-    padding-left: 1.3rem; /* 이미지와 인풋 필드 사이 간격 설정 */
   }
