@@ -1,5 +1,12 @@
 /* 작은화면을 위한 css */
 /* nav바 만들어지면 추가하기 */
+.wrapper{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items : center;
+}
+
 .nav {
   position: relative;
   width: 100%;
@@ -160,6 +167,7 @@
 .footer {
   position: relative;
   height: 15rem;
+  width:100%;
   background-color: gray;
 }
 
