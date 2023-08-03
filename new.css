@@ -99,7 +99,7 @@ table {
 /* 기본 스타일 */
 
 /* 미디어 쿼리 */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1920px) {
     /* 화면 크기가 768px 이하일 때의 스타일 */
   }
   
