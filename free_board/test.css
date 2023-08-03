@@ -1,0 +1,134 @@
+@media screen and (min-aspect-ratio: 16/9) {
+  .nav {
+    width: 100%;
+    height: 4rem;
+    background-color: red;
+  }
+
+  .backgroundTitle {
+    width: 100%;
+    height: 9rem;
+  }
+
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .main {
+    height: 30rem;
+    width: 60rem;
+    margin: 3rem 18rem 3rem 18rem;
+    padding: 1rem;
+  }
+
+  .upMain {
+  }
+
+  .postName {
+    font-size: 1.5rem;
+  }
+
+  .search {
+  }
+
+  .textBox {
+    width: 20rem; /* 너비 조정 */
+    height: 1.5rem; /* 높이 조정 */
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 20px; /* 둥근 모서리 */
+    font-size: 16px; /* 글꼴 크기 */
+  }
+
+  .searchButton {
+    width: 6rem;
+    height: 2.5rem;
+    border-radius: 10rem;
+    font-size: 1.5rem;
+    margin-left: 1rem;
+  }
+  .searchButtonText {
+}
+
+  .midMain {
+    margin: 3rem 3rem;
+  }
+
+  .post {
+    padding: 1rem 0.5rem 1rem 0.5rem;
+  }
+
+  .postTitle {
+    font-size: 1rem;
+  }
+
+  .postTime {
+    font-size: 0.8rem;
+    color: gray;
+  }
+
+
+  /* 여기서부터 수정해야됌 */
+.downMain {
+  position:relative;
+  /* border: 1px solid black; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 2rem;
+  height:10rem;
+  padding: 1rem;
+}
+
+.writeWrapper{
+  /* border: 1px solid black; */
+  width:100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.write{
+  position: relative;
+  /* border: 1px solid black; */
+  width:13rem;
+  height:5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5rem;
+  background-color: #19AE4B;
+  font-size: 2rem;
+}
+.writeText{
+  color: white;
+}
+
+.numberWrapper {
+  width: 30%;
+  /* border: 1px solid black; */
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 2rem;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+}
+
+.before {
+  margin-right: 1rem;
+}
+.after {
+  margin-left: 1rem;
+}
+
+.num1 {
+  color: #19ae4b;
+}
+
+.footer {
+  position: relative;
+  height: 15rem;
+  background-color: gray;
+}
+}
