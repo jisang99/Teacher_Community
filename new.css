@@ -199,6 +199,37 @@ div.join a {
     border-radius: 1.8rem;
     margin-top: 3rem;
 }
+.box:hover {
+    position: relative;
+    top: -5px;
+    
+    transition-property: top;
+    transition-duration: 0.5s, 0.2s;
+    transition-timing-function: ease, ease-in-out, ease-in;
+    transition-delay: 0,0,0;
+
+    transition: all 0.3s ease 0s;
+}
+@keyframes Boxup {
+    0%{
+        position: relative;
+        top: 0px;
+    }
+    100%{
+        position: relative;
+        top: -5px;
+    }
+}
+@keyframes Boxdown {
+    0%{
+        position: relative;
+        top: -5px;
+    }
+    100%{
+        position: relative;
+        top: 0px;
+    }
+}
 .text{
     font-family: 'Pretendard-Bold';
     font-size: 1.2rem;
@@ -212,6 +243,10 @@ div.join a {
     margin-top: 1.3rem;
     margin-left: 3rem;
 }
+.intext:hover {
+    cursor: pointer;
+    color: #FDBD5E;
+}
 .hr1{
     border: 0.001rem solid #dbdbdb;
     width: 13rem;
@@ -221,6 +256,14 @@ div.join a {
     color: #ed4141;
     margin-left: 5.8rem;
     /* display: none; */
+}
+.up{
+    display: inline;
+    width: 1rem;
+    height: 1rem;
+    position: relative;
+    left: 95px;
+    display: none;
 }
 i::before{
     display: inline;
@@ -250,7 +293,7 @@ i::before{
 .title {
     font-size: 1.3rem;
     font-weight: bold;
-    margin-left: 29.3rem;
+    margin-left: 24rem;
     margin-top:3rem;
     
     
@@ -263,7 +306,7 @@ i::before{
     border-radius: 1rem;
     border: 1px solid #D9D9D9;
     margin-top: 1.5rem;
-    margin-left: 29rem;
+    margin-left: 23.5rem;
 
     
 }
@@ -380,7 +423,7 @@ i::before{
 .banner {
     width:47rem;
     height: 7rem;
-    margin-left: 29rem;
+    margin-left: 24rem;
     margin-top: 7.5rem;
 }
 .adsquare {
@@ -389,5 +432,7 @@ i::before{
     border-radius: 1rem;
     border: 0.5px solid black;
     margin-top: -35rem;
-    margin-left: 67.5rem;
+    margin-left: 62rem;
+    background-image: url(./1e44b53709c14b8391b1c0ff3caa9e31_image_ad_120x600.png);
+    background-size: cover;   
 }
