@@ -102,6 +102,16 @@ table {
    border-collapse: collapse;
    border-spacing: 0;
 }
+/* 기본 스타일 */
+
+/* 미디어 쿼리 */
+@media screen and (max-width: 1920px) {
+    /* 화면 크기가 768px 이하일 때의 스타일 */
+  }
+  
+  @media screen and (max-width: 480px) {
+    /* 화면 크기가 480px 이하일 때의 스타일 */
+  }
 .nav {
     color: black;
     padding: 1rem;
