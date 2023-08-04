@@ -1,3 +1,9 @@
+@media screen and (max-width: 480px) {
+    /* 화면 크기가 480px 이하일 때의 스타일 */
+  }
+
+
+
 *{
     box-sizing: content-box;
 }
@@ -158,8 +164,8 @@ div.join a {
 
 /* mainpage */
 .mainimg{
-    width :95rem;
-    height:26rem;
+    width :106rem;
+    height:28rem;
 }
 .mon {
     display: flex;
@@ -286,6 +292,7 @@ i::before{
     align-content: space-between;
     margin-bottom: 1.5rem;
     margin-left: 1rem;
+    
 }
 
 
