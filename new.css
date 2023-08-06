@@ -168,8 +168,8 @@ div.join a {
 
 /* mainpage */
 .mainimg{
-    width :95rem;
-    height:26rem;
+    width :106rem;
+    height:28rem;
 }
 .mon {
     display: flex;
@@ -296,6 +296,7 @@ i::before{
     align-content: space-between;
     margin-bottom: 1.5rem;
     margin-left: 1rem;
+    
 }
 
 
