@@ -95,6 +95,10 @@ table {
 	border-spacing: 0;
 }
 
+.nav_wrapper {
+    align-items: center;
+  }
+  
 
 .wrapper {
     align-items: center;
@@ -107,7 +111,7 @@ table {
     padding-bottom: 10px;
     display: flex;
     align-items: center;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     width: 1000px;
     
 }
@@ -126,6 +130,7 @@ li {
 .bar {
     border-right: 1px solid #767676;
     font-family: 'Pretendard-SemiBold';
+    padding-right: 0.7rem;
 }
 
 .navbar {
@@ -148,6 +153,7 @@ li {
 .bar a {
     color: black;
     text-decoration: none;
+    margin-left: 0.85rem;
 }
 
 .bar a:hover {

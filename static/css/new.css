@@ -106,65 +106,7 @@ table {
   @media screen and (max-width: 480px) {
     /* 화면 크기가 480px 이하일 때의 스타일 */
   }
-.nav {
-    color: black;
-    padding: 1rem;
-    display: flex;
-    justify-content: center; /* 수평 가운데 정렬 */
-    align-items: center; /* 수직 가운데 정렬 */
-    gap: 1.6rem;
-}
 
-ul {
-    list-style: none;
-    margin: 2rem;
-    padding: 0;
-    display: flex; /* 가로로 항목들을 정렬 */
-    align-items: center; /* 수직 가운데 정렬 */
-}
-
-li {
-    margin-right: 20px;
-    position: relative; /* 상대적 위치 설정 */
-    font-size: 1.6rem;
-}
-
-a {
-    text-decoration: none;
-    color: black;
-}
-.join {
-    margin-left: 2rem;
-    font-size: 1rem;
-}
-
-div.join a {
-    color: black;
-    text-decoration: none;
-    margin-right: 1.6rem; /* '로그인'과 '회원가입' 간격을 1.6rem으로 설정 */
-}
-
-.logo {
-    width: 11.3rem;
-    height: 4.3;
-}
-.line {
-    width: 1px;
-    height: 2rem;
-    background-color: black;
-}
-.bar a {
-    color: black; /* 초기 글자 색은 검은색으로 설정 */
-    text-decoration: none;
-}
-
-.bar a:hover {
-    color: #FDBD5E; /* 마우스 호버 시 글자 색을 빨간색으로 변경 */
-}
-
-.join a:hover {
-    color: #FDBD5E; /* 마우스 호버 시 글자 색을 빨간색으로 변경 */
-}
 
 /* mainpage */
 .mainimg{
@@ -265,6 +207,7 @@ div.join a {
     font-family: 'Pretendard-Bold';
     color: #ed4141;
     margin-left: 5.8rem;
+    margin-right: 1rem;
     /* display: none; */
 }
 .up{
@@ -304,7 +247,7 @@ i::before{
 .title {
     font-size: 1.3rem;
     font-weight: bold;
-    margin-left: 24rem;
+    margin-left: 35.5rem;
     margin-top:3rem;
     
     
@@ -317,7 +260,7 @@ i::before{
     border-radius: 1rem;
     border: 1px solid #D9D9D9;
     margin-top: 1.5rem;
-    margin-left: 23.5rem;
+    margin-left: 35rem;
 
     
 }
@@ -330,7 +273,7 @@ i::before{
     margin-left: 23rem;
     margin-top: -31.8rem;
     position: absolute;
-    background-image: url("img1.jpg");
+    background-image: url("../img/img1.jpg");
     background-size: cover; 
   
     
@@ -343,7 +286,7 @@ i::before{
     border-radius: 1rem;
     margin-left: 23rem;
     margin-top: -11.5rem;
-    background-image: url("img2.jpg");
+    background-image: url("../img/img2.jpg");
     background-size: cover; 
 }
 
@@ -434,8 +377,9 @@ i::before{
 .banner {
     width:47rem;
     height: 7rem;
-    margin-left: 24rem;
+    margin-left: 35rem;
     margin-top: 7.5rem;
+    margin-bottom: 10rem;
 }
 .adsquare {
     width:8.5rem;
@@ -443,7 +387,7 @@ i::before{
     border-radius: 1rem;
     border: 0.5px solid black;
     margin-top: -35rem;
-    margin-left: 62rem;
-    background-image: url(./1e44b53709c14b8391b1c0ff3caa9e31_image_ad_120x600.png);
+    margin-left: 73rem;
+    background-image: url("../img/1e44b53709c14b8391b1c0ff3caa9e31_image_ad_120x600.png");
     background-size: cover;   
 }
