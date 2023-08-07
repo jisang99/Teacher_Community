@@ -145,6 +145,7 @@ table {
     height: 3rem;
     box-sizing: border-box;
     padding: 0.3rem 0 0.4rem 1rem;
+    padding-top: 12px;
     border-radius: 0.4rem;
     border: 0.03rem solid #d9d6d6;
     color: #383838;

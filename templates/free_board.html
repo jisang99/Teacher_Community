@@ -3,84 +3,137 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./reset.css">
-  <link rel="stylesheet" href="./sytle.css">
+  <!-- <link rel="stylesheet" href="./reset.css"> -->
+  <link rel="stylesheet" href="../static/css/free_board.css">
   <title>자유게시판</title>
 </head>
 <body>
-  <div class="wrapper">
-    <div class="nav"></div>
-    <div class="backgroundTitle"><div class="title">자유게시판</div></div>
-    
-    <div class="main">
-      <div class="upMain">
-        <div class="postName">게시글</div>
-        <div class="search">
-          <div class="searchBox"><input type="text" class="textBox"></div>
-          <a href="" class="searchButton"><div class="searchButtonText">검색</div></a>
-        </div>
-      </div>
+  <!-- nav바 -->
 
-      <div class="midMain">
-        <a href="" class="post post1">
-          <div class="postTitle">1. 00고등학교 시간제 교사 구합니다</div>
-          <div class="postTime">2023.07.30</div>
-        </a>
-        <a href="" class="post post2">
-          <div class="postTitle">2. 00고등학교 시간제 교사 구합니다</div>
-          <div class="postTime">2023.07.30</div>
-        </a>
-        <a href="" class="post post3">
-          <div class="postTitle">3. 00고등학교 시간제 교사 구합니다</div>
-          <div class="postTime">2023.07.30</div>
-        </a>
-        <a href="" class="post post4">
-          <div class="postTitle">4. 00고등학교 시간제 교사 구합니다</div>
-          <div class="postTime">2023.07.30</div>
-        </a>
-        <a href="" class="post post5">
-          <div class="postTitle">5. 00고등학교 시간제 교사 구합니다</div>
-          <div class="postTime">2023.07.30</div>
-        </a>
-        <a href="" class="post post6">
-          <div class="postTitle">6. 00고등학교 시간제 교사 구합니다</div>
-          <div class="postTime">2023.07.30</div>
-        </a>
-        <a href="" class="post post7">
-          <div class="postTitle">7. 00고등학교 시간제 교사 구합니다</div>
-          <div class="postTime">2023.07.30</div>
-        </a>
-        <a href="" class="post post8">
-          <div class="postTitle">8. 00고등학교 시간제 교사 구합니다</div>
-          <div class="postTime">2023.07.30</div>
-        </a>
-        <a href="" class="post post9">
-          <div class="postTitle">9. 00고등학교 시간제 교사 구합니다</div>
-          <div class="postTime">2023.07.30</div>
-        </a>
-        <a href="" class="post post10">
-          <div class="postTitle">10. 00고등학교 시간제 교사 구합니다</div>
-          <div class="postTime">2023.07.30</div>
-        </a>
-      </div>
-      <div class="downMain">
-        <div class="writeWrapper">
-          <a href= "" class="write"><div class="writeText">글쓰기</div></a>
+  <div class="nav_wrapper">
+
+    <div class="nav">
+
+        <a href="../templates/main.html"><img class="logo" src="../static/img/navlogo.jpg" alt="logo"></a>
+
+        <div class="navbar">
+
+            <ul class="bar">
+                <li><a href="../templates/free_board.html">자유게시판</a></li>
+                <li><a href="../templates/question_board.html">질문게시판</a></li>
+                <li><a href="../templates/concern_board.html">고민게시판</a></li>
+                <li><a href="../templates/edu_board.html">교육자료</a></li>
+                <li><a href="../templates/know-how_board.html">노하우</a></li>
+            </ul>
+        
+
+            <div class="join">
+              <span class="login"><a href="./mypage.html">마이페이지</a></span>
+              <a href="./login.html">로그아웃</a>
+            </div>
+
         </div>
-        <div class="numberWrapper">
-          <a href="" class="before">&lt;</a>
-          <a href="" class="num1">1</a>
-          <a href="" class="num2">2</a>
-          <a href="" class="num3">3</a>
-          <a href="" class="num4">4</a>
-          <a href="" class="num5">5</a>
-          <a href="" class="num6">6</a>
-          <a href="" class="after">&gt;</a>
-        </div>
-      </div>
+
+
     </div>
+  </div> 
 
-    <div class="footer"></div>
-  </div>
+
+    <div class="wrapper">
+      
+      <div class="backgroundTitle"><span>자유게시판</span></div>
+      
+      <div class="main">
+        <div class="upMain">
+          <div class="postName">게시글</div>
+          <div class="search">
+            <div class="searchBox"><input type="text" class="textBox"></div>
+            <a href="" class="searchButton"><div class="searchButtonText">검색</div></a>
+          </div>
+        </div>
+
+        <div class="midMain">
+          <a href="" class="post post1">
+            <div class="postTitle">1. 00고등학교 시간제 교사 구합니다</div>
+            <div class="postTime">2023.07.30</div>
+          </a>
+          <a href="" class="post post2">
+            <div class="postTitle">2. 00고등학교 시간제 교사 구합니다</div>
+            <div class="postTime">2023.07.30</div>
+          </a>
+          <a href="" class="post post3">
+            <div class="postTitle">3. 00고등학교 시간제 교사 구합니다</div>
+            <div class="postTime">2023.07.30</div>
+          </a>
+          <a href="" class="post post4">
+            <div class="postTitle">4. 00고등학교 시간제 교사 구합니다</div>
+            <div class="postTime">2023.07.30</div>
+          </a>
+          <a href="" class="post post5">
+            <div class="postTitle">5. 00고등학교 시간제 교사 구합니다</div>
+            <div class="postTime">2023.07.30</div>
+          </a>
+          <a href="" class="post post6">
+            <div class="postTitle">6. 00고등학교 시간제 교사 구합니다</div>
+            <div class="postTime">2023.07.30</div>
+          </a>
+          <a href="" class="post post7">
+            <div class="postTitle">7. 00고등학교 시간제 교사 구합니다</div>
+            <div class="postTime">2023.07.30</div>
+          </a>
+          <a href="" class="post post8">
+            <div class="postTitle">8. 00고등학교 시간제 교사 구합니다</div>
+            <div class="postTime">2023.07.30</div>
+          </a>
+          <a href="" class="post post9">
+            <div class="postTitle">9. 00고등학교 시간제 교사 구합니다</div>
+            <div class="postTime">2023.07.30</div>
+          </a>
+          <a href="" class="post post10">
+            <div class="postTitle">10. 00고등학교 시간제 교사 구합니다</div>
+            <div class="postTime">2023.07.30</div>
+          </a>
+        </div>
+        <div class="downMain">
+          <div class="writeWrapper">
+            <button class="write_btn"><a href= "../templates/free_write_page.html" >글쓰기</a></button>
+          </div>
+          <div class="numberWrapper">
+            <a href="" class="before">&lt;</a>
+            <a href="" class="num1">1</a>
+            <a href="" class="num2">2</a>
+            <a href="" class="num3">3</a>
+            <a href="" class="num4">4</a>
+            <a href="" class="num5">5</a>
+            <a href="" class="num6">6</a>
+            <a href="" class="after">&gt;</a>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- footer -->
+
+      <div class="footer_wrapper">
+
+        <div class="footer">
+
+            <img class = "logo2" src="../static/img/footerlogo.png" width="130px">
+        
+
+            <div class="footer_info">
+                <p>경상남도 진주시 진주대로501 경상국립대학교</p>
+                <br>
+                <p>멋쟁이사자처럼</p>
+                <br>
+                <p>팀명 : 스팸김치찌개</p>
+                <br>
+                <p>김수연 김재용 박경훈 이지상 정시은</p>
+            </div>
+
+        </div>
+
+      </div>
+
 </body>
 </html>

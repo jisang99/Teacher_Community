@@ -31,9 +31,7 @@
     font-family: 'Pretendard-ExtraBold';
     src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-ExtraBold.woff') format('woff');
 }
-* {
-    box-sizing: border-box;
-}
+
 body, main, div, h1, h2, h3 {
     margin: 0;
     padding: 0;
