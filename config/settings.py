@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'teacher_community',
     'social',
     'noticeboard',
-    'mypage',
 ]
 
 MIDDLEWARE = [

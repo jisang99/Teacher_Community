@@ -22,5 +22,4 @@ urlpatterns = [
     path('teacher_community/', include('teacher_community.urls')),
     path('noticeboard/', include('noticeboard.urls')),
     path('social/', include('social.urls')),
-    path('mypage/', include('mypage.urls')),
 ]
