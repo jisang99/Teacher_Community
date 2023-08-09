@@ -16,6 +16,9 @@ class Post(models.Model):
     def __str__(self):
         return self.title
     
+    class Meta:
+        ordering = ['-created_at']  # 최신 글이 먼저 오도록 정렬
+    
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     author = models.ForeignKey(Teacher, on_delete=models.CASCADE) 
