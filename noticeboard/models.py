@@ -1,8 +1,7 @@
 from django.db import models
-from social.models import Teacher  # social 앱에서 Teacher 모델을 가져옴
 
 class Post(models.Model):
-    author = models.ForeignKey(Teacher, on_delete=models.CASCADE)  # Teacher 모델을 외래키로 참조
+    author = models.ForeignKey('social.Teacher', on_delete=models.CASCADE)  # 'social.Teacher' 형식으로 가져오기
     title = models.CharField(max_length=255)
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
@@ -21,7 +20,7 @@ class Post(models.Model):
     
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
-    author = models.ForeignKey(Teacher, on_delete=models.CASCADE) 
+    author = models.ForeignKey('social.Teacher', on_delete=models.CASCADE)  # 'social.Teacher' 형식으로 가져오기
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
 
