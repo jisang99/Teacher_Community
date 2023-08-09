@@ -7,10 +7,15 @@ class Post(models.Model):
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    views = models.PositiveIntegerField(default=0)  # 조회수 필드 추가
+
+    def increase_views(self):
+        self.views += 1
+        self.save()
 
     def __str__(self):
         return self.title
-
+    
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     author = models.ForeignKey(Teacher, on_delete=models.CASCADE) 
