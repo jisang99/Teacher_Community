@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'teacher_community',
+    'social',
+    'noticeboard',
+    'mypage',
 ]
 
 MIDDLEWARE = [
