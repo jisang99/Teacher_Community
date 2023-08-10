@@ -1,13 +1,12 @@
 from django.urls import path
 from . import views
 
-app_name = 'teacher_community'
-
 urlpatterns = [
     path('', views.main, name='main'),
     path('concern_board/', views.concern_board, name='concern_board'),
     path('concern_write_page/', views.concern_write_page, name='concern_write_page'),
     path('edu_board/', views.edu_board, name='edu_board'),
+    path('edu_write_page/', views.edu_write_page, name='edu_write_page'),
     path('free_board/', views.free_board, name='free_board'),
     path('free_write_page/', views.free_write_page, name='free_write_page'),
     path('issue/', views.issue, name='issue'),
