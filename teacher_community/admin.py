@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Funding
+# from .models import Funding
 
 # Register your models here.
 from .models import Teacher, Post, Comment, AttachedFile
