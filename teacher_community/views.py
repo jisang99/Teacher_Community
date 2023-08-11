@@ -33,9 +33,8 @@ def concern_write_page(request):
 def edu_write_page(request):
     return render(request, 'edu_write_page.html')
 
-def free_board(request, post_id):
-    post_free_board = get_object_or_404(Post, pk = post_id)
-    return render(request, 'free_board.html', {'post_free_board' : post_free_board})
+def free_board(request):
+    return render(request, 'free_board.html')
 
 def free_write(request):
     if request.method=='POST':
