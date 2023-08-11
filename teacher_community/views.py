@@ -40,12 +40,9 @@ def free_board(request, post_id):
 def free_write(request):
     if request.method=='POST':
         post = Post()
-        post.title = request.GET['title']
-        post.content = request.GET['content']
-        post.created_at = request.GET['created_at']
-        post.updated_at = request.GET['updated_at']
-        post.views = request.GET['views']
-        post.category = request.GET['category']
+        post.title = request.POST['title']
+        post.content = request.POST['content']
+        post.category = request.POST['category']
         post.save()
         return redirect('/free_board/' +str(post.id))
     else:
