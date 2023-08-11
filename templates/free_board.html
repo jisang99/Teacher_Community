@@ -53,20 +53,18 @@
 
         <div class="midMain">
           {% for post in posts %}
-          <a href="{% url 'post_detail' post.id %}" class="post">
-            <div class="postTitle">{{ post.title }}</div>
-            <div class="postTime">{{ post.created_at }}</div>
-          </a>
+            <div class="postTitle">{{ post_free_board.title}}</div>
+            <div class="postTime">{{ post_free_board.created_at}}</div>
           {% endfor %}
         </div>
         <div class="downMain">
           <div class="writeWrapper">
-            <button class="write_btn"><a href="{% url 'free_write_page' %}">글쓰기</a></button>
+            <button class="write_btn"><a href="{% url 'free_write' %}">글쓰기</a></button>
           </div>
           <div class="numberWrapper">
             <a href="" class="before">&lt;</a>
             {% for i in page_range %}
-            <a href="{% url 'free_board' %}?page={{ i }}" class="num{{ i }}">{{ i }}</a>
+            <a href="{% url 'free_board' post_id%}">{{page.id}}</a>
             {% endfor %}
             <a href="" class="after">&gt;</a>
           </div>

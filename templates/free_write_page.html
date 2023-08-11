@@ -48,7 +48,8 @@
             <div class="Write">
                 <h4>글 작성하기</h4>
             </div>
-            <form>
+            <form action="{% url 'free_write' %}" method="post">
+                {% csrf_token %}
                 <div class="title2">
                     <dt>
                         <p class="title3">제목</p>

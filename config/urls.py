@@ -17,8 +17,11 @@ Including another URLconf
 # 프로젝트명/urls.py
 from django.contrib import admin
 from django.urls import path, include
+from teacher_community import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('teacher_community.urls')),
+    path('free_board<int:post_id>/', views.free_board, name='free_board'),
+    path('free_write', views.free_write, name='free_write'),
 ]
