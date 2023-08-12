@@ -18,6 +18,7 @@ urlpatterns = [
     path('mypage/', views.mypage, name='mypage'),
     path('question_board/', views.question_board, name='question_board'),
     path('question_write_page/', views.question_write_page, name='question_write_page'),
+    path('free_board_search/', views.free_board_search, name='free_board_search'),
 ]
 
 
