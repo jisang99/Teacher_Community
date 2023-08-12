@@ -29,7 +29,7 @@
             <div class="navbar">
 
                 <ul class="bar">
-                    <li><a href="{% url 'free_board' %}">자유게시판</a></li>
+                    <li><a href="{% url 'free_board' post.id %}">자유게시판</a></li>
                     <li><a href="{% url 'question_board' %}">질문게시판</a></li>
                     <li><a href="{% url 'concern_board' %}">고민게시판</a></li>
                     <li><a href="{% url 'edu_board' %}">교육자료</a></li>
