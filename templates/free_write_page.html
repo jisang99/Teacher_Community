@@ -1,4 +1,6 @@
+{% extends 'nav_footer.html' %}
 {% load static %}
+{% block content %}
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -8,83 +10,31 @@
     <title>자유게시글 작성</title>
 </head>
 <body>
-
-    <!-- nav바 -->
-
-    <div class="nav_wrapper">
-
-        <div class="nav">
-
-            <a href="{% url 'main' %}"><img class="logo" src="{% static 'img/navlogo.jpg' %}" alt="logo"></a>
-            
-            <div class="navbar">
-
-                <ul class="bar">
-                    <li><a href="{% url 'free_board' %}">자유게시판</a></li>
-                    <li><a href="{% url 'question_board' %}">질문게시판</a></li>
-                    <li><a href="{% url 'concern_board' %}">고민게시판</a></li>
-                    <li><a href="{% url 'edu_board' %}">교육자료</a></li>
-                    <li><a href="{% url 'know-how_board' %}">노하우</a></li>
-                </ul>
-            
-
-                <div class="join">
-                    <span class="login"><a href="{% url 'mypage' %}">마이페이지</a></span>
-                </div>
-
-            </div>
-
-
-        </div>
-    </div> 
-
-
     <!-- 자유 글쓰기 부분 -->
 
-        <div class="write_wrapper">
-            <div class="Title">
-                <h2>자유게시판</h2>
-            </div>
-            <div class="Write">
-                <h4>글 작성하기</h4>
-            </div>
-            <form>
-                <div class="title2">
-                    <dt>
-                        <p class="title3">제목</p>
-                        <dd><input class="titlebox" type="text" placeholder="제목입력"></dd>
-                    </dt>
-                </div>
-                <div class="WriteForm">
-                    <textarea class="writeform" placeholder="글을 작성해주세요" cols="110" rows="20"></textarea>
-                </div>
-
-                <button><p>게시하기</p></button>
-            </form>
+    <div class="write_wrapper">
+        <div class="Title">
+            <h2>자유게시판</h2>
         </div>
-
-        <!-- footer -->
-
-        <div class="footer_wrapper">
-
-            <div class="footer">
-    
-                <img class="logo2" src="{% static 'img/footerlogo.png' %}" width="130px">
-            
-    
-                <div class="footer_info">
-                    <p>경상남도 진주시 진주대로501 경상국립대학교</p>
-                    <br>
-                    <p>멋쟁이사자처럼</p>
-                    <br>
-                    <p>팀명 : 스팸김치찌개</p>
-                    <br>
-                    <p>김수연 김재용 박경훈 이지상 정시은</p>
-                </div>
-    
-            </div>
-    
+        <div class="Write">
+            <h4>글 작성하기</h4>
         </div>
-
+        <form action="{% url 'create_post' %}" method="post">
+            {% csrf_token %}
+            <div class="title2">
+                <dt>
+                    <p class="title3">제목</p>
+                    <dd><input class="titlebox" type="text" placeholder="제목입력" name="title"></dd>
+                </dt>
+            </div>
+            <div class="WriteForm">
+                <textarea class="writeform" placeholder="글을 작성해주세요" cols="110" rows="20" name="content"></textarea>
+            </div>
+            <input type="hidden" name="category" value="자유게시판">
+            <input type="submit" value="제출">
+            <button><p>게시하기</p></button>
+        </form>
+    </div>
 </body>
 </html>
+{% endblock %}
