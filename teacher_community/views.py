@@ -71,45 +71,11 @@ def concern_write_page(request):
 def edu_write_page(request):
     return render(request, 'edu_write_page.html')
 
-def free_board(request, post_id):
-    post_free_board = get_object_or_404(Post, pk = post_id)
-    return render(request, 'free_board.html', {'post_free_board' : post_free_board})
-
-def free_write(request):
-    if request.method=='POST':
-        post = Post()
-        post.title = request.POST['title']
-        post.content = request.POST['content']
-        post.category = request.POST['category']
-        post.save()
-        return redirect('/free_board/' +str(post.id))
-    else:
-        return render(request, 'free_write_page.html')
-
-def free_write_update(request, post_id):
-    post - Post.objects.get(id=post_id)
-    if request.method=='POST':
-        post = Post()
-        post.title = request.GET['title']
-        post.content = request.GET['content']
-        post.created_at = request.GET['created_at']
-        post.updated_at = request.GET['updated_at']
-        post.views = request.GET['views']
-        post.category = request.GET['category']
-        post.save()
-        return redirect('/free_board/' +str(post.id))
-    else:
-        return render(request, 'free_write_page.html', {'post':post})
-
-
 def know_how_write_page(request):
     return render(request, 'know-how_write_page.html')
 
 # def join(request):
 #     return render(request, 'join.html')
-
-def issue(request):
-    return render(request, 'issue.html')
 
 # 로그인
 # def login(request):
