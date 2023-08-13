@@ -1,13 +1,34 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import authenticate, login, logout
+from django.utils import timezone
 from .forms import SignupForm
+from .models import Post
 
 def main(request):
     return render(request, 'main.html')
 
 def free_board(request):
-    return render(request, 'free_board.html')
+    posts = Post.objects.filter(category='자유게시판')
+    return render(request, 'free_board.html', {'posts':posts})
+
+def free_detail(request, post_id):
+    post_detail = get_object_or_404(Post, pk = post_id)
+    return render(request, 'free_detail.html', {'post_detail':post_detail})
+
+def free_write_page(request):
+    return render(request, 'free_write_page.html')
+
+def create_post(request):
+    post = Post()
+    post.title = request.POST['title']
+    post.author = request.user
+    post.content = request.POST['content']
+    post.category = request.POST['category']
+    post.created_at = timezone.datetime.now()
+    post.updated_at = timezone.datetime.now()
+    post.save()
+    return render(request, 'main.html')
 
 def question_board(request):
     return render(request, 'question_board.html')
@@ -19,13 +40,14 @@ def edu_board(request):
     return render(request, 'edu_board.html')
 
 def know_how_board(request):
-    return render(request, 'know_how_board.html')
+    return render(request, 'know-how_board.html')
 
 def mypage(request):
     return render(request, 'mypage.html')
 
 
 def question_write_page(request):
+
     return render(request, 'question_write_page.html')
 
 def concern_write_page(request):
@@ -38,7 +60,7 @@ def free_write_page(request):
     return render(request, 'free_write_page.html')
 
 def know_how_write_page(request):
-    return render(request, 'know_how_write_page.html')
+    return render(request, 'know-how_write_page.html')
 
 # def join(request):
 #     return render(request, 'join.html')

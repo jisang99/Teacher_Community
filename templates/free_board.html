@@ -24,8 +24,8 @@
       </div>
 
       <div class="midMain">
-        {% for post in posts %}
-        <a href="{% url 'post_detail' post.id %}" class="post">
+        {% for post in posts.all %}
+        <a href="{% url 'free_detail' post.id %}" class="post">
           <div class="postTitle">{{ post.title }}</div>
           <div class="postTime">{{ post.created_at }}</div>
         </a>
