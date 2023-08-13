@@ -16,16 +16,25 @@ def free_board_search(request):
         # 제목에 검색어가 포함된 게시물을 필터링하여 가져옴
         posts = Post.objects.filter(title__contains=query)
     else:
-        posts = []  # 검색어가 없으면 빈 리스트를 할당
+        posts = Post.objects.none()  # 빈 쿼리셋 반환
 
     context = {
-        'posts': posts,
+        'search_results': posts,
     }
     return render(request, 'free_board_search.html', context)
 
 def free_board(request):
-    posts = Post.objects.filter(category='자유게시판')
-    return render(request, 'free_board.html', {'posts':posts})
+    query = request.GET.get('q')  # 검색어를 가져옴
+
+    if query:
+        # 제목에 검색어가 포함된 게시물을 필터링하여 가져옴
+        search_results = Post.objects.filter(title__contains=query)
+        context = {'search_results': search_results}
+    else:
+        posts = Post.objects.filter(category='자유게시판')
+        context = {'posts': posts}
+
+    return render(request, 'free_board.html', context)
 
 def free_detail(request, post_id):
     post_detail = get_object_or_404(Post, pk = post_id)
@@ -46,13 +55,57 @@ def create_post(request):
     return render(request, 'main.html')
 
 def question_board(request):
-    return render(request, 'question_board.html')
+    query = request.GET.get('q')  # 검색어를 가져옴
+
+    if query:
+        # 제목에 검색어가 포함된 게시물을 필터링하여 가져옴
+        search_results = Post.objects.filter(title__contains=query)
+        context = {'search_results': search_results}
+    else:
+        posts = Post.objects.all()  # 모든 게시물을 가져옴
+        context = {'posts': posts}
+
+    return render(request, 'question_board.html', context)
+
+def question_detail(request, post_id):
+    post = get_object_or_404(Post, id=post_id)
+    context = {'post': post}
+    return render(request, 'question_detail.html', context)
 
 def concern_board(request):
-    return render(request, 'concern_board.html')
+    query = request.GET.get('q')  # 검색어를 가져옴
+
+    if query:
+        # 제목에 검색어가 포함된 게시물을 필터링하여 가져옴
+        search_results = Post.objects.filter(title__contains=query)
+        context = {'search_results': search_results}
+    else:
+        posts = Post.objects.all()  # 모든 게시물을 가져옴
+        context = {'posts': posts}
+
+    return render(request, 'concern_board.html', context)
+
+def concern_detail(request, post_id):
+    post = get_object_or_404(Post, id=post_id)
+    context = {'post': post}
+    return render(request, 'concern_detail.html', context)
 
 def edu_board(request):
-    return render(request, 'edu_board.html')
+    search_query = request.GET.get('q')
+    posts = Post.objects.all()
+    
+    if search_query:
+        posts = posts.filter(title__icontains=search_query)
+        context = {'search_results': posts}
+    else:
+        context = {'posts': posts}
+    
+    return render(request, 'edu_board.html', context)
+
+def edu_detail(request, post_id):
+    post = get_object_or_404(Post, pk=post_id)
+    context = {'post': post}
+    return render(request, 'edu_detail.html', context)
 
 def know_how_board(request):
     return render(request, 'know-how_board.html')

@@ -1,0 +1,28 @@
+{% extends 'nav_footer.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/edu_detail.css' %}">
+  <title>{{ post.title }}</title>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="backgroundTitle"><span>교육자료</span></div>
+    <div class="main">
+      <div class="postDetail">
+        <div class="postTitle">{{ post.title }}</div>
+        <div class="postTime">{{ post.date }}</div>
+        <div class="postContent">{{ post.content }}</div>
+      </div>
+      <div class="backToList">
+        <a href="{% url 'edu_board' %}">목록으로 돌아가기</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+{% endblock %}
