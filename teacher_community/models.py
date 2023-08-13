@@ -4,7 +4,7 @@ from django.contrib.humanize.templatetags.humanize import intcomma
 from django.contrib.auth.models import AbstractUser
 
 class Teacher(AbstractUser):
-    license = models.ImageField(upload_to='teacher_id_proofs/', blank=True, null=True)
+    license = models.ImageField(upload_to='teacher_id_proofs/')
 
     def __str__(self):
         return self.username
