@@ -39,9 +39,14 @@
             
 
                 <div class="join">
-
+                    {% if not user.is_authenticated %}
                     <span class="login"><a href="{% url 'login' %}">로그인</a></span>
                     <a href="{% url 'join' %}">회원가입</a>
+                    {% endif %}
+                    {% if user.is_authenticated %}
+                    <span class="logout"><a href="{% url 'logout' %}">로그아웃</a></span>
+                    {% endif %}
+
 
                 </div>
 
