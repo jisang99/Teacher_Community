@@ -7,8 +7,6 @@
     <title>회원가입</title>
     <link rel="stylesheet" href="{% static 'css/join.css' %}">
     <script src="https://kit.fontawesome.com/32afc995e9.js" crossorigin="anonymous"></script>
-
-    
 </head>
 <body>
     <div class="container">
@@ -25,26 +23,21 @@
                     {% csrf_token %}
                     <div class="info" id="info__id">
                         <div id="id-input">
-                            <label for="{{ form.username.id_for_label }}">아이디</label>
-                            {{ form.username }}
+                            <input class="box" type="text" name="username" placeholder="아이디 입력 (6~20자)" value="{{ form.username.value }}"/>
                             <button id="id-check">중복 확인</button>
                         </div>
                         <div class="error-msg">{{ form.username.errors }}</div>
                     </div>
                     <div class="info" id="info__pw">
-                        <label for="{{ form.password1.id_for_label }}">비밀번호</label>
-                        {{ form.password1 }}
-                        <div class="error-msg">{{ form.password1.errors }}</div>
+                        <input class="box" type="password" name="password" placeholder="비밀번호 입력 (문자, 숫자, 특수문자 포함 8~20자)"/>
+                        <div class="error-msg">{{ form.password.errors }}</div>
                     </div>
                     <div class="info" id="info__pwRe">
-                        <label for="{{ form.password2.id_for_label }}">비밀번호 확인</label>
-                        {{ form.password2 }}
-                        <div class="error-msg">{{ form.password2.errors }}</div>
+                        <input class="box" type="password" name="password_confirm" placeholder="비밀번호 확인"/>
+                        <div class="error-msg">{{ form.password_confirm.errors }}</div>
                     </div>
                     <div class="info" id="info__face">
                         <div id="face-input">
-                            <label for="{{ form.profile_picture.id_for_label }}">프로필 사진</label>
-                            {{ form.profile_picture }}
                             <input class="box_face" type="file" name="profile_picture" placeholder="프로필 사진 등록"/>
                             <button id="face-check">프로필 사진 등록</button>
                         </div>
@@ -52,8 +45,6 @@
                     </div>
                     <button type="submit" id="submit">가입하기</button>
                 </form>
-                
-                
                 
                 
             </section>
