@@ -1,11 +1,7 @@
-<<<<<<< HEAD
 from django.shortcuts import render
 from .models import Post  # 필요한 모델 임포트
-=======
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Post
 from django.utils import timezone
->>>>>>> 1f0125c4c27d6047842480bf3d6da3948495111a
 
 def main(request):
     posts = Post.objects.all()
