@@ -7,6 +7,7 @@ from .forms import SignupForm
 from .models import Post
 from .models import AttachedFile
 from django.core.files.storage import FileSystemStorage
+from django.http import JsonResponse
 
 def main(request):
     posts = Post.objects.all()
@@ -276,3 +277,20 @@ def mypage(request):
         'user': user,
     }
     return render(request, 'mypage.html', context)
+
+def like_post(request, post_id):
+    post = get_object_or_404(Post, id=post_id)
+    user = request.user
+
+    if user.is_authenticated:
+        liked_posts = user.like_set.all()
+        if post in liked_posts:
+            user.like_set.remove(post)
+        else:
+            user.like_set.add(post)
+
+        post_likes_count = post.like_set.count()  # 해당 포스트의 좋아요 수 계산
+        user_like_count = user.like_set.count()  # 사용자별 좋아요 수 계산
+        return JsonResponse({'post_likes_count': post_likes_count, 'user_like_count': user_like_count})
+
+    return JsonResponse({}, status=401)  # 인증되지 않은 사용자에게는 401 Unauthorized 응답

@@ -26,4 +26,5 @@ urlpatterns = [
     path('question/<int:post_id>/', views.question_detail, name='question_detail'),
     path('concern/<int:post_id>/', views.concern_detail, name='concern_detail'),
     path('edu_detail/<int:post_id>/', views.edu_detail, name='edu_detail'),
+    path('like/<int:post_id>/', views.like_post, name='like_post'),
 ]
