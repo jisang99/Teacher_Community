@@ -14,10 +14,12 @@
         <h2>마이페이지</h2>
 
         <div class="id">
-            <p>아이디</p>
+            <p>아이디: {{ user.username }}</p>
             <div class="teacher_card">
                 <p>교원증</p>
-                <div class="id_img"><img src=""/></div>
+                <div class="id_img">
+                    <img src="{{ user.license.url }}" alt="교원증 이미지">
+                </div>
             </div>
         </div>
 
