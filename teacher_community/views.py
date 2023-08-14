@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 from .forms import SignupForm
 from .models import Post
@@ -16,16 +17,25 @@ def free_board_search(request):
         # 제목에 검색어가 포함된 게시물을 필터링하여 가져옴
         posts = Post.objects.filter(title__contains=query)
     else:
-        posts = []  # 검색어가 없으면 빈 리스트를 할당
+        posts = Post.objects.none()  # 빈 쿼리셋 반환
 
     context = {
-        'posts': posts,
+        'search_results': posts,
     }
     return render(request, 'free_board_search.html', context)
 
 def free_board(request):
-    posts = Post.objects.filter(category='자유게시판')
-    return render(request, 'free_board.html', {'posts':posts})
+    query = request.GET.get('q')  # 검색어를 가져옴
+
+    if query:
+        # 제목에 검색어가 포함된 게시물을 필터링하여 가져옴
+        search_results = Post.objects.filter(title__contains=query)
+        context = {'search_results': search_results}
+    else:
+        posts = Post.objects.filter(category='자유게시판')
+        context = {'posts': posts}
+
+    return render(request, 'free_board.html', context)
 
 def free_detail(request, post_id):
     post_detail = get_object_or_404(Post, pk = post_id)
@@ -45,20 +55,77 @@ def create_post(request):
     post.save()
     return render(request, 'main.html')
 
+def update_post(request, post_id):
+    post = Post.objects.get(id=post_id)
+    post.title = request.POST['title']
+    post.content = request.POST['content']
+    post.updated_at = timezone.datetime.now()
+    post.save()
+    return render(request, 'main.html')
+
+def delete_post(request, post_id):
+    post = Post.objects.get(id=post_id)
+    post.delete()
+    return render(request, 'main.html')
+
 def question_board(request):
-    return render(request, 'question_board.html')
+    query = request.GET.get('q')  # 검색어를 가져옴
+
+    if query:
+        # 제목에 검색어가 포함된 게시물을 필터링하여 가져옴
+        search_results = Post.objects.filter(title__contains=query)
+        context = {'search_results': search_results}
+    else:
+        posts = Post.objects.all()  # 모든 게시물을 가져옴
+        context = {'posts': posts}
+
+    return render(request, 'question_board.html', context)
+
+def question_detail(request, post_id):
+    post = get_object_or_404(Post, id=post_id)
+    context = {'post': post}
+    return render(request, 'question_detail.html', context)
 
 def concern_board(request):
-    return render(request, 'concern_board.html')
+    query = request.GET.get('q')  # 검색어를 가져옴
+
+    if query:
+        # 제목에 검색어가 포함된 게시물을 필터링하여 가져옴
+        search_results = Post.objects.filter(title__contains=query)
+        context = {'search_results': search_results}
+    else:
+        posts = Post.objects.all()  # 모든 게시물을 가져옴
+        context = {'posts': posts}
+
+    return render(request, 'concern_board.html', context)
+
+def concern_detail(request, post_id):
+    post = get_object_or_404(Post, id=post_id)
+    context = {'post': post}
+    return render(request, 'concern_detail.html', context)
 
 def edu_board(request):
-    return render(request, 'edu_board.html')
+    search_query = request.GET.get('q')
+    posts = Post.objects.all()
+    
+    if search_query:
+        posts = posts.filter(title__icontains=search_query)
+        context = {'search_results': posts}
+    else:
+        context = {'posts': posts}
+    
+    return render(request, 'edu_board.html', context)
+
+def edu_detail(request, post_id):
+    post = get_object_or_404(Post, pk=post_id)
+    context = {'post': post}
+    return render(request, 'edu_detail.html', context)
 
 def know_how_board(request):
     return render(request, 'know-how_board.html')
 
-def mypage(request):
-    return render(request, 'mypage.html')
+# def mypage(request):
+#     return render(request, 'mypage.html')
 
 
 def question_write_page(request):
@@ -111,3 +178,19 @@ def join_view(request):
         print(form.errors)
 
     return render(request, 'join.html', {'form': form})
+
+
+
+@login_required
+def mypage(request):
+    # 로그인한 사용자의 정보를 가져옵니다.
+    user = request.user
+    
+    # 필터를 사용하여 Teacher 모델에서 로그인한 사용자의 데이터를 조회합니다.
+    # 하지만 우리는 이미 로그인한 사용자의 정보를 가지고 있기 때문에 이 단계는 생략 가능합니다.
+    
+    # 데이터를 템플릿에 전달합니다.
+    context = {
+        'user': user,
+    }
+    return render(request, 'mypage.html', context)
