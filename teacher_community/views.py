@@ -45,6 +45,19 @@ def create_post(request):
     post.save()
     return render(request, 'main.html')
 
+def update_post(request, post_id):
+    post = Post.objects.get(id=post_id)
+    post.title = request.POST['title']
+    post.content = request.POST['content']
+    post.updated_at = timezone.datetime.now()
+    post.save()
+    return render(request, 'main.html')
+
+def delete_post(request, post_id):
+    post = Post.objects.get(id=post_id)
+    post.delete()
+    return render(request, 'main.html')
+
 def question_board(request):
     return render(request, 'question_board.html')
 
