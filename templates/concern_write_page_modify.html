@@ -6,34 +6,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/writepage.css">
     <link rel="stylesheet" href="{% static 'css/writepage.css' %}">
-    <title>자유게시글 작성</title>
+    <title>고민게시글 작성</title>
 </head>
 <body>
-    <!-- 자유 글쓰기 수정하기 부분 -->
+    <!-- 고민 글쓰기 수정하기 부분 -->
+
     <div class="write_wrapper">
         <div class="Title">
-            <h2>자유게시판</h2>
+            <h2>고민게시판</h2>
         </div>
         <div class="Write">
             <h4>글 작성하기</h4>
         </div>
-        <form action="{% url 'create_post' %}" method="post">
-            {% csrf_token %}
+        <form>
             <div class="title2">
                 <dt>
                     <p class="title3">제목</p>
-                    <dd><input class="titlebox" type="text" placeholder="제목입력" name="title"></dd>
+                    <dd><input class="titlebox" type="text" placeholder="제목입력"></dd>
                 </dt>
             </div>
             <div class="WriteForm">
-                <textarea class="writeform" placeholder="글을 작성해주세요" cols="110" rows="20" name="content"></textarea>
+                <textarea class="writeform" placeholder="글을 작성해주세요" cols="110" rows="20"></textarea>
             </div>
-            <input type="hidden" name="category" value="자유게시판">
-            <input type="submit" value="제출">
+
             <button><p>수정완료</p></button>
         </form>
-    </div>
+    </div>        
 </body>
 </html>
 {% endblock %}
