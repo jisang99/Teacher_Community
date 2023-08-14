@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>교육자료</title>
     <link rel="stylesheet" href="../static/css/edu_board_detail.css">
+    <script src="https://kit.fontawesome.com/ea807c9ffb.js" crossorigin="anonymous"></script>
 </head>
 <body>
     
@@ -41,9 +42,20 @@
                             </div>
                         </div>
 
+                        <div class="btn_wrapper">
+
+                            <button class="like_btn" id="like_Btn"><i class="fa-solid fa-heart"></i></button>
+
+                            <div class="count">
+                                <p>0</p>
+                            </div>
+
+                            
+                        </div>
+                        
                     </div>
 
-                   
+            
 
                     <div class="comment">
 
@@ -68,9 +80,9 @@
                 <textarea class="comment_write" placeholder="댓글을 작성해주세요" cols="110" rows="10"></textarea>
             </div>
 
-            <button>게시하기</button>
+            <button class="post_btn">게시하기</button>
         </div>
 
-
+    <script src="../static/js/button.js"></script>
 </body>
 </html>
