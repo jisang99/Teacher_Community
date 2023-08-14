@@ -10,7 +10,7 @@ def main(request):
     posts = Post.objects.all()
     return render(request, 'main.html', {'posts':posts})
 
-def free_board_search(request):
+def free_search(request):
     query = request.GET.get('q')  # 검색어를 가져옴
 
     if query:
@@ -22,7 +22,7 @@ def free_board_search(request):
     context = {
         'search_results': posts,
     }
-    return render(request, 'free_board_search.html', context)
+    return render(request, 'free_search.html', context)
 
 def free_board(request):
     query = request.GET.get('q')  # 검색어를 가져옴
@@ -41,8 +41,8 @@ def free_detail(request, post_id):
     post_detail = get_object_or_404(Post, pk = post_id)
     return render(request, 'free_detail.html', {'post_detail':post_detail})
 
-def free_write_page(request):
-    return render(request, 'free_write_page.html')
+def free_write(request):
+    return render(request, 'free_write.html')
 
 def create_post(request):
     post = Post()
