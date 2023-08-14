@@ -5,6 +5,8 @@ from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 from .forms import SignupForm
 from .models import Post
+from .models import AttachedFile
+from django.core.files.storage import FileSystemStorage
 
 def main(request):
     posts = Post.objects.all()
@@ -45,14 +47,23 @@ def free_write_page(request):
     return render(request, 'free_write_page.html')
 
 def create_post(request):
-    post = Post()
-    post.title = request.POST['title']
-    post.author = request.user
-    post.content = request.POST['content']
-    post.category = request.POST['category']
-    post.created_at = timezone.datetime.now()
-    post.updated_at = timezone.datetime.now()
-    post.save()
+    if request.method == 'POST':
+        post = Post()
+        post.title = request.POST['title']
+        post.author = request.user
+        post.content = request.POST['content']
+        post.category = request.POST['category']
+        post.created_at = timezone.datetime.now()
+        post.updated_at = timezone.datetime.now()
+        post.save()
+
+        # 업로드된 파일 처리
+        file = request.FILES.get('file')
+        if file:
+            attached_file = AttachedFile(post=post, file=file)
+            attached_file.save()
+
+        return redirect('main')
     return render(request, 'main.html')
 
 def update_post(request, post_id):
@@ -129,16 +140,87 @@ def know_how_board(request):
 
 
 def question_write_page(request):
+    if request.method == 'POST':
+        title = request.POST['title']
+        content = request.POST['content']
+        attachment = request.FILES.get('attachment')  # 업로드된 파일 가져오기
+
+        if attachment:
+            fs = FileSystemStorage()
+            filename = fs.save(attachment.name, attachment)  # 파일 저장
+            attachment_url = fs.url(filename)  # 파일 URL
+
+            # 필요한 경우 파일 정보를 데이터베이스에 저장하는 코드 추가 가능
+            attached_file = AttachedFile(file=attachment)  # AttachedFile 모델을 사용해서 파일 저장
+            attached_file.save()
+
+        # 게시글 작성 로직 처리 (생략)
+
+        return render(request, 'question_board.html')  # 작성 완료 후 페이지 이동
 
     return render(request, 'question_write_page.html')
 
 def concern_write_page(request):
+    if request.method == 'POST':
+        title = request.POST['title']
+        content = request.POST['content']
+        attachment = request.FILES.get('attachment')  # 업로드된 파일 가져오기
+
+        if attachment:
+            fs = FileSystemStorage()
+            filename = fs.save(attachment.name, attachment)  # 파일 저장
+            attachment_url = fs.url(filename)  # 파일 URL
+
+            # 필요한 경우 파일 정보를 데이터베이스에 저장하는 코드 추가 가능
+            attached_file = AttachedFile(file=attachment)  # AttachedFile 모델을 사용해서 파일 저장
+            attached_file.save()
+
+        # 게시글 작성 로직 처리 (생략)
+
+        return render(request, 'concern_board.html')  # 작성 완료 후 페이지 이동
+
     return render(request, 'concern_write_page.html')
 
 def edu_write_page(request):
+    if request.method == 'POST':
+        title = request.POST['title']
+        content = request.POST['content']
+        attachment = request.FILES.get('attachment')  # 업로드된 파일 가져오기
+
+        if attachment:
+            fs = FileSystemStorage()
+            filename = fs.save(attachment.name, attachment)  # 파일 저장
+            attachment_url = fs.url(filename)  # 파일 URL
+
+            # 필요한 경우 파일 정보를 데이터베이스에 저장하는 코드 추가 가능
+            attached_file = AttachedFile(file=attachment)  # AttachedFile 모델을 사용해서 파일 저장
+            attached_file.save()
+
+        # 게시글 작성 로직 처리 (생략)
+
+        return redirect('edu_board')  # 작성 완료 후 페이지 이동
+
     return render(request, 'edu_write_page.html')
 
 def know_how_write_page(request):
+    if request.method == 'POST':
+        title = request.POST['title']
+        content = request.POST['content']
+        attachment = request.FILES.get('attachment')  # 업로드된 파일 가져오기
+
+        if attachment:
+            fs = FileSystemStorage()
+            filename = fs.save(attachment.name, attachment)  # 파일 저장
+            attachment_url = fs.url(filename)  # 파일 URL
+
+            # 필요한 경우 파일 정보를 데이터베이스에 저장하는 코드 추가 가능
+            attached_file = AttachedFile(file=attachment)  # AttachedFile 모델을 사용해서 파일 저장
+            attached_file.save()
+
+        # 게시글 작성 로직 처리 (생략)
+
+        return redirect('know_how_board')  # 작성 완료 후 페이지 이동
+
     return render(request, 'know-how_write_page.html')
 
 # def join(request):
