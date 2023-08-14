@@ -1,32 +1,57 @@
 {% extends 'nav_footer.html' %}
 {% load static %}
-
 {% block content %}
 <!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <link rel="stylesheet" href="{% static 'css/question_detail.css' %}">
-  <title>질문 상세 페이지</title>
+  <link rel="stylesheet" href="{% static 'css/question_board.css' %}">
+  <title>질문게시판</title>
 </head>
 <body>
   <div class="wrapper">
-      
-    <div class="backgroundTitle"><span>질문 상세 페이지</span></div>
-    
+    <div class="backgroundTitle"><span>질문게시판</span></div>
     <div class="main">
-      <div class="post">
-        <div class="postTitle">{{ post.title }}</div>
-        <div class="postContent">{{ post.content }}</div>
-        <div class="postTime">{{ post.date }}</div>
+      <div class="upMain">
+        <div class="postName">게시글</div>
+        <div class="search">
+          <form action="{% url 'question_search' %}" method="GET">
+            <div class="searchBox">
+              <input type="text" class="textBox" name="q" placeholder="검색어를 입력하세요">
+            </div>
+            <button type="submit" class="searchButton">검색</button>
+          </form>
+        </div>
       </div>
 
-      <!-- 댓글 또는 기타 내용 추가 가능 -->
-      
-      <div class="backButton">
-        <a href="{% url 'question_board' %}" class="backLink">목록으로 돌아가기</a>
+      <div class="midMain">
+        {% if search_results %}
+          {% for post in search_results %}
+            <a href="{% url 'detail' post.id %}" class="post">
+              <div class="postTitle">{{ post.title }}</div>
+              <div class="postTime">{{ post.created_at }}</div>
+            </a>
+          {% endfor %}
+        {% else %}
+          <p>검색 결과가 없습니다.</p>
+        {% endif %}
+      </div>
+
+      <div class="downMain">
+        <div class="writeWrapper">
+          <button class="write_btn"><a href="{% url 'question_write' %}">글쓰기</a></button>
+        </div>
+        <div class="numberWrapper">
+          <a href="" class="before">&lt;</a>
+          <a href="" class="num1">1</a>
+          <a href="" class="num2">2</a>
+          <a href="" class="num3">3</a>
+          <a href="" class="num4">4</a>
+          <a href="" class="num5">5</a>
+          <a href="" class="num6">6</a>
+          <a href="" class="after">&gt;</a>
+        </div>
       </div>
     </div>
 </body>

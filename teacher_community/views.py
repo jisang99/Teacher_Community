@@ -10,144 +10,6 @@ def main(request):
     posts = Post.objects.all()
     return render(request, 'main.html', {'posts':posts})
 
-def free_search(request):
-    query = request.GET.get('q')  # 검색어를 가져옴
-
-    if query:
-        # 제목에 검색어가 포함된 게시물을 필터링하여 가져옴
-        posts = Post.objects.filter(title__contains=query)
-    else:
-        posts = Post.objects.none()  # 빈 쿼리셋 반환
-
-    context = {
-        'search_results': posts,
-    }
-    return render(request, 'free_search.html', context)
-
-def free_board(request):
-    query = request.GET.get('q')  # 검색어를 가져옴
-
-    if query:
-        # 제목에 검색어가 포함된 게시물을 필터링하여 가져옴
-        search_results = Post.objects.filter(title__contains=query)
-        context = {'search_results': search_results}
-    else:
-        posts = Post.objects.filter(category='자유게시판')
-        context = {'posts': posts}
-
-    return render(request, 'free_board.html', context)
-
-def free_detail(request, post_id):
-    post_detail = get_object_or_404(Post, pk = post_id)
-    return render(request, 'free_detail.html', {'post_detail':post_detail})
-
-def free_write(request):
-    return render(request, 'free_write.html')
-
-def create_post(request):
-    post = Post()
-    post.title = request.POST['title']
-    post.author = request.user
-    post.content = request.POST['content']
-    post.category = request.POST['category']
-    post.created_at = timezone.datetime.now()
-    post.updated_at = timezone.datetime.now()
-    post.save()
-    return render(request, 'main.html')
-
-def update_post(request, post_id):
-    post = Post.objects.get(id=post_id)
-    post.title = request.POST['title']
-    post.content = request.POST['content']
-    post.updated_at = timezone.datetime.now()
-    post.save()
-    return render(request, 'main.html')
-
-def delete_post(request, post_id):
-    post = Post.objects.get(id=post_id)
-    post.delete()
-    return render(request, 'main.html')
-
-def question_board(request):
-    query = request.GET.get('q')  # 검색어를 가져옴
-
-    if query:
-        # 제목에 검색어가 포함된 게시물을 필터링하여 가져옴
-        search_results = Post.objects.filter(title__contains=query)
-        context = {'search_results': search_results}
-    else:
-        posts = Post.objects.all()  # 모든 게시물을 가져옴
-        context = {'posts': posts}
-
-    return render(request, 'question_board.html', context)
-
-def question_detail(request, post_id):
-    post = get_object_or_404(Post, id=post_id)
-    context = {'post': post}
-    return render(request, 'question_detail.html', context)
-
-def concern_board(request):
-    query = request.GET.get('q')  # 검색어를 가져옴
-
-    if query:
-        # 제목에 검색어가 포함된 게시물을 필터링하여 가져옴
-        search_results = Post.objects.filter(title__contains=query)
-        context = {'search_results': search_results}
-    else:
-        posts = Post.objects.all()  # 모든 게시물을 가져옴
-        context = {'posts': posts}
-
-    return render(request, 'concern_board.html', context)
-
-def concern_detail(request, post_id):
-    post = get_object_or_404(Post, id=post_id)
-    context = {'post': post}
-    return render(request, 'concern_detail.html', context)
-
-def edu_board(request):
-    search_query = request.GET.get('q')
-    posts = Post.objects.all()
-    
-    if search_query:
-        posts = posts.filter(title__icontains=search_query)
-        context = {'search_results': posts}
-    else:
-        context = {'posts': posts}
-    
-    return render(request, 'edu_board.html', context)
-
-def edu_detail(request, post_id):
-    post = get_object_or_404(Post, pk=post_id)
-    context = {'post': post}
-    return render(request, 'edu_detail.html', context)
-
-def know_how_board(request):
-    return render(request, 'know-how_board.html')
-
-# def mypage(request):
-#     return render(request, 'mypage.html')
-
-
-def question_write_page(request):
-
-    return render(request, 'question_write_page.html')
-
-def concern_write_page(request):
-    return render(request, 'concern_write_page.html')
-
-def edu_write_page(request):
-    return render(request, 'edu_write_page.html')
-
-def know_how_write_page(request):
-    return render(request, 'know-how_write_page.html')
-
-# def join(request):
-#     return render(request, 'join.html')
-
-# 로그인
-# def login(request):
-#     return render(request, 'login.html')
-
 def login_view(request):
     form = AuthenticationForm(request=request, data=request.POST)
     if form.is_valid():
@@ -165,7 +27,6 @@ def logout_view(request):
     logout(request)
     return redirect('main')
 
-
 def join_view(request):
     if request.method == "POST":
         form = SignupForm(request.POST, request.FILES)
@@ -176,10 +37,7 @@ def join_view(request):
     else:
         form = SignupForm()
         print(form.errors)
-
     return render(request, 'join.html', {'form': form})
-
-
 
 @login_required
 def mypage(request):
@@ -194,3 +52,165 @@ def mypage(request):
         'user': user,
     }
     return render(request, 'mypage.html', context)
+
+###자유게시판###
+def free_board(request):
+    posts = Post.objects.filter(category='자유게시판')
+    return render(request, 'free_board.html', {'posts': posts})
+
+def free_search(request):
+    query = request.GET.get('q')  # 검색어를 가져옴
+
+    if query:
+        # 제목에 검색어가 포함된 게시물을 필터링하여 가져옴
+        posts = Post.objects.filter(category='자유게시판', title__contains=query)
+    else:
+        posts = Post.objects.none()  # 빈 쿼리셋 반환
+
+    context = {
+        'search_results': posts,
+    }
+    return render(request, 'free_search.html', context)
+
+def free_write(request):
+    return render(request, 'free_write.html')
+
+def free_modify(request, post_id):
+    post_detail = get_object_or_404(Post, pk = post_id)
+    return render(request, 'free_modify.html', {'post_detail':post_detail})
+
+###질문게시판###
+def question_board(request):
+    posts = Post.objects.filter(category='질문게시판')
+    return render(request, 'question_board.html', {'posts': posts})
+
+def question_search(request):
+    query = request.GET.get('q')  # 검색어를 가져옴
+
+    if query:
+        # 제목에 검색어가 포함된 게시물을 필터링하여 가져옴
+        posts = Post.objects.filter(category='질문게시판', title__contains=query)
+    else:
+        posts = Post.objects.none()  # 빈 쿼리셋 반환
+
+    context = {
+        'search_results': posts,
+    }
+    return render(request, 'question_search.html', context)
+
+def question_write(request):
+    return render(request, 'question_write.html')
+
+def question_modify(request, post_id):
+    post_detail = get_object_or_404(Post, pk = post_id)
+    return render(request, 'question_modify.html', {'post_detail':post_detail})
+
+###고민게시판###
+def concern_board(request):
+    posts = Post.objects.filter(category='고민게시판')
+    return render(request, 'concern_board.html', {'posts': posts})
+
+def concern_search(request):
+    query = request.GET.get('q')  # 검색어를 가져옴
+
+    if query:
+        # 제목에 검색어가 포함된 게시물을 필터링하여 가져옴
+        posts = Post.objects.filter(category='고민게시판', title__contains=query)
+    else:
+        posts = Post.objects.none()  # 빈 쿼리셋 반환
+
+    context = {
+        'search_results': posts,
+    }
+    return render(request, 'concern_search.html', context)
+
+def concern_write(request):
+    return render(request, 'concern_write.html')
+
+def concern_modify(request, post_id):
+    post_detail = get_object_or_404(Post, pk = post_id)
+    return render(request, 'concern_modify.html', {'post_detail':post_detail})
+
+###교육자료###
+def edu_board(request):
+    posts = Post.objects.filter(category='교육자료')
+    return render(request, 'edu_board.html', {'posts': posts})
+
+def edu_search(request):
+    query = request.GET.get('q')  # 검색어를 가져옴
+
+    if query:
+        # 제목에 검색어가 포함된 게시물을 필터링하여 가져옴
+        posts = Post.objects.filter(category='교육자료', title__contains=query)
+    else:
+        posts = Post.objects.none()  # 빈 쿼리셋 반환
+
+    context = {
+        'search_results': posts,
+    }
+    return render(request, 'edu_search.html', context)
+
+def edu_write(request):
+    return render(request, 'edu_write.html')
+
+def edu_detail(request, post_id):
+    post_detail = get_object_or_404(Post, pk=post_id)
+    return render(request, 'edu_detail.html', {'post_detail': post_detail})
+
+def edu_modify(request, post_id):
+    post_detail = get_object_or_404(Post, pk = post_id)
+    return render(request, 'edu_modify.html', {'post_detail':post_detail})
+
+###노하우###
+def know_how_board(request):
+    posts = Post.objects.filter(category='노하우')
+    return render(request, 'know-how_board.html', {'posts': posts})
+
+def know_how_search(request):
+    query = request.GET.get('q')  # 검색어를 가져옴
+
+    if query:
+        # 제목에 검색어가 포함된 게시물을 필터링하여 가져옴
+        posts = Post.objects.filter(category='노하우', title__contains=query)
+    else:
+        posts = Post.objects.none()  # 빈 쿼리셋 반환
+
+    context = {
+        'search_results': posts,
+    }
+    return render(request, 'know-how_search.html', context)
+
+def know_how_write(request):
+    return render(request, 'know-how_write.html')
+
+def know_how_modify(request, post_id):
+    post_detail = get_object_or_404(Post, pk = post_id)
+    return render(request, 'know-how_modify.html', {'post_detail':post_detail})
+
+def detail(request, post_id):
+    post_detail = get_object_or_404(Post, pk = post_id)
+    return render(request, 'detail.html', {'post_detail':post_detail})
+
+def create_post(request):
+    post = Post()
+    post.title = request.POST['title']
+    post.author = request.user
+    post.content = request.POST['content']
+    post.category = request.POST['category']
+    post.created_at = timezone.datetime.now()
+    post.updated_at = timezone.datetime.now()
+    post.save()
+    return redirect('/detail/' + str(post.id))
+
+def update_post(request, post_id):
+    post = Post.objects.get(id=post_id)
+    post.title = request.POST['title']
+    post.content = request.POST['content']
+    post.updated_at = timezone.datetime.now()
+    post.save()
+    return render(request, 'main.html')
+
+def delete_post(request, post_id):
+    post = Post.objects.get(id=post_id)
+    post.delete()
+    return render(request, 'main.html')
