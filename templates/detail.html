@@ -7,7 +7,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>게시판</title>
-    <link rel="stylesheet" href="../static/css/board_detail.css">
+    <link rel="stylesheet" href="{% static 'css/board_detail.css' %}">
+    <script src="{% static 'js/button.js' %}"></script>
 </head>
 <body>
     <!-- 게시판 디테일 페이지 -->
@@ -29,7 +30,16 @@
                     <p>{{post_detail.content}}</p>
                 </div>
             </div>
-
+            <div class="btn_wrapper">
+                <button class="like_btn" id="like_Btn"><i class="fa-solid fa-heart"></i></button>
+                <div class="count">
+                    <p>0</p>
+                </div>
+            </div>
+            <button class="like_btn" id="like_Btn"><i class="fa-solid fa-heart"></i></button>
+            <div class="count">
+                <p>0</p>
+            </div>
             <div class="comment">
                 <h4>댓글</h4>
                 <div class="comment_id"> 
