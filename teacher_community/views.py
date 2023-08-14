@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 from .forms import SignupForm
 from .models import Post
@@ -45,6 +46,19 @@ def create_post(request):
     post.save()
     return render(request, 'main.html')
 
+def update_post(request, post_id):
+    post = Post.objects.get(id=post_id)
+    post.title = request.POST['title']
+    post.content = request.POST['content']
+    post.updated_at = timezone.datetime.now()
+    post.save()
+    return render(request, 'main.html')
+
+def delete_post(request, post_id):
+    post = Post.objects.get(id=post_id)
+    post.delete()
+    return render(request, 'main.html')
+
 def question_board(request):
     return render(request, 'question_board.html')
 
@@ -57,8 +71,8 @@ def edu_board(request):
 def know_how_board(request):
     return render(request, 'know-how_board.html')
 
-def mypage(request):
-    return render(request, 'mypage.html')
+# def mypage(request):
+#     return render(request, 'mypage.html')
 
 
 def question_write_page(request):
@@ -111,3 +125,19 @@ def join_view(request):
         print(form.errors)
 
     return render(request, 'join.html', {'form': form})
+
+
+
+@login_required
+def mypage(request):
+    # 로그인한 사용자의 정보를 가져옵니다.
+    user = request.user
+    
+    # 필터를 사용하여 Teacher 모델에서 로그인한 사용자의 데이터를 조회합니다.
+    # 하지만 우리는 이미 로그인한 사용자의 정보를 가지고 있기 때문에 이 단계는 생략 가능합니다.
+    
+    # 데이터를 템플릿에 전달합니다.
+    context = {
+        'user': user,
+    }
+    return render(request, 'mypage.html', context)
