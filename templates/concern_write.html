@@ -18,7 +18,8 @@
         <div class="Write">
             <h4>글 작성하기</h4>
         </div>
-        <form action="{% url 'create_post' %}" method="post">
+
+        <form action="{% url 'create_post' %}" method="post" enctype="multipart/form-data">  <!-- 파일 업로드를 위한 enctype 추가 -->
             {% csrf_token %}
             <div class="title2">
                 <dt>
@@ -28,6 +29,9 @@
             </div>
             <div class="WriteForm">
                 <textarea class="writeform" placeholder="글을 작성해주세요" cols="110" rows="20" name="content"></textarea>
+            </div>
+            <div class="Attachment">
+                <input type="file" name="attachment">
             </div>
             <input type="hidden" name="category" value="고민게시판">
             <button><p>게시하기</p></button>

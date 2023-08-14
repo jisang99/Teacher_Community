@@ -19,17 +19,21 @@
         <div class="Write">
             <h4>글 작성하기</h4>
         </div>
-        <form>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
             <div class="title2">
                 <dt>
                     <p class="title3">제목</p>
-                    <dd><input class="titlebox" type="text" placeholder="제목입력"></dd>
+                    <dd><input class="titlebox" type="text" name="title" placeholder="제목입력"></dd>
                 </dt>
             </div>
             <div class="WriteForm">
-                <textarea class="writeform" placeholder="글을 작성해주세요" cols="110" rows="20"></textarea>
+                <textarea class="writeform" name="content" placeholder="글을 작성해주세요" cols="110" rows="20"></textarea>
             </div>
-            <button><p>게시하기</p></button>
+            <div class="FileForm">
+                <input type="file" name="attachment">
+            </div>
+            <button type="submit"><p>게시하기</p></button>
         </form>
     </div>
 </body>

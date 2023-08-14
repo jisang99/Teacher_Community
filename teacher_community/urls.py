@@ -8,7 +8,6 @@ urlpatterns = [
     path('logout/', views.logout_view, name='logout'),
     path('join/', views.join_view, name='join'),
     path('mypage/', views.mypage, name='mypage'),
-    path('detail/<int:post_id>', views.detail, name='detail'),
 
     path('free_board/', views.free_board, name='free_board'),
     path('free_search/', views.free_search, name='free_search'),
@@ -36,6 +35,8 @@ urlpatterns = [
     path('know-how_modify/<int:post_id>/', views.know_how_modify, name='know_how_modify'),
 
     path('create_post/', views.create_post, name='create_post'),
+    path('detail/<int:post_id>', views.detail, name='detail'),
     path('update_post/<int:post_id>', views.update_post, name='update_post'),
     path('delete_post/<int:post_id>', views.delete_post, name='delete_post'),
+    path('like/<int:post_id>/', views.like_post, name='like_post'),
 ]

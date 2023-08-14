@@ -18,7 +18,7 @@
         <div class="Write">
             <h4>글 작성하기</h4>
         </div>
-        <form action="{% url 'create_post' %}" method="post">
+        <form action="{% url 'create_post' %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="title2">
                 <dt>
@@ -30,9 +30,11 @@
                 <textarea class="writeform" placeholder="글을 작성해주세요" cols="110" rows="20" name="content"></textarea>
             </div>
             <input type="hidden" name="category" value="노하우">
+            <div class="file-upload">
+                <input type="file" name="attachment" id="attachment">
+            </div>
             <button><p>게시하기</p></button>
         </form>
-    </div>
-</body>
-</html>
-{% endblock %}
+    </body>
+    </html>
+    {% endblock %}

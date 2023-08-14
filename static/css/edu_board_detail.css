@@ -151,6 +151,7 @@ h4  {
     margin-top: 24px;
     padding-bottom: 100px;
     border-bottom: 1px solid #DBDBDB;
+    position: relative;
 }
 
 .content {
@@ -163,6 +164,7 @@ h4  {
 .file_wrapper {
 
     margin-top: 150px;
+    margin-bottom: 48px;
     width: 100%;
     height: 94px;
     
@@ -177,6 +179,12 @@ h4  {
     padding-left: 8px;
     padding-top: 8px;
 }
+
+.count {
+    display: flex;
+}
+
+
 
 .comment {
     margin-top: 12px;
@@ -207,7 +215,7 @@ h4  {
 }
 
 .write_form { 
-    margin-top: 150px;
+    margin-top: 300px;
     
 }
 
@@ -251,7 +259,7 @@ h4  {
  */
 
 
-button{
+ .post_btn {
     
     
     width: 180px;
@@ -268,3 +276,26 @@ button{
 
 }
 
+.like_btn {
+    
+    margin-right: 10px;  
+    position: absolute;
+    bottom: 6px;
+    right: 20px;
+    cursor: pointer;
+    border: 0.5px solid #DBDBDB;
+    border-radius: 4px;
+    color: #767676;
+    
+
+}
+
+.count {
+    
+    padding-bottom: 3px;
+    position: absolute;
+    bottom: 6px;
+    right: 10px;
+    font-size: 14px;
+    font-family: 'Pretendard-Regular';
+}
