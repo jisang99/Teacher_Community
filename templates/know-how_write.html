@@ -10,7 +10,7 @@
     <title>노하우 작성</title>
 </head>
 <body>
-    <!-- 고민 글쓰기 부분 -->
+    <!-- 노하우 글쓰기 부분 -->
     <div class="write_wrapper">
         <div class="Title">
             <h2>노하우</h2>
@@ -18,16 +18,18 @@
         <div class="Write">
             <h4>글 작성하기</h4>
         </div>
-        <form>
+        <form action="{% url 'create_post' %}" method="post">
+            {% csrf_token %}
             <div class="title2">
                 <dt>
                     <p class="title3">제목</p>
-                    <dd><input class="titlebox" type="text" placeholder="제목입력"></dd>
+                    <dd><input class="titlebox" type="text" placeholder="제목입력" name="title"></dd>
                 </dt>
             </div>
             <div class="WriteForm">
-                <textarea class="writeform" placeholder="글을 작성해주세요" cols="110" rows="20"></textarea>
+                <textarea class="writeform" placeholder="글을 작성해주세요" cols="110" rows="20" name="content"></textarea>
             </div>
+            <input type="hidden" name="category" value="노하우">
             <button><p>게시하기</p></button>
         </form>
     </div>

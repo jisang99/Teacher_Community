@@ -6,20 +6,50 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="{% static 'css/edu_detail.css' %}">
-  <title>{{ post.title }}</title>
+  <link rel="stylesheet" href="{% static 'css/edu_board.css' %}">
+  <title>교육자료</title>
 </head>
 <body>
   <div class="wrapper">
     <div class="backgroundTitle"><span>교육자료</span></div>
     <div class="main">
-      <div class="postDetail">
-        <div class="postTitle">{{ post.title }}</div>
-        <div class="postTime">{{ post.date }}</div>
-        <div class="postContent">{{ post.content }}</div>
+      <div class="upMain">
+        <div class="postName">게시글</div>
+        <div class="search">
+          <form action="{% url 'edu_search' %}" method="GET">
+            <div class="searchBox"><input type="text" class="textBox" name="q" placeholder="검색어를 입력하세요"></div>
+            <button type="submit" class="searchButton"><div class="searchButtonText">검색</div></button>
+          </form>
+        </div>
       </div>
-      <div class="backToList">
-        <a href="{% url 'edu_board' %}">목록으로 돌아가기</a>
+
+      <div class="midMain">
+        {% if search_results %}
+          {% for post in search_results %}
+            <a href="{% url 'detail' post.id %}" class="post">
+              <div class="postTitle">{{ post.title }}</div>
+              <div class="postTime">{{ post.created_at }}</div>
+            </a>
+          {% endfor %}
+        {% else %}
+          <p>검색 결과가 없습니다.</p>
+        {% endif %}
+      </div>
+
+      <div class="downMain">
+        <div class="writeWrapper">
+          <button class="write_btn"><a href="{% url 'edu_write' %}">글쓰기</a></button>
+        </div>
+        <div class="numberWrapper">
+          <a href="" class="before">&lt;</a>
+          <a href="" class="num1">1</a>
+          <a href="" class="num2">2</a>
+          <a href="" class="num3">3</a>
+          <a href="" class="num4">4</a>
+          <a href="" class="num5">5</a>
+          <a href="" class="num6">6</a>
+          <a href="" class="after">&gt;</a>
+        </div>
       </div>
     </div>
   </div>

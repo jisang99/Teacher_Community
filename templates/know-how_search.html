@@ -6,23 +6,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="{% static 'css/concern_board.css' %}">
-  <title>고민게시판</title>
+  <link rel="stylesheet" href="{% static 'css/know-how_board.css' %}">
+  <title>노하우</title>
 </head>
 <body>
   <div class="wrapper">
-    <div class="backgroundTitle"><span>고민게시판</span></div>
+    <div class="backgroundTitle"><span>노하우</span></div>
     <div class="main">
       <div class="upMain">
         <div class="postName">게시글</div>
         <div class="search">
-          <form action="{% url 'concern_search' %}" method="GET">
+          <form action="{% url 'know-how_search' %}" method="GET">
             <div class="searchBox">
               <input type="text" class="textBox" name="q" placeholder="검색어를 입력하세요">
             </div>
-            <button type="submit" class="searchButton">
-              <div class="searchButtonText">검색</div>
-            </button>
+            <button type="submit" class="searchButton">검색</button>
           </form>
         </div>
       </div>
@@ -39,19 +37,16 @@
           <p>검색 결과가 없습니다.</p>
         {% endif %}
       </div>
-      
+
       <div class="downMain">
         <div class="writeWrapper">
-          <button class="write_btn"><a href= "{% url 'concern_write' %}" >글쓰기</a></button>
+          <button class="write_btn"><a href="{% url 'know-how_write' %}">글쓰기</a></button>
         </div>
         <div class="numberWrapper">
           <a href="" class="before">&lt;</a>
-          <a href="" class="num1">1</a>
-          <a href="" class="num2">2</a>
-          <a href="" class="num3">3</a>
-          <a href="" class="num4">4</a>
-          <a href="" class="num5">5</a>
-          <a href="" class="num6">6</a>
+          {% for i in page_range %}
+            <a href="{% url 'know-how_board' %}?page={{ i }}" class="num{{ i }}">{{ i }}</a>
+          {% endfor %}
           <a href="" class="after">&gt;</a>
         </div>
       </div>

@@ -1,6 +1,5 @@
 {% extends 'nav_footer.html' %}
 {% load static %}
-
 {% block content %}
 <!DOCTYPE html>
 <html lang="ko">
@@ -17,7 +16,7 @@
       <div class="upMain">
         <div class="postName">게시글</div>
         <div class="search">
-          <form action="{% url 'free_board_search' %}" method="GET">
+          <form action="{% url 'free_search' %}" method="GET">
             <div class="searchBox">
               <input type="text" class="textBox" name="q" placeholder="검색어를 입력하세요">
             </div>
@@ -27,26 +26,17 @@
       </div>
 
       <div class="midMain">
-        {% if search_results %}
-          {% for post in search_results %}
-            <a href="{% url 'free_detail' post.id %}" class="post">
-              <div class="postTitle">{{ post.title }}</div>
-              <div class="postTime">{{ post.created_at }}</div>
-            </a>
-          {% endfor %}
-        {% else %}
-          {% for post in posts %}
-            <a href="{% url 'free_detail' post.id %}" class="post">
-              <div class="postTitle">{{ post.title }}</div>
-              <div class="postTime">{{ post.created_at }}</div>
-            </a>
-          {% endfor %}
-        {% endif %}
+        {% for post in posts %}
+          <a href="{% url 'detail' post.id %}" class="post">
+            <div class="postTitle">{{ post.title }}</div>
+            <div class="postTime">{{ post.created_at }}</div>
+          </a>
+        {% endfor %}
       </div>
 
       <div class="downMain">
         <div class="writeWrapper">
-          <button class="write_btn"><a href="{% url 'free_write_page' %}">글쓰기</a></button>
+          <button class="write_btn"><a href="{% url 'free_write' %}">글쓰기</a></button>
         </div>
         <div class="numberWrapper">
           <a href="" class="before">&lt;</a>

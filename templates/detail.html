@@ -1,0 +1,57 @@
+{% extends 'nav_footer.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시판</title>
+    <link rel="stylesheet" href="../static/css/board_detail.css">
+</head>
+<body>
+    <!-- 게시판 디테일 페이지 -->
+    <div class="write_wrapper">
+        <div class="Title">
+            <h2>{{post_detail.category}}</h2>
+        </div>
+        <div class="Write">
+            <h4>{{post_detail.title}}</h4>
+            <div class="Write_1">
+                <p>등록자명 : {{post_detail.author}}</p>
+                <p>등록일 : {{post_detail.created_at}}</p>
+            </div>
+        </div>
+
+        <form class="content_wrapper">
+            <div class="content_1">
+                <div class="content">        
+                    <p>{{post_detail.content}}</p>
+                </div>
+            </div>
+
+            <div class="comment">
+                <h4>댓글</h4>
+                <div class="comment_id"> 
+                    <div class="comment_id2">
+                        opopxxxx
+                    </div>
+                    <div class="comment_date">
+                        2023-08-13-12:19
+                    </div>
+                </div>
+                <div class="comment_ct"> 
+                    너무 공감합니다 ㅠㅠ 
+                </div>
+            </div>
+        </form>
+
+        <div class="write_form">
+            <textarea class="comment_write" placeholder="댓글을 작성해주세요" cols="110" rows="10"></textarea>
+        </div>
+
+        <button>게시하기</button>
+    </div>
+</body>
+</html>
+{% endblock %}
