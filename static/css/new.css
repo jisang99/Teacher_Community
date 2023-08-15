@@ -245,13 +245,18 @@ i::before{
 
 /* issue */
 
+.isuue_wrap{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin-right: 30rem;
+}
+
 .title {
     font-size: 1.3rem;
     font-weight: bold;
-    margin-left: 30rem;
+    margin-left: 21rem;
     margin-top:3rem;
-    
-    
 }
 
 
@@ -308,6 +313,9 @@ i::before{
 }
 
 /* 기사1 */
+
+
+
 .article_title1 {
     font-size: 1rem;
     font-weight: bold;
