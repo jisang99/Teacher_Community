@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 from .forms import SignupForm
-from .models import Post
+from .models import Post, Comment
 from .models import AttachedFile
 from django.core.files.storage import FileSystemStorage
 from django.http import JsonResponse
@@ -44,16 +44,17 @@ def join_view(request):
 
 @login_required
 def mypage(request):
-    # 로그인한 사용자의 정보를 가져옵니다.
+    
     user = request.user
-    
-    # 필터를 사용하여 Teacher 모델에서 로그인한 사용자의 데이터를 조회합니다.
-    # 하지만 우리는 이미 로그인한 사용자의 정보를 가지고 있기 때문에 이 단계는 생략 가능합니다.
-    
-    # 데이터를 템플릿에 전달합니다.
+    my_posts = Post.objects.filter(author=user)
+    my_comments = Comment.objects.filter(author=user)     
+
     context = {
         'user': user,
+        'my_posts': my_posts,
+        'my_comments': my_comments,
     }
+
     return render(request, 'mypage.html', context)
 
 ###자유게시판###

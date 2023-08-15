@@ -25,12 +25,29 @@
 
         <div class="write_info">
             <div class="Post">
-                <h3>내가 작성한 게시글</h3>
+                <h3>내가 작성한 게시글</h3><br><br>
+                <ul>
+                    {% for post in my_posts %}
+                        <li><a href="{% url 'detail' post.pk %}">{{ post.title }}</a></li><br><br>
+                    {% empty %}
+                        <li>작성한 게시글이 없습니다.</li>
+                    {% endfor %}
+                </ul>
             </div>
+            
             <div class="Comment">
-                <h3>내가 작성한 댓글</h3>
+                <h3>내가 작성한 댓글</h3><br><br>
+                <ul>
+                    {% for comment in my_comments %}
+                        <li><a href="{% url 'detail' comment.pk %}">{{ comment.content }}</a></li><br><br>
+                    {% empty %}
+                        <li>작성한 댓글이 없습니다.</li>
+                    {% endfor %}
+                </ul>
             </div>
         </div>
+        
+        
     </div>
 </body>
 </html>
