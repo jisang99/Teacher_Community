@@ -40,9 +40,7 @@ urlpatterns = [
     path('delete_post/<int:post_id>', views.delete_post, name='delete_post'),
     path('like/<int:post_id>/', views.like_post, name='like_post'),
 
-<<<<<<< HEAD
-=======
-    
->>>>>>> kh
+
+
     path('check_username/', views.check_username, name='check_username'),
 ]
