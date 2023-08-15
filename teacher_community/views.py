@@ -42,6 +42,12 @@ def join_view(request):
         print(form.errors)
     return render(request, 'join.html', {'form': form})
 
+def check_username(request):
+    if request.method == "GET":
+        username = request.GET.get("username")
+        exists = Teacher.objects.filter(username=username).exists()
+        return JsonResponse({"exists": exists})
+
 @login_required
 def mypage(request):
     # 로그인한 사용자의 정보를 가져옵니다.
