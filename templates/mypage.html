@@ -39,7 +39,7 @@
                 <h3>내가 작성한 댓글</h3><br><br>
                 <ul>
                     {% for comment in my_comments %}
-                        <li><a href="{% url 'detail' comment.pk %}">{{ comment.content }}</a></li><br><br>
+                        <li><a href="{% url 'detail' comment.pk %}">{{ comment.post }}</a></li><br><br>
                     {% empty %}
                         <li>작성한 댓글이 없습니다.</li>
                     {% endfor %}
