@@ -12,6 +12,8 @@ from django.http import JsonResponse
 from django.http import JsonResponse
 from .models import Teacher
 
+from .forms import PostForm
+
 def main(request):
     posts = Post.objects.all()
     return render(request, 'main.html', {'posts':posts})
@@ -45,14 +47,11 @@ def join_view(request):
         print(form.errors)
     return render(request, 'join.html', {'form': form})
 
-
 def check_username(request):
     if request.method == "GET":
         username = request.GET.get("username")
         exists = Teacher.objects.filter(username=username).exists()
         return JsonResponse({"exists": exists})
-
-
 
 @login_required
 def mypage(request):
@@ -69,9 +68,9 @@ def mypage(request):
 
     return render(request, 'mypage.html', context)
 
-###자유게시판###
+###free###
 def free_board(request):
-    posts = Post.objects.filter(category='자유게시판')
+    posts = Post.objects.filter(category='free')
     return render(request, 'free_board.html', {'posts': posts})
 
 def free_search(request):
@@ -80,7 +79,7 @@ def free_search(request):
 
     if query:
         # 제목에 검색어가 포함된 게시물을 필터링하여 가져옴
-        posts = Post.objects.filter(category='자유게시판', title__contains=query)
+        posts = Post.objects.filter(category='free', title__contains=query)
     else:
         posts = Post.objects.none()  # 빈 쿼리셋 반환
 
@@ -100,9 +99,9 @@ def free_modify(request, post_id):
     post_detail = get_object_or_404(Post, pk = post_id)
     return render(request, 'free_modify.html', {'post_detail':post_detail})
 
-###질문게시판###
+###question###
 def question_board(request):
-    posts = Post.objects.filter(category='질문게시판')
+    posts = Post.objects.filter(category='question')
     return render(request, 'question_board.html', {'posts': posts})
 
 def question_search(request):
@@ -110,7 +109,7 @@ def question_search(request):
 
     if query:
         # 제목에 검색어가 포함된 게시물을 필터링하여 가져옴
-        posts = Post.objects.filter(category='질문게시판', title__contains=query)
+        posts = Post.objects.filter(category='question', title__contains=query)
     else:
         posts = Post.objects.none()  # 빈 쿼리셋 반환
 
@@ -126,9 +125,9 @@ def question_modify(request, post_id):
     post_detail = get_object_or_404(Post, pk = post_id)
     return render(request, 'question_modify.html', {'post_detail':post_detail})
 
-###고민게시판###
+###concern###
 def concern_board(request):
-    posts = Post.objects.filter(category='고민게시판')
+    posts = Post.objects.filter(category='concern')
     return render(request, 'concern_board.html', {'posts': posts})
 
 def concern_search(request):
@@ -136,7 +135,7 @@ def concern_search(request):
 
     if query:
         # 제목에 검색어가 포함된 게시물을 필터링하여 가져옴
-        posts = Post.objects.filter(category='고민게시판', title__contains=query)
+        posts = Post.objects.filter(category='concern', title__contains=query)
     else:
         posts = Post.objects.none()  # 빈 쿼리셋 반환
 
@@ -152,9 +151,9 @@ def concern_modify(request, post_id):
     post_detail = get_object_or_404(Post, pk = post_id)
     return render(request, 'concern_modify.html', {'post_detail':post_detail})
 
-###교육자료###
+###edu###
 def edu_board(request):
-    posts = Post.objects.filter(category='교육자료')
+    posts = Post.objects.filter(category='edu')
     return render(request, 'edu_board.html', {'posts': posts})
 
 def edu_search(request):
@@ -162,7 +161,7 @@ def edu_search(request):
 
     if query:
         # 제목에 검색어가 포함된 게시물을 필터링하여 가져옴
-        posts = Post.objects.filter(category='교육자료', title__contains=query)
+        posts = Post.objects.filter(category='edu', title__contains=query)
     else:
         posts = Post.objects.none()  # 빈 쿼리셋 반환
 
@@ -182,9 +181,9 @@ def edu_modify(request, post_id):
     post_detail = get_object_or_404(Post, pk = post_id)
     return render(request, 'edu_modify.html', {'post_detail':post_detail})
 
-###노하우###
+###know-how###
 def know_how_board(request):
-    posts = Post.objects.filter(category='노하우')
+    posts = Post.objects.filter(category='know-how')
     return render(request, 'know-how_board.html', {'posts': posts})
 
 def know_how_search(request):
@@ -192,7 +191,7 @@ def know_how_search(request):
 
     if query:
         # 제목에 검색어가 포함된 게시물을 필터링하여 가져옴
-        posts = Post.objects.filter(category='노하우', title__contains=query)
+        posts = Post.objects.filter(category='know-how', title__contains=query)
     else:
         posts = Post.objects.none()  # 빈 쿼리셋 반환
 
@@ -209,8 +208,13 @@ def know_how_modify(request, post_id):
     return render(request, 'know-how_modify.html', {'post_detail':post_detail})
 
 def detail(request, post_id):
-    post_detail = get_object_or_404(Post, pk = post_id)
-    return render(request, 'detail.html', {'post_detail':post_detail})
+    post_detail = get_object_or_404(Post, pk=post_id)
+
+    # 게시물 조회 시 조회수 증가
+    post_detail.increase_views()
+
+    return render(request, 'detail.html', {'post_detail': post_detail})
+
 
 def create_post(request):
     post = Post()
@@ -223,13 +227,34 @@ def create_post(request):
     post.save()
     return redirect('/detail/' + str(post.id))
 
+# def update_post(request, post_id):
+#     post = Post.objects.get(id=post_id)
+#     post.title = request.POST['title']
+#     post.content = request.POST['content']
+#     post.updated_at = timezone.datetime.now()
+#     post.save()
+#     return render(request, 'main.html')
+
+
+
+
+
 def update_post(request, post_id):
-    post = Post.objects.get(id=post_id)
-    post.title = request.POST['title']
-    post.content = request.POST['content']
-    post.updated_at = timezone.datetime.now()
-    post.save()
-    return render(request, 'main.html')
+    post = get_object_or_404(Post, id=post_id)
+    
+    if request.method == 'POST':
+        form = PostForm(request.POST, instance=post)
+        if form.is_valid():
+            form.save()
+            return redirect(f'{post.category}_board')
+    else:
+        form = PostForm(instance=post)
+    
+    return render(request, 'update_post.html', {'form': form, 'post': post})
+
+
+
+
 
 def delete_post(request, post_id):
     post = Post.objects.get(id=post_id)
@@ -252,3 +277,4 @@ def like_post(request, post_id):
         return JsonResponse({'post_likes_count': post_likes_count, 'user_like_count': user_like_count})
 
     return JsonResponse({}, status=401)  # 인증되지 않은 사용자에게는 401 Unauthorized 응답
+
