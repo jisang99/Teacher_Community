@@ -32,16 +32,33 @@
                     <div class="content">        
                         <p>{{post_detail.content}}</p>
                     </div>
+
                 
-                <div class="btn_wrapper">
+
+                <div class="btn_wrapper">  
+                          
                     <button class="like_btn" id="like_Btn"><i class="fa-solid fa-heart"></i></button>
                     <div class="count">
-                        <p>0</p>
+                        <!-- <p>0</p> -->
                     </div>
                 </div>
-                <button class="like_btn" id="like_Btn"><i class="fa-solid fa-heart"></i></button>
                 
             </div>
+            
+            {% if user.is_authenticated and post_detail.author == user %}
+                <button class="update_btn"><a href="{% url 'update_post' post_id=post_detail.id %}">수정하기</a></button>
+                <button class="delete_btn"><a href="{% url 'delete_post' post_id=post_detail.id %}">삭제하기</a></button>
+            {% endif %}
+        
+            
+
+
+        
+        
+
+
+
+
             <div class="comment">
                 <h4>댓글</h4>
                 <div class="comment_id"> 
