@@ -274,5 +274,21 @@ h4  {
     font-family: 'Pretendard-Regular';
 }
 
-
-
+/* styles.css */
+.postimage {
+    margin-top: 1rem;
+    width: 10rem;
+    height: 10rem;
+    /* border: 0.5px solid black; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  .postimage img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  
