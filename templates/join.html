@@ -7,8 +7,37 @@
     <title>회원가입</title>
     <link rel="stylesheet" href="{% static 'css/join.css' %}">
     <script src="https://kit.fontawesome.com/32afc995e9.js" crossorigin="anonymous"></script>
-
-    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#id-check").click(function() {
+                var username = $("#id_username").val();  // 아이디 입력란의 값 가져오기
+                
+                $.ajax({
+                    type: "GET",
+                    url: "{% url 'check_username' %}",
+                    data: { "username": username },  // 서버로 전송할 데이터
+                    success: function(response) {
+                        if (response.exists) {
+                            $(".error-msg-username").text("이미 사용 중인 아이디입니다.");
+                        } else {
+                            $(".error-msg-username").text("");
+                            alert("사용 가능한 아이디입니다.");
+                        }
+                    },
+                    error: function() {
+                        console.log("오류가 발생했습니다.");
+                    }
+                });
+            });
+        });
+        </script>
+        
+        <style>
+            .error-msg-username, .error-msg {
+                color: red;  /* 빨간색으로 설정 */
+            }
+        </style>
 </head>
 <body>
     <div class="container">
@@ -29,7 +58,7 @@
                             {{ form.username }}
                             <button id="id-check">중복 확인</button>
                         </div>
-                        <div class="error-msg">{{ form.username.errors }}</div>
+                        <div class="error-msg-username">{{ form.username.errors }}</div>
                     </div>
                     <div class="info" id="info__pw">
                         <label for="{{ form.password1.id_for_label }}">비밀번호</label>
@@ -43,12 +72,10 @@
                     </div>
                     <div class="info" id="info__face">
                         <div id="face-input">
-                            <label for="{{ form.profile_picture.id_for_label }}">프로필 사진</label>
-                            {{ form.profile_picture }}
-                            <input class="box_face" type="file" name="profile_picture" placeholder="프로필 사진 등록"/>
-                            <button id="face-check">프로필 사진 등록</button>
+                            <label for="{{ form.license.id_for_label }}">교원자격증 &nbsp; </label>
+                            {{ form.license }}
                         </div>
-                        <div class="error-msg">{{ form.profile_picture.errors }}</div>
+                        <div class="error-msg">{{ form.license.errors }}</div>
                     </div>
                     <button type="submit" id="submit">가입하기</button>
                 </form>

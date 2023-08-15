@@ -9,6 +9,9 @@ from .models import AttachedFile
 from django.core.files.storage import FileSystemStorage
 from django.http import JsonResponse
 
+from django.http import JsonResponse
+from .models import Teacher
+
 def main(request):
     posts = Post.objects.all()
     return render(request, 'main.html', {'posts':posts})
@@ -41,6 +44,15 @@ def join_view(request):
         form = SignupForm()
         print(form.errors)
     return render(request, 'join.html', {'form': form})
+
+
+def check_username(request):
+    if request.method == "GET":
+        username = request.GET.get("username")
+        exists = Teacher.objects.filter(username=username).exists()
+        return JsonResponse({"exists": exists})
+
+
 
 @login_required
 def mypage(request):
