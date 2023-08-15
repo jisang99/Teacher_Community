@@ -252,10 +252,12 @@ h4  {
 
 .like_btn {
     
-    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+    
     position: absolute;
     bottom: 6px;
-    right: 20px;
+    right: 5px;
     cursor: pointer;
     border: 0.5px solid #DBDBDB;
     border-radius: 4px;
@@ -264,15 +266,7 @@ h4  {
 
 }
 
-.count {
-    
-    padding-bottom: 3px;
-    position: absolute;
-    bottom: 6px;
-    right: 10px;
-    font-size: 14px;
-    font-family: 'Pretendard-Regular';
-}
+
 
 
 

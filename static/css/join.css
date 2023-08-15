@@ -140,6 +140,7 @@ table {
     font-weight: 400;
     font-family: 'Pretendard-Medium';
   }
+
   .box_face {
     width: 18rem;
     height: 3rem;
@@ -205,6 +206,7 @@ table {
   /* HEADER */
   header  {
     width: 100%;
+    
   }
   
   header h2 {
@@ -213,11 +215,13 @@ table {
     font-weight: 700;
     margin-top: 2rem;
     margin-left: 0.3rem;
+    
   }
   header h3 {
     margin-top: 1.5rem;
     margin-bottom: 1.3rem;
     margin-left: 0.3rem;
+    
   }
   /* SECTION */
   section {

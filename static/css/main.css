@@ -95,75 +95,15 @@ table {
 	border-spacing: 0;
 }
 
-/* nav */
 
-.wrapper {
-    align-items: center;
-}
-
-.nav {
-    margin-left: 300px;
-    margin-right: 360px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    display: flex;
-    align-items: center;
-    width: 1000px;
-    
-}
-
-li {
-    margin-right: 10px;
-}
-
-.logo {
-    width: 182px;
-    height: 70px;
-    margin-right: 240px;
-    
-}
-
-.bar {
-    
-    border-right: 1px solid #767676;
-    font-family: 'Pretendard-SemiBold';
-}
-
-.navbar {
-    display: flex;
-    font-size: 16px;
-}
-
-.join {
-    margin-left: 16px;
-    padding-top: 3px;
-    font-size: 12px;
-    font-family: 'Pretendard-Light';
-
-}
-
-.login {
-    margin-right: 6px;
-}
-
-.bar a {
-    color: black;
-    text-decoration: none;
-}
-
-.bar a:hover {
-    color: #FDBD5E; 
-}
-
-.join a:hover {
-    color: #FDBD5E;
-}
 
 /* mainpage */
 .mainimg{
     width :100%;
     height:26rem;
 }
+
+
 .mon {
     display: flex;
     flex-direction: row;

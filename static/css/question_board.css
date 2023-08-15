@@ -91,66 +91,6 @@ a {
 
 /* nav바 */
 
-.nav_wrapper {
-  align-items: center;
-}
-
-.nav {
-  margin-left: 300px;
-  margin-right: 360px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  display: flex;
-  align-items: center;
-  width: 1000px;
-  
-}
-
-li {
-  margin-right: 10px;
-}
-
-.logo {
-  width: 182px;
-  height: 70px;
-  margin-right: 240px;
-  
-}
-
-.bar {
-  border-right: 1px solid #767676;
-  font-family: 'Pretendard-SemiBold';
-}
-
-.navbar {
-  display: flex;
-  font-size: 16px;
-}
-
-.join {
-  margin-left: 16px;
-  padding-top: 3px;
-  font-size: 12px;
-  font-family: 'Pretendard-Light';
-
-}
-
-.login {
-  margin-right: 6px;
-}
-
-.bar a {
-  color: black;
-  text-decoration: none;
-}
-
-.bar a:hover {
-  color: #FDBD5E; 
-}
-
-.join a:hover {
-  color: #FDBD5E;
-}
 
 /* 게시글 */
 
@@ -208,11 +148,10 @@ li {
 }
 
 .search {
+
   display: flex;
   align-items: center;
-  margin-top: 1rem;
 }
-
 
 .textBox {
   width: 200px; /* 너비 조정 */
@@ -225,9 +164,13 @@ li {
   font-size: 16px; /* 글꼴 크기 */
 }
 
+.searchwrapper{
+  display: flex;
+}
+
 .searchButton {
-  width: 88px;
-  height: 32px;
+  width: 50px;
+  height: 25px;
   border-radius: 20px;
   display: flex;
   align-items: center;
@@ -235,8 +178,12 @@ li {
   color: white;
   background-color: #fdbd5e;
   font-size: 16px;
-  margin-left: 1rem;
+  margin-left: 12px;
+  border: none;
+  cursor: pointer;
+
 }
+
 .searchButtonText {
   color: white;
 }
@@ -334,33 +281,3 @@ li {
 
 
 
-/* footer */
-
-.footer_wrapper {
-  width: 100%;
-  height: 170px;
-  background-color:  #242424;
-  align-items: center;
-}
-
-.footer {
-
-  color: #ffffff;
-  display: flex;
-  padding-top: 30px;
-  padding-left: 320px;
-  
-}
-
-.footer_info {
-  padding-top: 20px;
-  margin-left: 90px;
-  font-size: 11px;
-  font-family: 'Pretendard-Light';
-  
-}
-
-.logo2 {
-  width: 100px;
-  height: 100px;
-}
