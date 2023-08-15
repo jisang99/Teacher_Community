@@ -22,16 +22,16 @@
             <div class="Write_1">
                 <p>등록자명 : {{post_detail.author}}</p>
                 <p>등록일 : {{post_detail.created_at}}</p>
-                <p>조회수 :</p>
+                <p>조회수 : {{post_detail.views}}</p>  <!-- 조회수 표시 -->
                 <p>공감수 :</p>
             </div>
         </div>
 
         <form class="content_wrapper">
             <div class="content_1">
-                    <div class="content">        
-                        <p>{{post_detail.content}}</p>
-                    </div>
+                <div class="content">        
+                    <p>{{post_detail.content}}</p>
+                </div>
                 
                 <div class="btn_wrapper">
                     <button class="like_btn" id="like_Btn"><i class="fa-solid fa-heart"></i></button>
@@ -40,9 +40,9 @@
                     </div>
                 </div>
                 
-                    <div class="postimage">
-                        <img src="../media/iu.jpg" alt="첨부 이미지">
-                    </div>
+                <div class="postimage">
+                    <img src="../media/iu.jpg" alt="첨부 이미지">
+                </div>
                 
             </div>
             <div class="btn_wrapper">

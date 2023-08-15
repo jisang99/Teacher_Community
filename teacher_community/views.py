@@ -45,21 +45,12 @@ def join_view(request):
         print(form.errors)
     return render(request, 'join.html', {'form': form})
 
-<<<<<<< HEAD
-
-=======
->>>>>>> kh
 def check_username(request):
     if request.method == "GET":
         username = request.GET.get("username")
         exists = Teacher.objects.filter(username=username).exists()
         return JsonResponse({"exists": exists})
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> kh
 @login_required
 def mypage(request):
     
@@ -210,8 +201,13 @@ def know_how_modify(request, post_id):
     return render(request, 'know-how_modify.html', {'post_detail':post_detail})
 
 def detail(request, post_id):
-    post_detail = get_object_or_404(Post, pk = post_id)
-    return render(request, 'detail.html', {'post_detail':post_detail})
+    post_detail = get_object_or_404(Post, pk=post_id)
+
+    # 게시물 조회 시 조회수 증가
+    post_detail.increase_views()
+
+    return render(request, 'detail.html', {'post_detail': post_detail})
+
 
 def create_post(request):
     post = Post()
@@ -253,3 +249,4 @@ def like_post(request, post_id):
         return JsonResponse({'post_likes_count': post_likes_count, 'user_like_count': user_like_count})
 
     return JsonResponse({}, status=401)  # 인증되지 않은 사용자에게는 401 Unauthorized 응답
+
