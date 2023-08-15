@@ -301,12 +301,15 @@ li {
 .title {
     font-size: 1.3rem;
     font-weight: bold;
-    /* margin-left: 29.3rem;
+    margin-left: 29.3rem;
     margin-top:3rem;
-     */
-    position: relative;
-    right: 11rem;
     
+    position: relative;
+    
+    
+}
+.squareWrap {
+    margin-left: 10rem;
 }
 
 
@@ -317,10 +320,10 @@ li {
     background-color: white;
     border-radius: 1rem;
     border: 1px solid #D9D9D9;
-    /* margin-top: 1.5rem;
-    margin-left: 23rem; */
+    margin-top: 1.5rem;
+    margin-left: 15rem;
     position: relative;
-    right: 11rem;
+    
     
 }
 

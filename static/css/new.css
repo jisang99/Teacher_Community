@@ -244,14 +244,16 @@ i::before{
 
 
 /* issue */
+
 .title {
     font-size: 1.3rem;
     font-weight: bold;
-    margin-left: 35.5rem;
+    margin-left: 30rem;
     margin-top:3rem;
     
     
 }
+
 
 .square {
     width: 37.5rem;
@@ -260,10 +262,11 @@ i::before{
     border-radius: 1rem;
     border: 1px solid #D9D9D9;
     margin-top: 1.5rem;
-    margin-left: 35rem;
+    margin-left: 28.8rem;
 
-    
 }
+
+
 
 .right_square1 {
     width: 13rem;
@@ -377,7 +380,7 @@ i::before{
 .banner {
     width:47rem;
     height: 7rem;
-    margin-left: 35rem;
+    margin-left: 29rem;
     margin-top: 7.5rem;
     margin-bottom: 10rem;
 }
@@ -387,7 +390,7 @@ i::before{
     border-radius: 1rem;
     border: 0.5px solid black;
     margin-top: -35rem;
-    margin-left: 70rem;
+    margin-left: 68rem;
     background-image: url("../img/1e44b53709c14b8391b1c0ff3caa9e31_image_ad_120x600.png");
     background-size: cover;   
 }
