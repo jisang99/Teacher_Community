@@ -45,15 +45,21 @@ def join_view(request):
         print(form.errors)
     return render(request, 'join.html', {'form': form})
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> kh
 def check_username(request):
     if request.method == "GET":
         username = request.GET.get("username")
         exists = Teacher.objects.filter(username=username).exists()
         return JsonResponse({"exists": exists})
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> kh
 @login_required
 def mypage(request):
     
