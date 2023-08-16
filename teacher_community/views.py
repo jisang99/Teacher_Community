@@ -88,6 +88,9 @@ def free_search(request):
     }
     return render(request, 'free_search.html', context)
 
+def free_board(request):
+    return render(request, 'free_board.html')
+
 
 def free_write(request):
     return render(request, 'free_write.html')
