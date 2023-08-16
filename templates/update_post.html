@@ -7,24 +7,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/writepage.css' %}">
-    <title>글 수정하기</title>
+    <title>자유게시글 작성</title>
 </head>
 <body>
-    <!-- 게시글 수정 부분 -->
+    <!-- 자유 글쓰기 수정하기 부분 -->
     <div class="write_wrapper">
         <div class="Title">
-            <h2>게시글 수정</h2>
+            <h2>{{post_detail.category}}</h2>
         </div>
         <div class="Write">
             <h4>글 수정하기</h4>
         </div>
-
-        <form action="{% url 'update_post' post_id=post.id %}" method="post">
+        <form action="{% url 'update_post' post_detail.id %}" method="post">
             {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit"><p>수정하기</p></button>
+            <div class="title2">
+                <dt>
+                    <p class="title3">제목</p>
+                    <dd><input class="titlebox" type="text" placeholder="제목입력" name="title" value="{{post_detail.title}}"></dd>
+                </dt>
+            </div>
+            <div class="WriteForm">
+                <textarea class="writeform" placeholder="글을 작성해주세요" cols="110" rows="20" name="content">{{post_detail.content}}</textarea>
+            </div>
+            <button><p>수정완료</p></button>
         </form>
-    </div>        
+    </div>
 </body>
 </html>
 {% endblock %}
