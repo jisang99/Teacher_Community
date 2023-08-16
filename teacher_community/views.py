@@ -214,16 +214,22 @@ def detail(request, post_id):
 
 
 def create_post(request):
-    post = Post()
-    post.title = request.POST['title']
-    post.author = request.user
-    post.content = request.POST['content']
-    post.category = request.POST['category']
-    post.created_at = timezone.datetime.now()
-    post.updated_at = timezone.datetime.now()
-    post.save()
-    return redirect('/detail/' + str(post.id))
+    if request.method == 'POST':
+        post = Post()
+        post.title = request.POST['title']
+        post.author = request.user
+        post.content = request.POST['content']
+        post.category = request.POST['category']
+        post.created_at = timezone.datetime.now()
+        post.updated_at = timezone.datetime.now()
 
+        if 'file' in request.FILES:
+            post.file = request.FILES['file']
+
+        post.save()
+        return redirect('/detail/' + str(post.id))
+
+    return render(request, 'create_post.html')  # POST 요청이 아닌 경우에도 처리하기 위해 렌더링
 # def update_post(request, post_id):
 #     post = Post.objects.get(id=post_id)
 #     post.title = request.POST['title']
