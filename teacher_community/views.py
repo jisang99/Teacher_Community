@@ -19,17 +19,21 @@ def main(request):
     return render(request, 'main.html', {'posts':posts})
 
 def login_view(request):
-    form = AuthenticationForm(request=request, data=request.POST)
-    if form.is_valid():
-        username = form.cleaned_data['username']
-        password = form.cleaned_data['password']
-        user = authenticate(request=request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            return redirect('main')
+    if request.method == 'POST':
+        form = AuthenticationForm(request=request, data=request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user = authenticate(request=request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('main')
+            else:
+                form.add_error(None, "사용자ID 또는 비밀번호를 잘못 입력하셨습니다.")
     else:
         form = AuthenticationForm()
-    return render(request, 'login.html', {'form':form})
+    return render(request, 'login.html', {'form': form})
+    
     
 def logout_view(request):
     logout(request)
@@ -70,7 +74,7 @@ def mypage(request):
 
 ###free###
 def free_board(request):
-    posts = Post.objects.filter(category='free')
+    posts = Post.objects.filter(category='자유게시판')
     return render(request, 'free_board.html', {'posts': posts})
 
 def free_search(request):
@@ -79,7 +83,7 @@ def free_search(request):
 
     if query:
         # 제목에 검색어가 포함된 게시물을 필터링하여 가져옴
-        posts = Post.objects.filter(category='free', title__contains=query)
+        posts = Post.objects.filter(category='자유게시판', title__contains=query)
     else:
         posts = Post.objects.none()  # 빈 쿼리셋 반환
 
@@ -98,7 +102,7 @@ def free_modify(request, post_id):
 
 ###question###
 def question_board(request):
-    posts = Post.objects.filter(category='question')
+    posts = Post.objects.filter(category='질문게시판')
     return render(request, 'question_board.html', {'posts': posts})
 
 def question_search(request):
@@ -106,7 +110,7 @@ def question_search(request):
 
     if query:
         # 제목에 검색어가 포함된 게시물을 필터링하여 가져옴
-        posts = Post.objects.filter(category='question', title__contains=query)
+        posts = Post.objects.filter(category='질문게시판', title__contains=query)
     else:
         posts = Post.objects.none()  # 빈 쿼리셋 반환
 
@@ -124,7 +128,7 @@ def question_modify(request, post_id):
 
 ###concern###
 def concern_board(request):
-    posts = Post.objects.filter(category='concern')
+    posts = Post.objects.filter(category='고민게시판')
     return render(request, 'concern_board.html', {'posts': posts})
 
 def concern_search(request):
@@ -132,7 +136,7 @@ def concern_search(request):
 
     if query:
         # 제목에 검색어가 포함된 게시물을 필터링하여 가져옴
-        posts = Post.objects.filter(category='concern', title__contains=query)
+        posts = Post.objects.filter(category='고민게시판', title__contains=query)
     else:
         posts = Post.objects.none()  # 빈 쿼리셋 반환
 
@@ -150,7 +154,7 @@ def concern_modify(request, post_id):
 
 ###edu###
 def edu_board(request):
-    posts = Post.objects.filter(category='edu')
+    posts = Post.objects.filter(category='교육자료')
     return render(request, 'edu_board.html', {'posts': posts})
 
 def edu_search(request):
@@ -158,7 +162,7 @@ def edu_search(request):
 
     if query:
         # 제목에 검색어가 포함된 게시물을 필터링하여 가져옴
-        posts = Post.objects.filter(category='edu', title__contains=query)
+        posts = Post.objects.filter(category='교육자료', title__contains=query)
     else:
         posts = Post.objects.none()  # 빈 쿼리셋 반환
 
@@ -180,7 +184,7 @@ def edu_modify(request, post_id):
 
 ###know-how###
 def know_how_board(request):
-    posts = Post.objects.filter(category='know-how')
+    posts = Post.objects.filter(category='노하우')
     return render(request, 'know-how_board.html', {'posts': posts})
 
 def know_how_search(request):
@@ -188,7 +192,7 @@ def know_how_search(request):
 
     if query:
         # 제목에 검색어가 포함된 게시물을 필터링하여 가져옴
-        posts = Post.objects.filter(category='know-how', title__contains=query)
+        posts = Post.objects.filter(category='노하우', title__contains=query)
     else:
         posts = Post.objects.none()  # 빈 쿼리셋 반환
 
@@ -243,7 +247,7 @@ def update_post(request, post_id):
         form = PostForm(request.POST, instance=post)
         if form.is_valid():
             form.save()
-            return redirect(f'{post.category}_board')
+            return redirect(f'../detail/{post_id}')
     else:
         form = PostForm(instance=post)
     

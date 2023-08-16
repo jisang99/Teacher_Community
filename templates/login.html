@@ -1,46 +1,60 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>로그인</title>
-    <link rel="stylesheet" href="{% static 'css/login.css' %}" />
-    <script
-      src="https://kit.fontawesome.com/32afc995e9.js"
-      crossorigin="anonymous"
-    ></script>
-  </head>
-  <body>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://kit.fontawesome.com/32afc995e9.js" crossorigin="anonymous"></script>
+</head>
+<body>
     <section class="login-form">
-      <a href="{% url 'main' %}"
-        ><h1><img src="{% static 'img/login_img.jpg' %}" width="150px" /></h1
-      ></a>
-      <form action="{% url 'login' %}" method="POST">
-        {% csrf_token %}
-        <div class="int-area">
-            <input class="box" type="text" name="username" placeholder="아이디 입력(6~20자)" />
+        <a href="{% url 'main' %}">
+            <h1><img src="{% static 'img/login_img.jpg' %}" width="150px"></h1>
+        </a>
+        <form action="{% url 'login' %}" method="POST" id="login-form">
+            {% csrf_token %}
             <div class="int-area">
-                <input class="box" type="password" name="password" placeholder="비밀번호 입력" />
+                <input class="box" type="text" name="username" placeholder="아이디 입력(6~20자)">
+                <div class="int-area">
+                    <input class="box" type="password" name="password" placeholder="비밀번호 입력">
+                </div>
+                <div class="btn-area">
+                    <button id="btn" type="button">LOGIN</button>
+                </div>
             </div>
-            <div class="login_fail">*사용자ID 또는 비밀번호를 잘못 입력하셨습니다.</div>
-            <div class="btn-area">
-                <button id="btn" type="submit">LOGIN</button>
-            </div>
-            
-        </div>
-    </form>
-    
+        </form>
 
-      <div class="exist">
-        <span>아직 회원이 아니신가요?</span>
-        <a href="{% url 'join' %}">회원가입</a>
-      </div>
+        <div id="error-message" style="color: red;"></div>
+
+        <script>
+            $(document).ready(function () {
+                $('#btn').click(function () {
+                    const form = $('#login-form');
+                    const errorMessageDiv = $('#error-message');
+                    const formData = new FormData(form[0]);
+
+                    $.ajax({
+                        type: 'POST',
+                        url: form.attr('action'),
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        success: function (data, textStatus, xhr) {
+                            errorMessageDiv.text('');
+                            form.submit();
+                        },
+                        error: function (xhr, textStatus, errorThrown) {
+                            console.log(xhr.responseText);  // Check the console for the server response
+                            const responseData = JSON.parse(xhr.responseText);
+                            errorMessageDiv.text(responseData.non_field_errors[0]);
+                        }
+                    });
+                });
+            });
+        </script>
     </section>
-
-    <div id="error-message"></div>
-
-    <script src="login.js"></script>
-  </body>
+</body>
 </html>
-
