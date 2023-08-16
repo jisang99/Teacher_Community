@@ -6,41 +6,85 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>로그인</title>
     <link rel="stylesheet" href="{% static 'css/login.css' %}" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script
       src="https://kit.fontawesome.com/32afc995e9.js"
       crossorigin="anonymous"
     ></script>
+    <style>
+      .popup {
+        display: {{display}};
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 20px;
+        background-color: white;
+        border: 1px solid #ccc;
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+      }
+    </style>
   </head>
   <body>
     <section class="login-form">
-      <a href="{% url 'main' %}"
-        ><h1><img src="{% static 'img/login_img.jpg' %}" width="150px" /></h1
-      ></a>
-      <form action="{% url 'login' %}" method="POST">
+      <a href="{% url 'main' %}">
+        <h1><img src="{% static 'img/login_img.jpg' %}" width="150px" /></h1>
+      </a>
+      <form action="{% url 'login' %}" method="POST" id="login-form">
         {% csrf_token %}
         <div class="int-area">
-            <input class="box" type="text" name="username" placeholder="아이디 입력(6~20자)" />
-            <div class="int-area">
-                <input class="box" type="password" name="password" placeholder="비밀번호 입력" />
-            </div>
-            <div class="login_fail">*사용자ID 또는 비밀번호를 잘못 입력하셨습니다.</div>
-            <div class="btn-area">
-                <button id="btn" type="submit">LOGIN</button>
-            </div>
-            
+          <input
+            class="box"
+            type="text"
+            name="username"
+            placeholder="아이디 입력(6~20자)"
+          />
+          <div class="int-area">
+            <input
+              class="box"
+              type="password"
+              name="password"
+              placeholder="비밀번호 입력"
+            />
+          </div>
+          <div class="btn-area">
+            <button id="btn" type="submit">LOGIN</button>
+          </div>
         </div>
-    </form>
-    
+      </form>
 
-      <div class="exist">
-        <span>아직 회원이 아니신가요?</span>
-        <a href="{% url 'join' %}">회원가입</a>
+      <div id="error-message" style="color: red"></div>
+
+      <!-- 팝업 -->
+      <div class="popup" id="popup">
+        <div class="popup-content">
+          <span class="popup-message" id="popup-message"
+            >사용자ID 또는 비밀번호를 잘못 입력하셨습니다.</span
+          >
+          <button class="popup-close" id="popup-close" onclick="closePopup();">
+            닫기
+          </button>
+        </div>
       </div>
+
+      <script>
+        // 팝업 표시 함수
+        function showPopup(message) {
+          var popup = document.getElementById("popup");
+          var popupMessage = document.getElementById("popup-message");
+          popupMessage.textContent = message;
+          popup.style.display = "block";
+        }
+
+        // 팝업 닫기 함수
+        function closePopup() {
+          var popup = document.getElementById("popup");
+          popup.style.display = "none";
+        }
+
+        console.log("{{messages}}");
+      </script>
     </section>
-
-    <div id="error-message"></div>
-
-    <script src="login.js"></script>
   </body>
 </html>
-
