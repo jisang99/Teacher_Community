@@ -54,25 +54,25 @@
                     {% csrf_token %}
                     <div class="info" id="info__id">
                         <div id="id-input">
-                            <label for="{{ form.username.id_for_label }}">아이디</label>
+                            <label class="join_id" for="{{ form.username.id_for_label }}">아이디</label>
                             {{ form.username }}
                             <button id="id-check">중복 확인</button>
                         </div>
                         <div class="error-msg-username">{{ form.username.errors }}</div>
                     </div>
                     <div class="info" id="info__pw">
-                        <label for="{{ form.password1.id_for_label }}">비밀번호</label>
+                        <label  class = "join_pw" for="{{ form.password1.id_for_label }}">비밀번호</label>
                         {{ form.password1 }}
                         <div class="error-msg">{{ form.password1.errors }}</div>
                     </div>
                     <div class="info" id="info__pwRe">
-                        <label for="{{ form.password2.id_for_label }}">비밀번호 확인</label>
+                        <label  class = "join_pw2" for="{{ form.password2.id_for_label }}">비밀번호 확인</label>
                         {{ form.password2 }}
                         <div class="error-msg">{{ form.password2.errors }}</div>
                     </div>
                     <div class="info" id="info__face">
                         <div id="face-input">
-                            <label for="{{ form.license.id_for_label }}">교원자격증 &nbsp; </label>
+                            <label  class = "join_lic"  for="{{ form.license.id_for_label }}">교원자격증 &nbsp; </label>
                             {{ form.license }}
                         </div>
                         <div class="error-msg">{{ form.license.errors }}</div>

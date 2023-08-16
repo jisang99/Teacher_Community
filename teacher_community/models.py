@@ -18,6 +18,8 @@ class Post(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     views = models.PositiveIntegerField(default=0)  # 조회수 필드 추가
     category = models.CharField(max_length=10)
+    file = models.FileField(upload_to='post_files/', blank=True, null=True)  # 파일 첨부 필드
+
 
     def increase_views(self):
         self.views += 1
