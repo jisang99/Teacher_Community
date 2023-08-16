@@ -107,7 +107,7 @@ h2 {
 h4  {
     color: #242424;
     font-family: 'Pretendard-Bold';
-    font-size: 24px;
+    font-size: 20px;
     font-style: normal;
     line-height: normal;
     padding-bottom: 12px;
@@ -129,17 +129,30 @@ h4  {
     margin-top: 50px;
     display: flex;
     border-bottom: 2px solid #767676;
+    position: relative;    
+    
+}
+
+.wirte_title {
+    padding-right: 500px;
     
 }
 
 .Write_1 {
+
     display: flex;
-    margin-left: 260px;
+    
     font-size: 10px;
     font-family: 'Pretendard-Regular';
     color: #767676;
-    gap: 70px;
+    gap: 40px;
     align-items: center;
+    
+    right: 50px;
+    position: absolute;
+    right: 40px;
+    bottom: 12px;
+    
 }
 
 .content_wrapper {
@@ -194,6 +207,7 @@ h4  {
 }
 
 .comment_write {
+    width: 780px;
     height: 140px;
     border: 2px solid #DBDBDB;
     border-radius: 12px;
@@ -236,7 +250,7 @@ h4  {
 .post_btn {
     
     
-    width: 180px;
+    width: 120px;
     height: 40px;
     font-family: 'Pretendard-SemiBold';
     font-size: 16px;
@@ -266,6 +280,38 @@ h4  {
 
 }
 
+.udbtn {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    margin-top: 0.3rem;
+}
+
+.update_btn {
+    width: 3.7rem;
+    height: 1.28rem;
+
+    font-family: 'Pretendard-Light';
+    background-color: #ffd600;
+    border : solid 0.5px #ffd600;
+    border-radius: 5px;
+    margin-right: 0.3rem;
+    /* margin-top: 0.53rem;
+    margin-right: 0.3rem;
+    margin-left: 33rem; */
+}
+.delete_btn {
+    /* position: relative;
+    bottom: 1.55rem; */
+    width: 3.7rem;
+    height: 1.25rem;
+
+    font-family: 'Pretendard-Light';
+    background-color: #b7e81c;
+    border: solid 0.1px #b7e81c;
+    border-radius: 5px;
+    /* margin-left: 38rem; */
+}
 
 
 /* styles.css */

@@ -32,11 +32,6 @@
                 <div class="content">        
                     <p>{{post_detail.content}}</p>
                 </div>
-
-                    <div class="content">        
-                        <p>{{post_detail.content}}</p>
-                    </div>
-
                 <div class="btn_wrapper">  
                           
                     <button class="like_btn" id="like_Btn"><i class="fa-solid fa-heart"></i></button>
@@ -44,20 +39,15 @@
                         <!-- <p>0</p> -->
                     </div>
                 </div>
-
-                <div class="postimage">
-                    <img src="../media/iu.jpg" alt="첨부 이미지">
-                </div>
-                
             </div>
-            <div class="btn_wrapper">
-                <button class="like_btn" id="like_Btn"><i class="fa-solid fa-heart"></i></button>
-
-            </div>
+           
             
             {% if user.is_authenticated and post_detail.author == user %}
-                <button class="update_btn"><a href="{% url 'update_post' post_id=post_detail.id %}">수정하기</a></button>
-                <button class="delete_btn"><a href="{% url 'delete_post' post_id=post_detail.id %}">삭제하기</a></button>
+                <div class="udbtn">
+                    <button class="update_btn"><a href="{% url 'update_post' post_id=post_detail.id %}">수정하기</a></button>
+                    <button class="delete_btn"><a href="{% url 'delete_post' post_id=post_detail.id %}">삭제하기</a></button>
+                </div>
+                
             {% endif %}
     
             <div class="comment">
@@ -80,7 +70,7 @@
             <textarea class="comment_write" placeholder="댓글을 작성해주세요" cols="110" rows="10"></textarea>
         </div>
 
-        <button class="post_btn">게시하기</button>
+        <button class="post_btn">댓글달기</button>
     </div>
 </body>
 </html>

@@ -76,6 +76,7 @@ def free_board(request):
 def free_search(request):
     query = request.GET.get('q')  # 검색어를 가져옴
 
+
     if query:
         # 제목에 검색어가 포함된 게시물을 필터링하여 가져옴
         posts = Post.objects.filter(category='free', title__contains=query)
@@ -86,6 +87,7 @@ def free_search(request):
         'search_results': posts,
     }
     return render(request, 'free_search.html', context)
+
 
 def free_write(request):
     return render(request, 'free_write.html')

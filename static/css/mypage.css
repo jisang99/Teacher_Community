@@ -101,10 +101,6 @@ table {
     
 }
 
-li {
-    margin-right: 10px;
-}
-
 .logo {
     width: 182px;
     height: 70px;
@@ -231,4 +227,12 @@ h3 {
 .logo2 {
     width: 100px;
     height: 100px;
+}
+.line {
+    padding: 0.8rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #ccc;
+    width: 60rem;
 }
