@@ -8,6 +8,20 @@
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://kit.fontawesome.com/32afc995e9.js" crossorigin="anonymous"></script>
+    <style>
+        .popup {
+            display: block;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: white;
+            border: 1px solid #ccc;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+    </style>
 </head>
 <body>
     <section class="login-form">
@@ -22,38 +36,38 @@
                     <input class="box" type="password" name="password" placeholder="비밀번호 입력">
                 </div>
                 <div class="btn-area">
-                    <button id="btn" type="button">LOGIN</button>
+                    <button id="btn" type="submit">LOGIN</button>
                 </div>
             </div>
         </form>
 
         <div id="error-message" style="color: red;"></div>
 
+        <!-- 팝업 -->
+        {% if messages %}
+            <div class="popup" id="popup">
+                <div class="popup-content">
+                    <span class="popup-message" id="popup-message"></span>
+                    <button class="popup-close" id="popup-close">닫기</button>
+                </div>
+            </div>
+        {% endif %}
         <script>
-            $(document).ready(function () {
-                $('#btn').click(function () {
-                    const form = $('#login-form');
-                    const errorMessageDiv = $('#error-message');
-                    const formData = new FormData(form[0]);
+            // 팝업 표시 함수
+            function showPopup(message) {
+                var popup = document.getElementById('popup');
+                var popupMessage = document.getElementById('popup-message');
+                popupMessage.textContent = message;
+                popup.style.display = 'block';
+            }
 
-                    $.ajax({
-                        type: 'POST',
-                        url: form.attr('action'),
-                        data: formData,
-                        processData: false,
-                        contentType: false,
-                        success: function (data, textStatus, xhr) {
-                            errorMessageDiv.text('');
-                            form.submit();
-                        },
-                        error: function (xhr, textStatus, errorThrown) {
-                            console.log(xhr.responseText);  // Check the console for the server response
-                            const responseData = JSON.parse(xhr.responseText);
-                            errorMessageDiv.text(responseData.non_field_errors[0]);
-                        }
-                    });
-                });
-            });
+            // 팝업 닫기 함수
+            function closePopup() {
+                var popup = document.getElementById('popup');
+                popup.style.display = 'none';
+            }
+
+            console.log("{{messages}}")
         </script>
     </section>
 </body>

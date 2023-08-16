@@ -9,6 +9,7 @@ from .models import AttachedFile
 from django.core.files.storage import FileSystemStorage
 from django.http import JsonResponse
 
+from django.contrib import messages
 from django.http import JsonResponse
 from .models import Teacher
 
@@ -28,10 +29,20 @@ def login_view(request):
             if user is not None:
                 login(request, user)
                 return redirect('main')
-            else:
-                form.add_error(None, "사용자ID 또는 비밀번호를 잘못 입력하셨습니다.")
+        
+        else:
+            form = AuthenticationForm()
+        # 로그인 실패 시
+        error_message = "사용자ID 또는 비밀번호를 잘못 입력하셨습니다."
+        if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
+            return JsonResponse({'error_message': error_message}, status=400)
+        else:
+            print('에러')
+            messages.warning(request, '사용자ID 또는 비밀번호를 잘못 입력하셨습니다.')
+
     else:
         form = AuthenticationForm()
+
     return render(request, 'login.html', {'form': form})
     
     
