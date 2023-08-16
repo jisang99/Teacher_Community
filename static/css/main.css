@@ -214,9 +214,12 @@ table {
     display: none;
 }
 .miniWrap{
+    padding: 0;
+    margin-top: 0rem;
+    margin-bottom: 0.3rem;
     position: relative;
-    top : 0.7rem;
-    left: 0.4rem;
+    bottom: 20rem;
+
 }
 .minibox {
     display: flex;
@@ -230,9 +233,11 @@ table {
     font-size: 0.7rem;
     text-align: center;
     border-radius: 4.5px;
-    
-    margin-bottom: 1.5rem;
-    margin-left: 1rem;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-top: 0.83rem;
+    top: 8.47rem;
 }
 
 
