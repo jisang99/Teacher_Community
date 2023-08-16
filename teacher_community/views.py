@@ -106,17 +106,9 @@ def free_search(request):
     }
     return render(request, "free_search.html", context)
 
-def free_board(request):
-    return render(request, 'free_board.html')
-
 
 def free_write(request):
     return render(request, "free_write.html")
-
-
-def free_modify(request, post_id):
-    post_detail = get_object_or_404(Post, pk=post_id)
-    return render(request, "free_modify.html", {"post_detail": post_detail})
 
 
 ###question###
@@ -144,11 +136,6 @@ def question_write(request):
     return render(request, "question_write.html")
 
 
-def question_modify(request, post_id):
-    post_detail = get_object_or_404(Post, pk=post_id)
-    return render(request, "question_modify.html", {"post_detail": post_detail})
-
-
 ###concern###
 def concern_board(request):
     posts = Post.objects.filter(category="고민게시판")
@@ -172,11 +159,6 @@ def concern_search(request):
 
 def concern_write(request):
     return render(request, "concern_write.html")
-
-
-def concern_modify(request, post_id):
-    post_detail = get_object_or_404(Post, pk=post_id)
-    return render(request, "concern_modify.html", {"post_detail": post_detail})
 
 
 ###edu###
@@ -204,16 +186,6 @@ def edu_write(request):
     return render(request, "edu_write.html")
 
 
-def edu_detail(request, post_id):
-    post_detail = get_object_or_404(Post, pk=post_id)
-    return render(request, "edu_detail.html", {"post_detail": post_detail})
-
-
-def edu_modify(request, post_id):
-    post_detail = get_object_or_404(Post, pk=post_id)
-    return render(request, "edu_modify.html", {"post_detail": post_detail})
-
-
 ###know-how###
 def know_how_board(request):
     posts = Post.objects.filter(category="노하우")
@@ -237,11 +209,6 @@ def know_how_search(request):
 
 def know_how_write(request):
     return render(request, "know-how_write.html")
-
-
-def know_how_modify(request, post_id):
-    post_detail = get_object_or_404(Post, pk=post_id)
-    return render(request, "know-how_modify.html", {"post_detail": post_detail})
 
 
 def detail(request, post_id):
@@ -269,33 +236,37 @@ def create_post(request):
         post.save()
         return redirect('/detail/' + str(post.id))
     return render(request, 'create_post.html')  # POST 요청이 아닌 경우에도 처리하기 위해 렌더링
-# def update_post(request, post_id):
-#     post = Post.objects.get(id=post_id)
-#     post.title = request.POST['title']
-#     post.content = request.POST['content']
-#     post.updated_at = timezone.datetime.now()
-#     post.save()
-#     return render(request, 'main.html')
 
 
 def update_post(request, post_id):
     post = get_object_or_404(Post, id=post_id)
-
     if request.method == "POST":
-        form = PostForm(request.POST, instance=post)
-        if form.is_valid():
-            form.save()
-            return redirect(f"../detail/{post_id}")
+        post.title = request.POST['title']
+        post.content = request.POST['content']
+        post.updated_at = timezone.datetime.now()
+        post.save()
+        return redirect('/detail/' + str(post.id))
     else:
-        form = PostForm(instance=post)
-
-    return render(request, "update_post.html", {"form": form, "post": post})
+        return render(request, "update_post.html", {"post_detail": post})
 
 
 def delete_post(request, post_id):
     post = Post.objects.get(id=post_id)
-    post.delete()
-    return render(request, "main.html")
+    if post.category == "자유게시판":
+        post.delete()
+        return redirect('free_board')
+    elif post.category == "질문게시판":
+        post.delete()
+        return redirect('question_board')
+    elif post.category == "고민게시판":
+        post.delete()
+        return redirect('concern_board')
+    elif post.category == "교육자료":
+        post.delete()
+        return redirect('edu_board')
+    if post.category == "노하우":
+        post.delete()
+        return redirect('konw-how_board')
 
 
 def like_post(request, post_id):
