@@ -89,10 +89,12 @@ def mypage(request):
 ###free###
 def free_board(request):
     posts = Post.objects.filter(category="자유게시판")
+    print("실행1")
     return render(request, "free_board.html", {"posts": posts})
 
 
 def free_search(request):
+    print("실행2")
     query = request.GET.get("q")  # 검색어를 가져옴
 
     if query:
@@ -105,9 +107,6 @@ def free_search(request):
         "search_results": posts,
     }
     return render(request, "free_search.html", context)
-
-def free_board(request):
-    return render(request, 'free_board.html')
 
 
 def free_write(request):
@@ -246,29 +245,34 @@ def know_how_modify(request, post_id):
 
 def detail(request, post_id):
     post_detail = get_object_or_404(Post, pk=post_id)
+    comments = Comment.objects.filter(post=post_detail)
 
     # 게시물 조회 시 조회수 증가
     post_detail.increase_views()
 
-    return render(request, "detail.html", {"post_detail": post_detail})
+    return render(
+        request, "detail.html", {"post_detail": post_detail, "comments": comments}
+    )
 
 
 def create_post(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         post = Post()
-        post.title = request.POST['title']
+        post.title = request.POST["title"]
         post.author = request.user
-        post.content = request.POST['content']
-        post.category = request.POST['category']
+        post.content = request.POST["content"]
+        post.category = request.POST["category"]
         post.created_at = timezone.datetime.now()
         post.updated_at = timezone.datetime.now()
 
-        if 'file' in request.FILES:
-            post.file = request.FILES['file']
+        if "file" in request.FILES:
+            post.file = request.FILES["file"]
 
         post.save()
-        return redirect('/detail/' + str(post.id))
-    return render(request, 'create_post.html')  # POST 요청이 아닌 경우에도 처리하기 위해 렌더링
+        return redirect("/detail/" + str(post.id))
+    return render(request, "create_post.html")  # POST 요청이 아닌 경우에도 처리하기 위해 렌더링
+
+
 # def update_post(request, post_id):
 #     post = Post.objects.get(id=post_id)
 #     post.title = request.POST['title']
@@ -316,3 +320,31 @@ def like_post(request, post_id):
         )
 
     return JsonResponse({}, status=401)  # 인증되지 않은 사용자에게는 401 Unauthorized 응답
+
+
+"""
+댓글 관련 함수들
+"""
+
+
+def create_comment(request, post_id):
+    post = get_object_or_404(Post, id=post_id)
+    user = request.user
+    print(request.user)
+    comment = Comment(
+        post=post,
+        author=user,
+        body=request.POST["body"],
+    )
+
+    comment.save()
+    print("성공")
+
+    return redirect(f"/detail/{post_id}")
+
+
+def delete_comment(request, comment_id):
+    comment = get_object_or_404(Comment, id=comment_id)
+    post_id = comment.post.id
+    comment.delete()
+    return redirect(f"/detail/{post_id}")
