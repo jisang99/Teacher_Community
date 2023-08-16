@@ -40,6 +40,11 @@
                     </div>
                 </div>
             </div>
+            {% if post_detail.file %}
+            <div class="attachment">
+                <p>File: <a href="{{ post_detail.file.url }}" download>{{ post_detail.file.name }}</a></p>
+            </div>
+            {% endif %}
            
             
             {% if user.is_authenticated and post_detail.author == user %}
