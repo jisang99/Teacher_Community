@@ -22,6 +22,7 @@ def main(request):
 
 
 def login_view(request):
+    form = AuthenticationForm()
     # 사용자가 실제 로그인하고 요청 보낼 때 오는 로직
     if request.method == "POST":
         form = AuthenticationForm(request=request, data=request.POST)
