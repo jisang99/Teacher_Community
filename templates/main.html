@@ -1,114 +1,227 @@
-{% extends 'nav_footer.html' %}
-{% load static %}
-{% block content %}
+{% extends 'nav_footer.html' %} {% load static %} {% block content %}
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>아낌없이 주는 나무</title>
 
-    <link rel="stylesheet" href="{% static 'css/new.css' %}">
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
-    <script src="https://kit.fontawesome.com/32afc995e9.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-</head>
-<body>
+    <link rel="stylesheet" href="{% static 'css/new.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+    <script
+      src="https://kit.fontawesome.com/32afc995e9.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <script>
+    const counter = ($counter, max) => {
+      let now = max;
+
+      const handle = setInterval(() => {
+        $counter.innerHTML = Math.ceil(max - now).toLocaleString();
+
+        // 목표수치에 도달하면 정지
+        if (now < 1) {
+          clearInterval(handle);
+        }
+
+        // 증가되는 값이 계속하여 작아짐
+        const step = now / 10;
+
+        // 값을 적용시키면서 다음 차례에 영향을 끼침
+        now -= step;
+      }, 50);
+    };
+
+    window.onload = () => {
+      // 카운트를 적용시킬 요소
+      const $counter = document.querySelector(".count");
+
+      // 목표 수치
+      // 후원금액 수정
+      const max = 1234567;
+
+      setTimeout(() => counter($counter, max), 1000);
+    };
+  </script>
+  <body>
     <!-- main page -->
-    <img class="mainimg" src="{% static 'img/Frame 15.png' %}">
+    <img class="mainimg" src="{% static 'img/Frame 15.png' %}" />
     <div class="mon">
-        <p class="monnow">후원 현황</p>
-        <p class="num">123,456,789원</p>
+      <p class="monnow">후원 현황</p>
+      <p class="count">0</p>
+      원
     </div>
     <p class="date">2023.07.29 기준</p>
-    
+
     <div class="boxwrap">
-        <div class="box">
-            <p class="text">HOT 게시글</p>
-            <p class="intext">HOT 게시글<span class="new">new</span><img class="up" src="{% static 'img/Icon-Up@2x.png' %}"></p> 
-            <hr class="hr1">
-            <p class="intext">HOT 게시글<span class="new">new</span><img class="up" src="{% static 'img/Icon-Up@2x.png' %}"></p> 
-            <hr class="hr1">
-            <p class="intext">HOT 게시글<span class="new">new</span><img class="up" src="{% static 'img/Icon-Up@2x.png' %}"></p> 
-            <hr class="hr1">
-            <p class="intext">HOT 게시글<span class="new">new</span><img class="up" src="{% static 'img/Icon-Up@2x.png' %}"></p> 
-            <hr class="hr1">
-            <p class="intext">HOT 게시글<span class="new">new</span><img class="up" src="{% static 'img/Icon-Up@2x.png' %}"></p> 
-            <div class="miniWrap">
-                <p class="minibox">1</p>
-                <p class="minibox">2</p>
-                <p class="minibox">3</p>
-                <p class="minibox">4</p>
-                <p class="minibox">5</p>
-            </div>
-            
+      <div class="box">
+        <p class="text">HOT 게시글</p>
+        <p class="intext">
+          HOT 게시글<span class="new">new</span
+          ><img class="up" src="{% static 'img/Icon-Up@2x.png' %}" />
+        </p>
+        <hr class="hr1" />
+        <p class="intext">
+          HOT 게시글<span class="new">new</span
+          ><img class="up" src="{% static 'img/Icon-Up@2x.png' %}" />
+        </p>
+        <hr class="hr1" />
+        <p class="intext">
+          HOT 게시글<span class="new">new</span
+          ><img class="up" src="{% static 'img/Icon-Up@2x.png' %}" />
+        </p>
+        <hr class="hr1" />
+        <p class="intext">
+          HOT 게시글<span class="new">new</span
+          ><img class="up" src="{% static 'img/Icon-Up@2x.png' %}" />
+        </p>
+        <hr class="hr1" />
+        <p class="intext">
+          HOT 게시글<span class="new">new</span
+          ><img class="up" src="{% static 'img/Icon-Up@2x.png' %}" />
+        </p>
+        <div class="miniWrap">
+          <p class="minibox">1</p>
+          <p class="minibox">2</p>
+          <p class="minibox">3</p>
+          <p class="minibox">4</p>
+          <p class="minibox">5</p>
         </div>
-        <div class="box">
-            <p class="text">최근게시글</p>
-            <p class="intext">HOT 게시글<span class="new">new</span><img class="up" src="{% static '아낌없이 주는 나무/Icon-Up@2x.png' %}"></p> 
-            <hr class="hr1">
-            <p class="intext">HOT 게시글<span class="new">new</span><img class="up" src="{% static '아낌없이 주는 나무/Icon-Up@2x.png' %}"></p> 
-            <hr class="hr1">
-            <p class="intext">HOT 게시글<span class="new">new</span><img class="up" src="{% static '아낌없이 주는 나무/Icon-Up@2x.png' %}"></p> 
-            <hr class="hr1">
-            <p class="intext">HOT 게시글<span class="new">new</span><img class="up" src="{% static '아낌없이 주는 나무/Icon-Up@2x.png' %}"></p> 
-            <hr class="hr1">
-            <p class="intext">HOT 게시글<span class="new">new</span><img class="up" src="{% static '아낌없이 주는 나무/Icon-Up@2x.png' %}"></p> 
-            <div class="miniWrap">
-                <p class="minibox">1</p>
-                <p class="minibox">2</p>
-                <p class="minibox">3</p>
-                <p class="minibox">4</p>
-                <p class="minibox">5</p>
-            </div>
+      </div>
+      <div class="box">
+        <p class="text">최근게시글</p>
+        <p class="intext">
+          HOT 게시글<span class="new">new</span
+          ><img
+            class="up"
+            src="{% static '아낌없이 주는 나무/Icon-Up@2x.png' %}"
+          />
+        </p>
+        <hr class="hr1" />
+        <p class="intext">
+          HOT 게시글<span class="new">new</span
+          ><img
+            class="up"
+            src="{% static '아낌없이 주는 나무/Icon-Up@2x.png' %}"
+          />
+        </p>
+        <hr class="hr1" />
+        <p class="intext">
+          HOT 게시글<span class="new">new</span
+          ><img
+            class="up"
+            src="{% static '아낌없이 주는 나무/Icon-Up@2x.png' %}"
+          />
+        </p>
+        <hr class="hr1" />
+        <p class="intext">
+          HOT 게시글<span class="new">new</span
+          ><img
+            class="up"
+            src="{% static '아낌없이 주는 나무/Icon-Up@2x.png' %}"
+          />
+        </p>
+        <hr class="hr1" />
+        <p class="intext">
+          HOT 게시글<span class="new">new</span
+          ><img
+            class="up"
+            src="{% static '아낌없이 주는 나무/Icon-Up@2x.png' %}"
+          />
+        </p>
+        <div class="miniWrap">
+          <p class="minibox">1</p>
+          <p class="minibox">2</p>
+          <p class="minibox">3</p>
+          <p class="minibox">4</p>
+          <p class="minibox">5</p>
         </div>
-        <div class="box">
-            <p class="text">고민게시글</p>
-            <p class="intext">HOT 게시글<span class="new">new</span><img class="up" src="{% static 'img/Icon-Up@2x.png' %}"></p> 
-            <hr class="hr1">
-            <p class="intext">HOT 게시글<span class="new">new</span><img class="up" src="{% static 'img/Icon-Up@2x.png' %}"></p> 
-            <hr class="hr1">
-            <p class="intext">HOT 게시글<span class="new">new</span><img class="up" src="{% static 'img/Icon-Up@2x.png' %}"></p> 
-            <hr class="hr1">
-            <p class="intext">HOT 게시글<span class="new">new</span><img class="up" src="{% static 'img/Icon-Up@2x.png' %}"></p> 
-            <hr class="hr1">
-            <p class="intext">HOT 게시글<span class="new">new</span><img class="up" src="{% static 'img/Icon-Up@2x.png' %}"></p> 
-            <div class="miniWrap">
-                <p class="minibox">1</p>
-                <p class="minibox">2</p>
-                <p class="minibox">3</p>
-                <p class="minibox">4</p>
-                <p class="minibox">5</p>
-            </div>
+      </div>
+      <div class="box">
+        <p class="text">고민게시글</p>
+        <p class="intext">
+          HOT 게시글<span class="new">new</span
+          ><img class="up" src="{% static 'img/Icon-Up@2x.png' %}" />
+        </p>
+        <hr class="hr1" />
+        <p class="intext">
+          HOT 게시글<span class="new">new</span
+          ><img class="up" src="{% static 'img/Icon-Up@2x.png' %}" />
+        </p>
+        <hr class="hr1" />
+        <p class="intext">
+          HOT 게시글<span class="new">new</span
+          ><img class="up" src="{% static 'img/Icon-Up@2x.png' %}" />
+        </p>
+        <hr class="hr1" />
+        <p class="intext">
+          HOT 게시글<span class="new">new</span
+          ><img class="up" src="{% static 'img/Icon-Up@2x.png' %}" />
+        </p>
+        <hr class="hr1" />
+        <p class="intext">
+          HOT 게시글<span class="new">new</span
+          ><img class="up" src="{% static 'img/Icon-Up@2x.png' %}" />
+        </p>
+        <div class="miniWrap">
+          <p class="minibox">1</p>
+          <p class="minibox">2</p>
+          <p class="minibox">3</p>
+          <p class="minibox">4</p>
+          <p class="minibox">5</p>
         </div>
+      </div>
     </div>
     <!-- issue -->
     <div class="title">최근이슈</div>
     <div class="isuue_wrap">
-        <div class="squareWrap">
-            <div class="square">
-                <a href="https://news.sbs.co.kr/news/endPage.do?news_id=N1007288278&plink=ORI&cooper=NAVER" target="_blank"><p class="article_title1">땡볕도 막지 못한 교사집회..."악성 민원 그만"</p></a>
-                <p class="article1">주최 측 추산 3만 명(경찰 추산은 2만 1천 명)의 교사들은 검은 옷차림으로 모여 폭염 속 아스팔트 열기에도 아랑곳하지 않고 교육 현장의 교권 침해 실태를 고발하고 대책 마련을 촉구했습니다.
-                교사들이 주말에 거리로 나선 건 지난 22일에 이어 2주째로, 특정 교원노조나 단체가 아닌 교사들이 자발적으로 집회를 이어가고 있습니다.</p>
-                <div class="right_square1"></div>
-                <p class="date1">2023.07.30</p><p class="news1">네이버뉴스</p>
-                <div class="line1"></div>   
-        
-                <a href="https://newsis.com/view/?id=NISX20230729_0002395309&cID=10811&pID=10800"><p class="article_title2">부산서 또 중학생이 교사 폭행...</p></a>
-                <p class="article2">지난달 부산의 한 초등학교에서 3학년 학생이 수업 시간에 교사를 폭행한 사건에 이어, 북구의 한 중학교에서도 2학년 학생이 교사를 폭행한 사실이 뒤늦게 알려졌다.
-                29일 부산시교육청 등에 따르면 지난달 말 북구의 한 중학교 교무실에서 A군이 교사 B씨의 얼굴과 가슴 등을 주먹으로 폭행했다.</p>
-                
-                <p class="date2">2023.07.30</p><p class="news2">네이버뉴스</p>
-                <div class="right_square2"></div>
-                <div class="line2"></div>
-                
-            </div>
-            <div class="adsquare"></div>
-            <img class="banner" src="{% static 'img/banner.png' %}" alt="">
-            
-            
+      <div class="squareWrap">
+        <div class="square">
+          <a
+            href="https://news.sbs.co.kr/news/endPage.do?news_id=N1007288278&plink=ORI&cooper=NAVER"
+            target="_blank"
+            ><p class="article_title1">
+              땡볕도 막지 못한 교사집회..."악성 민원 그만"
+            </p></a
+          >
+          <p class="article1">
+            주최 측 추산 3만 명(경찰 추산은 2만 1천 명)의 교사들은 검은
+            옷차림으로 모여 폭염 속 아스팔트 열기에도 아랑곳하지 않고 교육
+            현장의 교권 침해 실태를 고발하고 대책 마련을 촉구했습니다. 교사들이
+            주말에 거리로 나선 건 지난 22일에 이어 2주째로, 특정 교원노조나
+            단체가 아닌 교사들이 자발적으로 집회를 이어가고 있습니다.
+          </p>
+          <div class="right_square1"></div>
+          <p class="date1">2023.07.30</p>
+          <p class="news1">네이버뉴스</p>
+          <div class="line1"></div>
+
+          <a
+            href="https://newsis.com/view/?id=NISX20230729_0002395309&cID=10811&pID=10800"
+            ><p class="article_title2">부산서 또 중학생이 교사 폭행...</p></a
+          >
+          <p class="article2">
+            지난달 부산의 한 초등학교에서 3학년 학생이 수업 시간에 교사를 폭행한
+            사건에 이어, 북구의 한 중학교에서도 2학년 학생이 교사를 폭행한
+            사실이 뒤늦게 알려졌다. 29일 부산시교육청 등에 따르면 지난달 말
+            북구의 한 중학교 교무실에서 A군이 교사 B씨의 얼굴과 가슴 등을
+            주먹으로 폭행했다.
+          </p>
+
+          <p class="date2">2023.07.30</p>
+          <p class="news2">네이버뉴스</p>
+          <div class="right_square2"></div>
+          <div class="line2"></div>
         </div>
-    </div>    
-</body>
+        <div class="adsquare"></div>
+        <img class="banner" src="{% static 'img/banner.png' %}" alt="" />
+      </div>
+    </div>
+  </body>
 </html>
 {% endblock %}
