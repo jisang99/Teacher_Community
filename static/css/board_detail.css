@@ -280,6 +280,29 @@ h4  {
 
 }
 
+.update_btn {
+    width: 3.7rem;
+    height: 1.28rem;
+
+    font-family: 'Pretendard-Light';
+    background-color: #ffd600;
+    border : solid 0.5px #ffd600;
+    border-radius: 5px;
+    margin-top: 0.53rem;
+    margin-right: 0.3rem;
+    margin-left: 33.5rem;
+}
+.delete_btn {
+    width: 3.7rem;
+    height: 1.25rem;
+
+    font-family: 'Pretendard-Light';
+    background-color: #b7e81c;
+    border: solid 0.1px #b7e81c;
+    border-radius: 5px;
+    margin-top: 0.53rem;
+    
+}
 
 
 /* styles.css */
