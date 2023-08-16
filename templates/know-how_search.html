@@ -46,13 +46,6 @@
         <div class="writeWrapper">
           <button class="write_btn"><a href="{% url 'know-how_write' %}">글쓰기</a></button>
         </div>
-        <div class="numberWrapper">
-          <a href="" class="before">&lt;</a>
-          {% for i in page_range %}
-            <a href="{% url 'know-how_board' %}?page={{ i }}" class="num{{ i }}">{{ i }}</a>
-          {% endfor %}
-          <a href="" class="after">&gt;</a>
-        </div>
       </div>
     </div>
   </div>
