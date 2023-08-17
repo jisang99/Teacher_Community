@@ -22,78 +22,19 @@
         <div class="navbar">
           <ul class="bar">
             <li>
-              <a
-                href="{% if user.is_authenticated %}{% url 'free_board' %}{% else %}javascript:void(0);{% endif %}"
-                
-                {%if not user.is_authenticated%}
-                
-                onclick="alert('로그인 후 이용해주세요.');"
-                {% endif %}
-                
-                
-              >
-                자유게시판</a
-              >
+              <a href="{% url 'free_board' %}"> 자유게시판</a>
             </li>
             <li>
-              <a
-                href="{% if user.is_authenticated %}{% url 'question_board' %}{% else %}javascript:void(0);{% endif %}"
-                
-                {%if not user.is_authenticated%}
-                
-                
-                onclick="alert('로그인 후 이용해주세요.');"
-                {%endif%}
-                
-                
-              >
-                질문게시판</a
-              >
+              <a href="{% url 'question_board' %}"> 질문게시판</a>
             </li>
             <li>
-              <a
-                href="{% if user.is_authenticated %}{% url 'concern_board' %}{% else %}javascript:void(0);{% endif %}"
-                {%if not user.is_authenticated%}
-                
-                
-                
-                onclick="alert('로그인 후 이용해주세요.');"
-                {%endif%}
-                
-                
-              >
-                고민게시판</a
-              >
+              <a href="{% url 'concern_board' %}"> 고민게시판</a>
             </li>
             <li>
-              <a
-                href="{% if user.is_authenticated %}{% url 'edu_board' %}{% else %}javascript:void(0);{% endif %}"
-                
-                {%if not user.is_authenticated%}
-                
-                
-                onclick="alert('로그인 후 이용해주세요.');"
-                {%endif%}
-                
-                
-              >
-                교육자료</a
-              >
+              <a href="{% url 'edu_board' %}"> 교육자료</a>
             </li>
             <li>
-              <a
-                href="{% if user.is_authenticated %}{% url 'know-how_board' %}{% else %}javascript:void(0);{% endif %}"
-                
-                {%if not user.is_authenticated%}
-                
-                
-                onclick="alert('로그인 후 이용해주세요.');"
-                {%endif%}
-                
-                
-              >
-                노하우</a
-              >
+              <a href="{% url 'know-how_board' %}"> 노하우</a>
             </li>
           </ul>
 

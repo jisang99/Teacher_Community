@@ -44,7 +44,7 @@
 
       <div class="downMain">
         <div class="writeWrapper">
-          <button class="write_btn"><a href="{% url 'question_write' %}">글쓰기</a></button>
+          {% if user.is_authenticated %}  <button class="write_btn"><a href="{% url 'question_write' %}">글쓰기</a></button> {% endif %}
         </div>
       </div>
     </div>

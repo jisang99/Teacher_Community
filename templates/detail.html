@@ -60,7 +60,7 @@
               },
               error: function (request, status, error) {
                 // 실패
-                alert("실패");
+                alert("로그인 후 이용해 주세요.");
               },
             });
           });
@@ -125,8 +125,7 @@
         </div>
         <div class="comment_ct">{{comment.body}}</div>
       </div>
-      {% endfor %}
-
+      {% endfor %} {% if user.is_authenticated %}
       <form action="{% url 'comment' post_detail.id %}" method="POST">
         {% csrf_token %}
         <div class="write_form">
@@ -141,6 +140,7 @@
 
         <button class="post_btn">댓글달기</button>
       </form>
+      {% endif %}
     </div>
   </body>
 </html>
