@@ -7,6 +7,7 @@
     <title>게시판</title>
     <link rel="stylesheet" href="{% static 'css/board_detail.css' %}" />
     <script src="{% static 'js/button.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script
       src="https://kit.fontawesome.com/20fce6576a.js"
       crossorigin="anonymous"></script>
@@ -14,6 +15,7 @@
     
 
   </head>
+
   <body>
     <!-- 게시판 디테일 페이지 -->
     <div class="write_wrapper">
@@ -39,17 +41,53 @@
 
           <div class="btn_wrapper">
 
-        
-
-            <button  class="like_btn"  id="like_Btn" >
-              <i id="heart_icon" class="fa-solid fa-heart"></i>
+            <button class="like_btn" id="like_Btn" type="button">
+              <i
+                class="fa-solid fa-heart"
+                style="{% if isLiked %}color: red;{% endif %}"
+              ></i>
+              <div class="count">{{likes_count}}개</div>
             </button>
-
-
-            
           </div>
         </div>
 
+        <script type="text/javascript">
+          console.log($(".like_btn").html());
+          $(".like_btn").click(function () {
+            console.log("들감");
+            $.ajax({
+              // ajax로 서버와 통신
+              type: "GET", // 데이터를 전송하는 방법
+              url: "{% url 'like_post' post_detail.id %}", // 통신할 url을 지정
+              success: function (response) {
+                // 성공
+                window.location.reload();
+              },
+              error: function (request, status, error) {
+                // 실패
+                alert("실패");
+              },
+            });
+          });
+        </script>
+
+        <form class="content_wrapper">
+            <div class="content_1">
+                <div class="content">        
+                    <p>{{post_detail.content}}</p>
+                    {% if post_detail.file %}
+                    <img src="{{ post_detail.file.url }}" alt="첨부된 이미지" style="max-width: 10rem; height: auto;">
+                    {% endif %}
+                </div>
+                
+            </div>
+            {% if post_detail.file %}
+            <div class="attachment">
+                <p>File: <a href="{{ post_detail.file.url }}" download>{{ post_detail.file.name }}</a></p>
+            </div>
+            {% endif %}
+        </form>
+        
 
         {% if user.is_authenticated and post_detail.author == user %}
         <div class="udbtn">

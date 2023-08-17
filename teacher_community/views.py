@@ -216,12 +216,14 @@ def know_how_write(request):
 def detail(request, post_id):
     post_detail = get_object_or_404(Post, pk=post_id)
     comments = Comment.objects.filter(post=post_detail)
+    likes_count = post_detail.count_likes_user()
+    isLiked = post_detail.likes_user.filter(id=request.user.id).exists()
 
     # 게시물 조회 시 조회수 증가
     post_detail.increase_views()
 
     return render(
-        request, "detail.html", {"post_detail": post_detail, "comments": comments}
+        request, "detail.html", {"post_detail": post_detail, "comments": comments, "likes_count": likes_count, "isLiked": isLiked}
     )
 
 
@@ -285,24 +287,24 @@ def delete_post(request, post_id):
         return redirect('konw-how_board')
 
 
-def like_post(request, post_id):
-    post = get_object_or_404(Post, id=post_id)
-    user = request.user
+# def like_post(request, post_id):
+#     post = get_object_or_404(Post, id=post_id)
+#     user = request.user
 
-    if user.is_authenticated:
-        liked_posts = user.like_set.all()
-        if post in liked_posts:
-            user.like_set.remove(post)
-        else:
-            user.like_set.add(post)
+#     if user.is_authenticated:
+#         liked_posts = user.like_set.all()
+#         if post in liked_posts:
+#             user.like_set.remove(post)
+#         else:
+#             user.like_set.add(post)
 
-        post_likes_count = post.like_set.count()  # 해당 포스트의 좋아요 수 계산
-        user_like_count = user.like_set.count()  # 사용자별 좋아요 수 계산
-        return JsonResponse(
-            {"post_likes_count": post_likes_count, "user_like_count": user_like_count}
-        )
+#         post_likes_count = post.like_set.count()  # 해당 포스트의 좋아요 수 계산
+#         user_like_count = user.like_set.count()  # 사용자별 좋아요 수 계산
+#         return JsonResponse(
+#             {"post_likes_count": post_likes_count, "user_like_count": user_like_count}
+#         )
 
-    return JsonResponse({}, status=401)  # 인증되지 않은 사용자에게는 401 Unauthorized 응답
+#     return JsonResponse({}, status=401)  # 인증되지 않은 사용자에게는 401 Unauthorized 응답
 
 
 """
@@ -330,4 +332,21 @@ def delete_comment(request, comment_id):
     comment = get_object_or_404(Comment, id=comment_id)
     post_id = comment.post.id
     comment.delete()
+    return redirect(f"/detail/{post_id}")
+
+"""
+좋아요 관련 함수들
+"""
+@login_required
+def like_post(request, post_id):
+    post = get_object_or_404(Post, id=post_id)
+    user = request.user
+
+    if post.likes_user.filter(id=user.id).exists():
+        post.likes_user.remove(user)
+        message = "좋아요 취소"
+    else:
+        post.likes_user.add(user)
+        message = "좋아요"
+
     return redirect(f"/detail/{post_id}")
