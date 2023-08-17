@@ -24,7 +24,7 @@
     
     <div class="boxwrap">
         <div class="box">
-            <p class="text">HOT 게시글</p>
+            {% comment %} <p class="text">HOT 게시글</p>
             <p class="intext">HOT 게시글<span class="new">new</span><img class="up" src="{% static 'img/Icon-Up@2x.png' %}"></p> 
             <hr class="hr1">
             <p class="intext">HOT 게시글<span class="new">new</span><img class="up" src="{% static 'img/Icon-Up@2x.png' %}"></p> 
@@ -33,7 +33,16 @@
             <hr class="hr1">
             <p class="intext">HOT 게시글<span class="new">new</span><img class="up" src="{% static 'img/Icon-Up@2x.png' %}"></p> 
             <hr class="hr1">
-            <p class="intext">HOT 게시글<span class="new">new</span><img class="up" src="{% static 'img/Icon-Up@2x.png' %}"></p> 
+            <p class="intext">HOT 게시글<span class="new">new</span><img class="up" src="{% static 'img/Icon-Up@2x.png' %}"></p>  {% endcomment %}
+
+            <div class="hot-posts">
+                <p class = "text">HOT 게시글</p>
+                {% for post in hot_posts %}
+                    <p class="intext"><a href="{% url 'detail' post.id %}">{{ post.title }}</a><span class="new">new</span><img class="up" src="{% static 'img/Icon-Up@2x.png' %}"></p>
+                    <hr class="hr1">
+                {% endfor %}
+            </div>
+            
             <div class="miniWrap">
                 <p class="minibox">1</p>
                 <p class="minibox">2</p>
@@ -44,16 +53,13 @@
             
         </div>
         <div class="box">
-            <p class="text">최근게시글</p>
-            <p class="intext">HOT 게시글<span class="new">new</span><img class="up" src="{% static '아낌없이 주는 나무/Icon-Up@2x.png' %}"></p> 
-            <hr class="hr1">
-            <p class="intext">HOT 게시글<span class="new">new</span><img class="up" src="{% static '아낌없이 주는 나무/Icon-Up@2x.png' %}"></p> 
-            <hr class="hr1">
-            <p class="intext">HOT 게시글<span class="new">new</span><img class="up" src="{% static '아낌없이 주는 나무/Icon-Up@2x.png' %}"></p> 
-            <hr class="hr1">
-            <p class="intext">HOT 게시글<span class="new">new</span><img class="up" src="{% static '아낌없이 주는 나무/Icon-Up@2x.png' %}"></p> 
-            <hr class="hr1">
-            <p class="intext">HOT 게시글<span class="new">new</span><img class="up" src="{% static '아낌없이 주는 나무/Icon-Up@2x.png' %}"></p> 
+            <div class="hot-posts">
+                <p class="text">최근게시글</p>
+                {% for post in recent_posts %}
+                    <p class="intext"><a href="{% url 'detail' post.id %}">{{ post.title }}</a><span class="new">new</span><img class="up" src="{% static 'img/Icon-Up@2x.png' %}"></p>
+                    <hr class="hr1">
+                {% endfor %}
+            </div>            
             <div class="miniWrap">
                 <p class="minibox">1</p>
                 <p class="minibox">2</p>
@@ -63,16 +69,13 @@
             </div>
         </div>
         <div class="box">
-            <p class="text">고민게시글</p>
-            <p class="intext">HOT 게시글<span class="new">new</span><img class="up" src="{% static 'img/Icon-Up@2x.png' %}"></p> 
-            <hr class="hr1">
-            <p class="intext">HOT 게시글<span class="new">new</span><img class="up" src="{% static 'img/Icon-Up@2x.png' %}"></p> 
-            <hr class="hr1">
-            <p class="intext">HOT 게시글<span class="new">new</span><img class="up" src="{% static 'img/Icon-Up@2x.png' %}"></p> 
-            <hr class="hr1">
-            <p class="intext">HOT 게시글<span class="new">new</span><img class="up" src="{% static 'img/Icon-Up@2x.png' %}"></p> 
-            <hr class="hr1">
-            <p class="intext">HOT 게시글<span class="new">new</span><img class="up" src="{% static 'img/Icon-Up@2x.png' %}"></p> 
+            <div class="hot-posts">
+                <p class="text">고민게시글</p>
+                {% for post in concern_posts %}
+                    <p class="intext"><a href="{% url 'detail' post.id %}">{{ post.title }}</a><span class="new">new</span><img class="up" src="{% static 'img/Icon-Up@2x.png' %}"></p>
+                    <hr class="hr1">
+                {% endfor %}
+            </div> 
             <div class="miniWrap">
                 <p class="minibox">1</p>
                 <p class="minibox">2</p>
