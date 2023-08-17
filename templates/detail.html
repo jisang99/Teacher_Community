@@ -43,11 +43,8 @@
            
             
             {% if user.is_authenticated and post_detail.author == user %}
-                <div class="udbtn">
-                    <button class="update_btn"><a href="{% url 'update_post' post_id=post_detail.id %}">수정하기</a></button>
-                    <button class="delete_btn"><a href="{% url 'delete_post' post_id=post_detail.id %}">삭제하기</a></button>
-                </div>
-                
+                <button class="update_btn"><a href="{% url 'update_post' post_id=post_detail.id %}">수정하기</a></button>
+                <button class="delete_btn"><a href="{% url 'delete_post' post_id=post_detail.id %}">삭제하기</a></button>
             {% endif %}
     
             <div class="comment">
