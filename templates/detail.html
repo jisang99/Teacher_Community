@@ -31,6 +31,9 @@
             <div class="content_1">
                 <div class="content">        
                     <p>{{post_detail.content}}</p>
+                    {% if post_detail.file %}
+                    <img src="{{ post_detail.file.url }}" alt="첨부된 이미지" style="max-width: 10rem; height: auto;">
+                    {% endif %}
                 </div>
                 <div class="btn_wrapper">  
                           
