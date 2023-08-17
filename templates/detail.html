@@ -67,6 +67,29 @@
           });
         </script>
 
+        <form class="content_wrapper">
+            <div class="content_1">
+                <div class="content">        
+                    <p>{{post_detail.content}}</p>
+                    {% if post_detail.file %}
+                    <img src="{{ post_detail.file.url }}" alt="첨부된 이미지" style="max-width: 10rem; height: auto;">
+                    {% endif %}
+                </div>
+                <div class="btn_wrapper">  
+                          
+                    <button class="like_btn" id="like_Btn"><i class="fa-solid fa-heart"></i></button>
+                    <div class="count">
+                        <!-- <p>0</p> -->
+                    </div>
+                </div>
+            </div>
+            {% if post_detail.file %}
+            <div class="attachment">
+                <p>File: <a href="{{ post_detail.file.url }}" download>{{ post_detail.file.name }}</a></p>
+            </div>
+            {% endif %}
+        </form>
+        
         {% if user.is_authenticated and post_detail.author == user %}
         <div class="udbtn">
           <button class="update_btn">
