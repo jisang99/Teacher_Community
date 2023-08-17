@@ -9,8 +9,10 @@
     <script src="{% static 'js/button.js' %}"></script>
     <script
       src="https://kit.fontawesome.com/20fce6576a.js"
-      crossorigin="anonymous"
-    ></script>
+      crossorigin="anonymous"></script>
+    
+    
+
   </head>
   <body>
     <!-- 게시판 디테일 페이지 -->
@@ -25,7 +27,7 @@
           <p>등록일 : {{post_detail.created_at}}</p>
           <p>조회수 : {{post_detail.views}}</p>
           <!-- 조회수 표시 -->
-          <p>공감수 :</p>
+    
         </div>
       </div>
 
@@ -34,56 +36,24 @@
           <div class="content">
             <p>{{post_detail.content}}</p>
           </div>
+
           <div class="btn_wrapper">
-            <button class="like_btn" id="like_Btn">
-              <i class="fa-solid fa-heart"></i>
+
+        
+
+            <button  class="like_btn"  id="like_Btn" >
+              <i id="heart_icon" class="fa-solid fa-heart"></i>
             </button>
-            <div class="count">
-              <!-- <p>0</p> -->
-            </div>
+
+
+            
           </div>
         </div>
 
-<<<<<<< HEAD
-        <form class="content_wrapper">
-            <div class="content_1">
-                <div class="content">        
-                    <p>{{post_detail.content}}</p>
-                </div>
-                <div class="btn_wrapper">  
-                          
-                    <button class="like_btn" id="like_Btn"><i class="fa-solid fa-heart"></i></button>
-                    <div class="count">
-                        <!-- <p>0</p> -->
-                    </div>
-                </div>
-            </div>
-           
-            
-            {% if user.is_authenticated and post_detail.author == user %}
-                <button class="update_btn"><a href="{% url 'update_post' post_id=post_detail.id %}">수정하기</a></button>
-                <button class="delete_btn"><a href="{% url 'delete_post' post_id=post_detail.id %}">삭제하기</a></button>
-            {% endif %}
-    
-            <div class="comment">
-                <h4>댓글</h4>
-                <div class="comment_id"> 
-                    <div class="comment_id2">
-                        opopxxxx
-                    </div>
-                    <div class="comment_date">
-                        2023-08-13-12:19
-                    </div>
-                </div>
-                <div class="comment_ct"> 
-                    너무 공감합니다 ㅠㅠ 
-                </div>
-            </div>
-        </form>
-=======
+
         {% if user.is_authenticated and post_detail.author == user %}
         <div class="udbtn">
-          <button class="update_btn">
+          <button class="update_btn" >
             <a href="{% url 'update_post' post_id=post_detail.id %}"
               >수정하기</a
             >
@@ -96,7 +66,7 @@
         </div>
         {% endif %}
       </form>
->>>>>>> 3b270b482391aa5f2255797fdf8292dbdd72dd0d
+
 
       <h4>댓글 {{comments|length}}개</h4>
 

@@ -225,17 +225,14 @@ h4 {
 
 .Write_1 {
   display: flex;
-
   font-size: 10px;
   font-family: "Pretendard-Regular";
   color: #767676;
-  gap: 40px;
   align-items: center;
-
-  right: 50px;
   position: absolute;
-  right: 40px;
+  right: 15px;
   bottom: 12px;
+  gap: 10px;
 }
 
 .content_wrapper {
@@ -340,7 +337,6 @@ h4 {
 .like_btn {
   width: 20px;
   height: 20px;
-
   position: absolute;
   bottom: 6px;
   right: 5px;
