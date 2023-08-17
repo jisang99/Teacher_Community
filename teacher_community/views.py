@@ -347,6 +347,8 @@ def like_post(request, post_id):
         post.likes_user.add(user)
         message = "좋아요"
 
+    return redirect(f"/detail/{post_id}")
+
 
 
 
