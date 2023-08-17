@@ -27,7 +27,6 @@
           <p>등록일 : {{post_detail.created_at}}</p>
           <p>조회수 : {{post_detail.views}}</p>
           <!-- 조회수 표시 -->
-
         </div>
       </div>
 
@@ -68,17 +67,16 @@
         </script>
 
         <form class="content_wrapper">
-          <div class="content_1">
-            <div class="content">
-              {% if post_detail.file %}
-              <img
-                src="{{ post_detail.file.url }}"
-                alt="첨부된 이미지"
-                style="max-width: 10rem; height: auto"
-              />
-              {% endif %}
-            </div>
+          <div class="content">
+            {% if post_detail.file %}
+            <img
+              src="{{ post_detail.file.url }}"
+              alt="첨부된 이미지"
+              style="max-width: 10rem; height: auto"
+            />
+            {% endif %}
           </div>
+
           {% if post_detail.file %}
           <div class="attachment">
             <p>
@@ -95,8 +93,8 @@
         <div class="udbtn">
           <button class="update_btn">
             <a href="{% url 'update_post' post_id=post_detail.id %}">
-              수정하기</a>
-            
+              수정하기</a
+            >
           </button>
           <button class="delete_btn">
             <a href="{% url 'delete_post' post_id=post_detail.id %}"
