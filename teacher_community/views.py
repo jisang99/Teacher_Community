@@ -16,9 +16,7 @@ from .models import Teacher
 from .forms import PostForm
 
 
-def main(request):
-    posts = Post.objects.all()
-    return render(request, "main.html", {"posts": posts})
+
 
 
 def login_view(request):
@@ -89,10 +87,12 @@ def mypage(request):
 ###free###
 def free_board(request):
     posts = Post.objects.filter(category="자유게시판")
+    print("실행1")
     return render(request, "free_board.html", {"posts": posts})
 
 
 def free_search(request):
+    print("실행2")
     query = request.GET.get("q")  # 검색어를 가져옴
 
     if query:
@@ -213,29 +213,45 @@ def know_how_write(request):
 
 def detail(request, post_id):
     post_detail = get_object_or_404(Post, pk=post_id)
+    comments = Comment.objects.filter(post=post_detail)
+    likes_count = post_detail.count_likes_user()
+    isLiked = post_detail.likes_user.filter(id=request.user.id).exists()
 
     # 게시물 조회 시 조회수 증가
     post_detail.increase_views()
 
-    return render(request, "detail.html", {"post_detail": post_detail})
+    return render(
+        request, "detail.html", {"post_detail": post_detail, "comments": comments, "likes_count": likes_count, "isLiked": isLiked}
+    )
 
 
 def create_post(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         post = Post()
-        post.title = request.POST['title']
+        post.title = request.POST["title"]
         post.author = request.user
-        post.content = request.POST['content']
-        post.category = request.POST['category']
+        post.content = request.POST["content"]
+        post.category = request.POST["category"]
         post.created_at = timezone.datetime.now()
         post.updated_at = timezone.datetime.now()
 
-        if 'file' in request.FILES:
-            post.file = request.FILES['file']
+        if "file" in request.FILES:
+            post.file = request.FILES["file"]
 
         post.save()
-        return redirect('/detail/' + str(post.id))
-    return render(request, 'create_post.html')  # POST 요청이 아닌 경우에도 처리하기 위해 렌더링
+
+        return redirect("/detail/" + str(post.id))
+    return render(request, "create_post.html")  # POST 요청이 아닌 경우에도 처리하기 위해 렌더링
+
+
+# def update_post(request, post_id):
+#     post = Post.objects.get(id=post_id)
+#     post.title = request.POST['title']
+#     post.content = request.POST['content']
+#     post.updated_at = timezone.datetime.now()
+#     post.save()
+#     return render(request, 'main.html')
+
 
 
 def update_post(request, post_id):
@@ -269,24 +285,70 @@ def delete_post(request, post_id):
         return redirect('konw-how_board')
 
 
+# def like_post(request, post_id):
+#     post = get_object_or_404(Post, id=post_id)
+#     user = request.user
+
+#     if user.is_authenticated:
+#         liked_posts = user.like_set.all()
+#         if post in liked_posts:
+#             user.like_set.remove(post)
+#         else:
+#             user.like_set.add(post)
+
+#         post_likes_count = post.like_set.count()  # 해당 포스트의 좋아요 수 계산
+#         user_like_count = user.like_set.count()  # 사용자별 좋아요 수 계산
+#         return JsonResponse(
+#             {"post_likes_count": post_likes_count, "user_like_count": user_like_count}
+#         )
+
+#     return JsonResponse({}, status=401)  # 인증되지 않은 사용자에게는 401 Unauthorized 응답
+
+
+"""
+댓글 관련 함수들
+"""
+
+
+def create_comment(request, post_id):
+    post = get_object_or_404(Post, id=post_id)
+    user = request.user
+    print(request.user)
+    comment = Comment(
+        post=post,
+        author=user,
+        body=request.POST["body"],
+    )
+
+    comment.save()
+    print("성공")
+
+    return redirect(f"/detail/{post_id}")
+
+
+def delete_comment(request, comment_id):
+    comment = get_object_or_404(Comment, id=comment_id)
+    post_id = comment.post.id
+    comment.delete()
+    return redirect(f"/detail/{post_id}")
+
+"""
+좋아요 관련 함수들
+"""
+@login_required
 def like_post(request, post_id):
     post = get_object_or_404(Post, id=post_id)
     user = request.user
 
-    if user.is_authenticated:
-        liked_posts = user.like_set.all()
-        if post in liked_posts:
-            user.like_set.remove(post)
-        else:
-            user.like_set.add(post)
+    if post.likes_user.filter(id=user.id).exists():
+        post.likes_user.remove(user)
+        message = "좋아요 취소"
+    else:
+        post.likes_user.add(user)
+        message = "좋아요"
 
-        post_likes_count = post.like_set.count()  # 해당 포스트의 좋아요 수 계산
-        user_like_count = user.like_set.count()  # 사용자별 좋아요 수 계산
-        return JsonResponse(
-            {"post_likes_count": post_likes_count, "user_like_count": user_like_count}
-        )
 
-    return JsonResponse({}, status=401)  # 인증되지 않은 사용자에게는 401 Unauthorized 응답
+
 
 
 def main(request):
@@ -300,3 +362,6 @@ def main(request):
 def post_detail(request, post_id):
     post = get_object_or_404(Post, id=post_id)
     return render(request, 'post_detail.html', {'post': post})
+
+    return redirect(f"/detail/{post_id}")
+
