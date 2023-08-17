@@ -1,102 +1,188 @@
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
 }
 body {
-	line-height: 1;
+  line-height: 1;
 }
-ol, ul {
-	list-style: none;
+ol,
+ul {
+  list-style: none;
 }
-blockquote, q {
-	quotes: none;
+blockquote,
+q {
+  quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
 }
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
-ol, ul,li {
-    list-style: none;
-    display: inline-block;
-    padding: 0;
-    margin:0;
+ol,
+ul,
+li {
+  list-style: none;
+  display: inline-block;
+  padding: 0;
+  margin: 0;
 }
 a {
-    text-decoration: none;
-    color: inherit;
+  text-decoration: none;
+  color: inherit;
 }
 
 @font-face {
-    font-weight: 300;
-    font-family: 'Pretendard-Light';
-    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Light.woff') format('woff');
+  font-weight: 300;
+  font-family: "Pretendard-Light";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Light.woff")
+    format("woff");
 }
 @font-face {
-    font-weight: 400;
-    font-family: 'Pretendard-Regular';
-    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+  font-weight: 400;
+  font-family: "Pretendard-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
 }
 @font-face {
-    font-weight: 500;
-    font-family: 'Pretendard-Medium';
-    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Medium.woff') format('woff');
+  font-weight: 500;
+  font-family: "Pretendard-Medium";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Medium.woff")
+    format("woff");
 }
 @font-face {
-    font-weight: 600;
-    font-family: 'Pretendard-SemiBold';
-    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-SemiBold.woff') format('woff');
+  font-weight: 600;
+  font-family: "Pretendard-SemiBold";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-SemiBold.woff")
+    format("woff");
 }
 @font-face {
-    font-weight: 700;
-    font-family: 'Pretendard-Bold';
-    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff') format('woff');
+  font-weight: 700;
+  font-family: "Pretendard-Bold";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff")
+    format("woff");
 }
 @font-face {
-    font-weight: 800;
-    font-family: 'Pretendard-ExtraBold';
-    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-ExtraBold.woff') format('woff');
+  font-weight: 800;
+  font-family: "Pretendard-ExtraBold";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-ExtraBold.woff")
+    format("woff");
 }
-
-
 
 /* 작은화면을 위한 css */
 /* nav바 만들어지면 추가하기 */
 
-
 /* 게시글 */
 
-.wrapper{
+.wrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items : center;
+  align-items: center;
 }
 
 /* .nav {
@@ -118,14 +204,11 @@ a {
   justify-content: center;
   align-items: center;
   font-size: 48px;
-  font-family: 'Pretendard-SemiBold';
+  font-family: "Pretendard-SemiBold";
   color: #ffffff;
 }
 
-
-
 .main {
-  
   width: 70%;
   position: relative;
   margin: 6rem 30rem 6rem 30rem;
@@ -142,7 +225,7 @@ a {
 .postName {
   font-size: 32px;
   color: #fdbd5e;
-  font-family:'Pretendard-Bold';
+  font-family: "Pretendard-Bold";
 }
 
 .search {
@@ -161,7 +244,7 @@ a {
   font-size: 16px; /* 글꼴 크기 */
 }
 
-.searchwrapper{
+.searchwrapper {
   display: flex;
 }
 
@@ -178,7 +261,6 @@ a {
   margin-left: 12px;
   border: none;
   cursor: pointer;
-
 }
 
 .midMain {
@@ -197,30 +279,30 @@ a {
 
 .postTitle {
   font-size: 20px;
-  font-family: 'Pretendard-Regular'; 
+  font-family: "Pretendard-Regular";
 }
 
 .postTime {
   color: #767676;
   font-size: 14px;
-  font-family: 'Pretendard-Light';
+  font-family: "Pretendard-Light";
 }
 
 .downMain {
-  position:relative;
+  position: relative;
   /* border: 1px solid black; */
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   margin-top: 2rem;
-  height:10rem;
+  height: 10rem;
   padding: 1rem;
 }
 
-.writeWrapper{
+.writeWrapper {
   /* border: 1px solid black; */
-  width:100%;
+  width: 100%;
   display: flex;
   justify-content: flex-end;
 }
@@ -233,17 +315,12 @@ a {
   border-radius: 8px;
   color: #ffffff;
   font-size: 16px;
-  font-family: 'Pretendard-SemiBold';
-  
+  font-family: "Pretendard-SemiBold";
 }
 
-
-
-
-.writeText{
+.writeText {
   color: white;
 }
-
 
 .numberWrapper {
   width: 25%;
@@ -267,37 +344,23 @@ a {
   color: #19ae4b;
 }
 
-
-
 /* -------------------------------------------- */
 /* 화면 비율이 16:9 이상인 경우에 미디어쿼리 */
 
-
-
 /* footer */
 
-.footer_wrapper {
-  width: 100%;
-  height: 170px;
-  background-color:  #242424;
-  align-items: center;
-}
-
 .footer {
-
   color: #ffffff;
   display: flex;
   padding-top: 30px;
   padding-left: 320px;
-  
 }
 
 .footer_info {
   padding-top: 20px;
   margin-left: 90px;
   font-size: 11px;
-  font-family: 'Pretendard-Light';
-  
+  font-family: "Pretendard-Light";
 }
 
 .logo2 {

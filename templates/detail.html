@@ -1,30 +1,47 @@
-{% extends 'nav_footer.html' %}
-{% load static %}
-{% block content %}
+{% extends 'nav_footer.html' %} {% load static %} {% block content %}
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>게시판</title>
-    <link rel="stylesheet" href="{% static 'css/board_detail.css' %}">
+    <link rel="stylesheet" href="{% static 'css/board_detail.css' %}" />
     <script src="{% static 'js/button.js' %}"></script>
-    <script src="https://kit.fontawesome.com/20fce6576a.js" crossorigin="anonymous"></script>
-</head>
-<body>
+    <script
+      src="https://kit.fontawesome.com/20fce6576a.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
     <!-- 게시판 디테일 페이지 -->
     <div class="write_wrapper">
-        <div class="Title">
-            <h2>{{post_detail.category}}</h2>
+      <div class="Title">
+        <h2>{{post_detail.category}}</h2>
+      </div>
+      <div class="Write">
+        <h4>{{post_detail.title}}</h4>
+        <div class="Write_1">
+          <p>등록자명 : {{post_detail.author}}</p>
+          <p>등록일 : {{post_detail.created_at}}</p>
+          <p>조회수 : {{post_detail.views}}</p>
+          <!-- 조회수 표시 -->
+          <p>공감수 :</p>
         </div>
-        <div class="Write">
-            <h4>{{post_detail.title}}</h4>
-            <div class="Write_1">
-                <p>등록자명 : {{post_detail.author}}</p>
-                <p>등록일 : {{post_detail.created_at}}</p>
-                <p>조회수 : {{post_detail.views}}</p>  <!-- 조회수 표시 -->
-                <p>공감수 :</p>
+      </div>
+
+      <form class="content_wrapper">
+        <div class="content_1">
+          <div class="content">
+            <p>{{post_detail.content}}</p>
+          </div>
+          <div class="btn_wrapper">
+            <button class="like_btn" id="like_Btn">
+              <i class="fa-solid fa-heart"></i>
+            </button>
+            <div class="count">
+              <!-- <p>0</p> -->
             </div>
+          </div>
         </div>
 
         <form class="content_wrapper">
@@ -45,35 +62,61 @@
                 <p>File: <a href="{{ post_detail.file.url }}" download>{{ post_detail.file.name }}</a></p>
             </div>
             {% endif %}
-           
-            
-            {% if user.is_authenticated and post_detail.author == user %}
-                <button class="update_btn"><a href="{% url 'update_post' post_id=post_detail.id %}">수정하기</a></button>
-                <button class="delete_btn"><a href="{% url 'delete_post' post_id=post_detail.id %}">삭제하기</a></button>
-            {% endif %}
-    
-            <div class="comment">
-                <h4>댓글</h4>
-                <div class="comment_id"> 
-                    <div class="comment_id2">
-                        opopxxxx
-                    </div>
-                    <div class="comment_date">
-                        2023-08-13-12:19
-                    </div>
-                </div>
-                <div class="comment_ct"> 
-                    너무 공감합니다 ㅠㅠ 
-                </div>
-            </div>
         </form>
+        
+        {% if user.is_authenticated and post_detail.author == user %}
+        <div class="udbtn">
+          <button class="update_btn">
+            <a href="{% url 'update_post' post_id=post_detail.id %}"
+              >수정하기</a
+            >
+          </button>
+          <button class="delete_btn">
+            <a href="{% url 'delete_post' post_id=post_detail.id %}"
+              >삭제하기</a
+            >
+          </button>
+        </div>
+        {% endif %}
+      </form>
 
+      <h4>댓글 {{comments|length}}개</h4>
+
+      {% for comment in comments %}
+      <div class="comment">
+        <div class="comment_id">
+          <div style="display: flex">
+            <div class="comment_id2">{{comment.author.username}}</div>
+            <div class="comment_date">{{comment.created_at}}</div>
+          </div>
+          {% if comment.author.username == request.user.username %}
+          <div
+            class="comment_delete"
+            onclick="location.href='{% url 'comment_delete' comment.id %}'"
+          >
+            삭제하기
+          </div>
+          {% endif %}
+        </div>
+        <div class="comment_ct">{{comment.body}}</div>
+      </div>
+      {% endfor %}
+
+      <form action="{% url 'comment' post_detail.id %}" method="POST">
+        {% csrf_token %}
         <div class="write_form">
-            <textarea class="comment_write" placeholder="댓글을 작성해주세요" cols="110" rows="10"></textarea>
+          <textarea
+            class="comment_write"
+            placeholder="댓글을 작성해주세요"
+            cols="110"
+            rows="10"
+            name="body"
+          ></textarea>
         </div>
 
         <button class="post_btn">댓글달기</button>
+      </form>
     </div>
-</body>
+  </body>
 </html>
 {% endblock %}
