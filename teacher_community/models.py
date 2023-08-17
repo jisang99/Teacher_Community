@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 from django.utils import timezone
 from django.contrib.humanize.templatetags.humanize import intcomma
@@ -20,8 +21,14 @@ class Post(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     views = models.PositiveIntegerField(default=0)  # 조회수 필드 추가
+    likes_user = models.ManyToManyField(
+        settings.AUTH_USER_MODEL, related_name="likes_user", blank=True
+    )
     category = models.CharField(max_length=10)
     file = models.FileField(upload_to="post_files/", blank=True, null=True)  # 파일 첨부 필드
+
+    def count_likes_user(self):
+        return self.likes_user.count()
 
     def increase_views(self):
         self.views += 1
