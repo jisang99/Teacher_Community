@@ -225,17 +225,14 @@ h4 {
 
 .Write_1 {
   display: flex;
-
   font-size: 10px;
   font-family: "Pretendard-Regular";
   color: #767676;
-  gap: 40px;
   align-items: center;
-
-  right: 50px;
   position: absolute;
-  right: 40px;
+  right: 15px;
   bottom: 12px;
+  gap: 10px;
 }
 
 .content_wrapper {
@@ -373,6 +370,7 @@ h4 {
   border: solid 0.5px #ffd600;
   border-radius: 5px;
   margin-right: 0.3rem;
+  z-index:100;
   /* margin-top: 0.53rem;
     margin-right: 0.3rem;
     margin-left: 33rem; */
@@ -387,6 +385,7 @@ h4 {
   background-color: #b7e81c;
   border: solid 0.1px #b7e81c;
   border-radius: 5px;
+  z-index:100;
   /* margin-left: 38rem; */
 }
 

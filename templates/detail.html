@@ -27,7 +27,7 @@
           <p>등록일 : {{post_detail.created_at}}</p>
           <p>조회수 : {{post_detail.views}}</p>
           <!-- 조회수 표시 -->
-          <p>공감수 :</p>
+
         </div>
       </div>
 
@@ -94,9 +94,9 @@
         {% if user.is_authenticated and post_detail.author == user %}
         <div class="udbtn">
           <button class="update_btn">
-            <a href="{% url 'update_post' post_id=post_detail.id %}"
-              >수정하기</a
-            >
+            <a href="{% url 'update_post' post_id=post_detail.id %}">
+              수정하기</a>
+            
           </button>
           <button class="delete_btn">
             <a href="{% url 'delete_post' post_id=post_detail.id %}"
