@@ -59,6 +59,57 @@
     <p class="date">2023.07.29 기준</p>
 
     <div class="boxwrap">
+
+        
+            <div class="hot-posts">
+                <p class = "text">HOT 게시글</p>
+                {% for post in hot_posts %}
+                    <p class="intext"><a href="{% url 'detail' post.id %}">{{ post.title }}</a><span class="new">new</span><img class="up" src="{% static 'img/Icon-Up@2x.png' %}"></p>
+                    <hr class="hr1">
+                {% endfor %}
+            </div>
+            
+            <div class="miniWrap">
+                <p class="minibox">1</p>
+                <p class="minibox">2</p>
+                <p class="minibox">3</p>
+                <p class="minibox">4</p>
+                <p class="minibox">5</p>
+            </div>
+            
+        </div>
+        <div class="box">
+            <div class="hot-posts">
+                <p class="text">최근게시글</p>
+                {% for post in recent_posts %}
+                    <p class="intext"><a href="{% url 'detail' post.id %}">{{ post.title }}</a><span class="new">new</span><img class="up" src="{% static 'img/Icon-Up@2x.png' %}"></p>
+                    <hr class="hr1">
+                {% endfor %}
+            </div>            
+            <div class="miniWrap">
+                <p class="minibox">1</p>
+                <p class="minibox">2</p>
+                <p class="minibox">3</p>
+                <p class="minibox">4</p>
+                <p class="minibox">5</p>
+            </div>
+        </div>
+        <div class="box">
+            <div class="hot-posts">
+                <p class="text">고민게시글</p>
+                {% for post in concern_posts %}
+                    <p class="intext"><a href="{% url 'detail' post.id %}">{{ post.title }}</a><span class="new">new</span><img class="up" src="{% static 'img/Icon-Up@2x.png' %}"></p>
+                    <hr class="hr1">
+                {% endfor %}
+            </div> 
+            <div class="miniWrap">
+                <p class="minibox">1</p>
+                <p class="minibox">2</p>
+                <p class="minibox">3</p>
+                <p class="minibox">4</p>
+                <p class="minibox">5</p>
+            </div>
+
       <div class="box">
         <p class="text">HOT 게시글</p>
         <p class="intext">
@@ -174,6 +225,7 @@
           <p class="minibox">3</p>
           <p class="minibox">4</p>
           <p class="minibox">5</p>
+
         </div>
       </div>
     </div>

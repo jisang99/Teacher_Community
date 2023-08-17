@@ -16,9 +16,7 @@ from .models import Teacher
 from .forms import PostForm
 
 
-def main(request):
-    posts = Post.objects.all()
-    return render(request, "main.html", {"posts": posts})
+
 
 
 def login_view(request):
@@ -349,4 +347,21 @@ def like_post(request, post_id):
         post.likes_user.add(user)
         message = "좋아요"
 
+
+
+
+
+def main(request):
+    concern_posts = Post.objects.filter(category='고민게시판').order_by('-views')[:5]
+    hot_posts = Post.objects.order_by('-views')[:5]  # 조회수가 높은 상위 5개 게시글 가져오기
+    recent_posts = Post.objects.order_by('-created_at')[:5]  # 최신 게시글 가져오기
+    return render(request, 'main.html', {'concern_posts': concern_posts, 'hot_posts': hot_posts, 'recent_posts': recent_posts})
+
+
+
+def post_detail(request, post_id):
+    post = get_object_or_404(Post, id=post_id)
+    return render(request, 'post_detail.html', {'post': post})
+
     return redirect(f"/detail/{post_id}")
+
