@@ -27,7 +27,6 @@ urlpatterns = [
     path('', include('teacher_community.urls')),
     re_path(r'^media/(?P<path>.*)$', serve, {'document_root':settings.MEDIA_ROOT}),
     re_path(r'^static/(?P<path>.*)$', serve, {'document_root':settings.STATIC_ROOT}),
-
 ]
 
 if settings.DEBUG:
