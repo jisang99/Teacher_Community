@@ -128,3 +128,18 @@ AUTH_USER_MODEL = 'teacher_community.Teacher'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+
+# settings.py
+
+# CSRF 관련 설정
+CSRF_COOKIE_SECURE = False  
+CSRF_COOKIE_HTTPONLY = True
+CSRF_USE_SESSIONS = False   
+CSRF_COOKIE_SAMESITE = 'Lax' 
+
+# 세션 설정
+SESSION_COOKIE_SECURE = False  
+SESSION_COOKIE_HTTPONLY = True
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False 
+SESSION_COOKIE_SAMESITE = 'Lax'  

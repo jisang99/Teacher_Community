@@ -17,7 +17,6 @@
         <div class="postName">게시글</div>
         <div class="search">
           <form action="{% url 'free_search' %}" method="GET">
-
             <div class="searchwrapper">
               <div class="searchBox">
                 <input type="text" class="textBox" name="q" placeholder="검색어를 입력하세요">
@@ -27,8 +26,7 @@
               </button>
             </div>
           </form>
-          </div>
-          
+        </div>
       </div>
 
       <div class="midMain">
@@ -43,13 +41,6 @@
       <div class="downMain">
         <div class="writeWrapper">
           <button class="write_btn"><a href="{% url 'free_write' %}">글쓰기</a></button>
-        </div>
-        <div class="numberWrapper">
-          <a href="" class="before">&lt;</a>
-          {% for i in page_range %}
-            <a href="{% url 'free_board' %}?page={{ i }}" class="num{{ i }}">{{ i }}</a>
-          {% endfor %}
-          <a href="" class="after">&gt;</a>
         </div>
       </div>
     </div>
