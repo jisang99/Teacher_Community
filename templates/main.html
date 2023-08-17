@@ -63,7 +63,7 @@
         <div class="hot-posts">
             <p class="text">HOT 게시글</p>
             {% for post in hot_posts %}
-                <p class="intext"><a href="{% url 'detail' post.id %}">{{ post.title }}</a><span class="new">new</span><img class="up" src="{% static 'img/Icon-Up@2x.png' %}"></p>
+                <p class="intext"><a href="{% url 'detail' post.id %}">{{forloop.counter}}. {{ post.title }}</a><span class="new">new</span><img class="up" src="{% static 'img/Icon-Up@2x.png' %}"></p>
                 <hr class="hr1">
             {% endfor %}
         </div>
@@ -79,7 +79,7 @@
         <div class="hot-posts">
             <p class="text">최근 게시글</p>
             {% for post in recent_posts %}
-                <p class="intext"><a href="{% url 'detail' post.id %}">{{ post.title }}</a><span class="new">new</span><img class="up" src="{% static 'img/Icon-Up@2x.png' %}"></p>
+                <p class="intext"><a href="{% url 'detail' post.id %}">{{forloop.counter}}. {{ post.title }}</a><span class="new">new</span><img class="up" src="{% static 'img/Icon-Up@2x.png' %}"></p>
                 <hr class="hr1">
             {% endfor %}
         </div>
@@ -96,7 +96,7 @@
         <div class="hot-posts">
             <p class="text">고민 게시글</p>
             {% for post in concern_posts %}
-                <p class="intext"><a href="{% url 'detail' post.id %}">{{ post.title }}</a><span class="new">new</span><img class="up" src="{% static 'img/Icon-Up@2x.png' %}"></p>
+                <p class="intext"><a href="{% url 'detail' post.id %}">{{forloop.counter}}. {{ post.title }}</a><span class="new">new</span><img class="up" src="{% static 'img/Icon-Up@2x.png' %}"></p>
                 <hr class="hr1">
             {% endfor %}
         </div>
