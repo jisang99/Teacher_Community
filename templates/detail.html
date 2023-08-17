@@ -44,6 +44,26 @@
           </div>
         </div>
 
+        <form class="content_wrapper">
+            <div class="content_1">
+                <div class="content">        
+                    <p>{{post_detail.content}}</p>
+                </div>
+                <div class="btn_wrapper">  
+                          
+                    <button class="like_btn" id="like_Btn"><i class="fa-solid fa-heart"></i></button>
+                    <div class="count">
+                        <!-- <p>0</p> -->
+                    </div>
+                </div>
+            </div>
+            {% if post_detail.file %}
+            <div class="attachment">
+                <p>File: <a href="{{ post_detail.file.url }}" download>{{ post_detail.file.name }}</a></p>
+            </div>
+            {% endif %}
+        </form>
+        
         {% if user.is_authenticated and post_detail.author == user %}
         <div class="udbtn">
           <button class="update_btn">
