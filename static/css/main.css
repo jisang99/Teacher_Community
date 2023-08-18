@@ -179,6 +179,7 @@ table {
     margin-left: 1.5rem;
     margin-top: 1.2rem;
 }
+
 .intext {
     display: flex;
     justify-content: space-between;
@@ -186,7 +187,10 @@ table {
     font-size: 0.7rem;
     margin-top: 1.3rem;
     margin-left: 3rem;
+	position: relative;
+	right: 1rem;
 }
+
 .intext:hover {
     cursor: pointer;
     color: #FDBD5E;
@@ -400,3 +404,4 @@ table {
     overflow: hidden;
     text-overflow: ellipsis;
 }
+

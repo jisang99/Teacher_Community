@@ -241,7 +241,7 @@ h4 {
 
 .content_1 {
   margin-top: 24px;
-  padding-bottom: 250px;
+  padding-bottom: 10px;
   border-bottom: 1px solid #dbdbdb;
   position: relative;
 }
@@ -281,7 +281,7 @@ h4 {
 }
 
 .write_form {
-  margin-top: 150px;
+  /* margin-top: 150px; */
 }
 
 .comment_write {

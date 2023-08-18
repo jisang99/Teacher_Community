@@ -12,6 +12,7 @@
       src="https://kit.fontawesome.com/20fce6576a.js"
       crossorigin="anonymous"
     ></script>
+    
   </head>
 
   <body>
@@ -44,6 +45,38 @@
               <div class="count">{{likes_count}}개</div>
             </button>
           </div>
+          <div class = "img-container">
+            <form class="content_wrapper">
+              <div class="content">
+                {% if post_detail.file %}
+                <br><br><br>
+                {% with image_extensions=".jpg.jpeg.png.gif" %}
+                  {% if post_detail.file.url|lower|slice:'-4:' in image_extensions or post_detail.file.url|lower|slice:'-5:' in image_extensions or post_detail.file.url|lower|slice:'-6:' in image_extensions %}
+                    <img
+                      src="{{ post_detail.file.url }}"
+                      alt="첨부된 이미지"
+                      style="max-width: 10rem; height: auto"
+                    />
+                  {% endif %}
+                {% endwith %}
+              {% endif %}
+              
+              
+              </div>
+    
+              {% if post_detail.file %}
+              <div class="attachment">
+                <p>
+                  File:
+                  <a href="{{ post_detail.file.url }}" download
+                    >{{ post_detail.file.name }}</a
+                  >
+                </p>
+              </div>
+              {% endif %}
+            </form>
+  
+          </div>
         </div>
 
         <script type="text/javascript">
@@ -66,28 +99,6 @@
           });
         </script>
 
-        <form class="content_wrapper">
-          <div class="content">
-            {% if post_detail.file %}
-            <img
-              src="{{ post_detail.file.url }}"
-              alt="첨부된 이미지"
-              style="max-width: 10rem; height: auto"
-            />
-            {% endif %}
-          </div>
-
-          {% if post_detail.file %}
-          <div class="attachment">
-            <p>
-              File:
-              <a href="{{ post_detail.file.url }}" download
-                >{{ post_detail.file.name }}</a
-              >
-            </p>
-          </div>
-          {% endif %}
-        </form>
 
         {% if user.is_authenticated and post_detail.author == user %}
         <div class="udbtn">
