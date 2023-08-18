@@ -29,7 +29,7 @@
           <p>등록일 : {{post_detail.created_at}}</p>
           <p>조회수 : {{post_detail.views}}</p>
           <!-- 조회수 표시 -->
-    
+
         </div>
       </div>
 
@@ -65,13 +65,14 @@
               },
               error: function (request, status, error) {
                 // 실패
-                alert("실패");
+                alert("로그인 후 이용해 주세요.");
               },
             });
           });
         </script>
 
         <form class="content_wrapper">
+<<<<<<< HEAD
             <div class="content_1">
                 <div class="content">        
                     <p>{{post_detail.content}}</p>
@@ -81,19 +82,37 @@
                 </div>
                 
             </div>
+=======
+          <div class="content">
+>>>>>>> e0a806d20dee43d10176a6b88dbea79bd91d89c7
             {% if post_detail.file %}
-            <div class="attachment">
-                <p>File: <a href="{{ post_detail.file.url }}" download>{{ post_detail.file.name }}</a></p>
-            </div>
+            <img
+              src="{{ post_detail.file.url }}"
+              alt="첨부된 이미지"
+              style="max-width: 10rem; height: auto"
+            />
             {% endif %}
+          </div>
+
+          {% if post_detail.file %}
+          <div class="attachment">
+            <p>
+              File:
+              <a href="{{ post_detail.file.url }}" download
+                >{{ post_detail.file.name }}</a
+              >
+            </p>
+          </div>
+          {% endif %}
         </form>
-        
+
 
         {% if user.is_authenticated and post_detail.author == user %}
         <div class="udbtn">
-          <button class="update_btn" >
-            <a href="{% url 'update_post' post_id=post_detail.id %}"
-              >수정하기</a
+          <button class="update_btn">
+            <a href="{% url 'update_post' post_id=post_detail.id %}">
+              수정하기</a
+
             >
           </button>
           <button class="delete_btn">
@@ -126,8 +145,7 @@
         </div>
         <div class="comment_ct">{{comment.body}}</div>
       </div>
-      {% endfor %}
-
+      {% endfor %} {% if user.is_authenticated %}
       <form action="{% url 'comment' post_detail.id %}" method="POST">
         {% csrf_token %}
         <div class="write_form">
@@ -142,6 +160,7 @@
 
         <button class="post_btn">댓글달기</button>
       </form>
+      {% endif %}
     </div>
   </body>
 </html>

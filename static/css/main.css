@@ -45,6 +45,7 @@ ol, ul,li {
 a {
     text-decoration: none;
     color: inherit;
+    
 }
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
@@ -186,10 +187,19 @@ table {
     font-size: 0.7rem;
     margin-top: 1.3rem;
     margin-left: 3rem;
+
+
 }
+
+.abc {
+    width: 150px;
+    height: 12px;
+    overflow: hidden;
+}
+
 .intext:hover {
     cursor: pointer;
-    color: #FDBD5E;
+    color: #FDBD5E;                                                                                                                                                 
 }
 .hr1{
     border: 0.001rem solid #dbdbdb;
@@ -202,7 +212,7 @@ table {
 .new{
     font-family: 'Pretendard-Bold';
     color: #ed4141;
-    margin-left: 5.3rem;
+    margin-left: 24px;
     /* display: none; */
 }
 .up{
@@ -212,17 +222,31 @@ table {
     position: relative;
     left: 95px;
     display: none;
+    
 }
 .miniWrap{
-    position: relative;
+    
     top : 0.7rem;
     left: 0.4rem;
+    display: none;
+    padding: 0;
+    margin-top: 0rem;
+    margin-bottom: 0.3rem;
+    position: absolute;
+    bottom: 8rem;
+
+
+
 }
+
+
+
+
 .minibox {
     display: flex;
     flex-direction: column;
     align-content: space-between;
-    width: 1rem;
+    width: 20px;
     height: 1rem;
     background-color: #19ae4b;
     color: white;
@@ -230,9 +254,9 @@ table {
     font-size: 0.7rem;
     text-align: center;
     border-radius: 4.5px;
-    
     margin-bottom: 1.5rem;
     margin-left: 1rem;
+    
 }
 
 
