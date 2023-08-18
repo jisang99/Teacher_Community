@@ -43,11 +43,21 @@
 
       // 목표 수치
       // 후원금액 수정
-      const max = 1234567;
+      const max = 72832113;
 
       setTimeout(() => counter($counter, max), 1000);
     };
   </script>
+
+  <style>
+    .blockflow {
+        display: block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100%; /* 필요에 따라 조정 */
+    }
+  </style>
   <body>
     <!-- main page -->
     <img class="mainimg" src="{% static 'img/main_img.png' %}" />
@@ -56,15 +66,18 @@
       <p class="count">0</p>
       원
     </div>
-    <p class="date">2023.07.29 기준</p>
+    <p class="date">2023.08.18 기준</p>
 
     <div class="boxwrap">
       <div class="box">
         <div class="hot-posts">
             <p class="text">HOT 게시글</p>
             {% for post in hot_posts %}
-                <p class="intext"><a href="{% url 'detail' post.id %}">{{forloop.counter}}. {{ post.title }}</a><span class="new">new</span><img class="up" src="{% static 'img/Icon-Up@2x.png' %}"></p>
-                <hr class="hr1">
+              <p class="intext">
+                <a class="blockflow" href="{% url 'detail' post.id %}">{{ forloop.counter }}. {{ post.title }}</a>
+                <span class="new">new</span>
+                <img class="up" src="{% static 'img/Icon-Up@2x.png' %}">
+              </p>
             {% endfor %}
         </div>
         <div class="miniWrap">
@@ -79,7 +92,7 @@
         <div class="hot-posts">
             <p class="text">최근 게시글</p>
             {% for post in recent_posts %}
-                <p class="intext"><a href="{% url 'detail' post.id %}">{{forloop.counter}}. {{ post.title }}</a><span class="new">new</span><img class="up" src="{% static 'img/Icon-Up@2x.png' %}"></p>
+                <p class="intext"><a class = "blockflow" href="{% url 'detail' post.id %}">{{forloop.counter}}. {{ post.title }}</a><span class="new">new</span><img class="up" src="{% static 'img/Icon-Up@2x.png' %}"></p>
                 <hr class="hr1">
             {% endfor %}
         </div>
@@ -96,7 +109,7 @@
         <div class="hot-posts">
             <p class="text">고민 게시글</p>
             {% for post in concern_posts %}
-                <p class="intext"><a href="{% url 'detail' post.id %}">{{forloop.counter}}. {{ post.title }}</a><span class="new">new</span><img class="up" src="{% static 'img/Icon-Up@2x.png' %}"></p>
+                <p class="intext"><a class = "blockflow" href="{% url 'detail' post.id %}">{{forloop.counter}}. {{ post.title }}<a><span class="new">new</span><img class="up" src="{% static 'img/Icon-Up@2x.png' %}"></p>
                 <hr class="hr1">
             {% endfor %}
         </div>

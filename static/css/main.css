@@ -202,7 +202,7 @@ table {
 .new{
     font-family: 'Pretendard-Bold';
     color: #ed4141;
-    margin-left: 5.3rem;
+    margin-left: 24px;
     /* display: none; */
 }
 .up{
@@ -391,4 +391,12 @@ table {
     margin-top: 7.5rem; */
     position: relative;
     right: 13.5rem;
+}
+
+#blockflow {
+    display:none;
+    width: 350px;
+    height:12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
