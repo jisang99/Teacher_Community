@@ -393,10 +393,10 @@ table {
     right: 13.5rem;
 }
 
-.blockflow{
+#blockflow {
     display:none;
     width: 350px;
     height:12px;
     overflow: hidden;
-    border : 1px solid red;
+    text-overflow: ellipsis;
 }
